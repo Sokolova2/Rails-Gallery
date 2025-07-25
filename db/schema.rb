@@ -20,6 +20,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_23_113059) do
     t.string "first_name"
     t.string "last_name"
     t.string "role", default: "user"
+    t.string "uid"
+    t.string "provider"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
