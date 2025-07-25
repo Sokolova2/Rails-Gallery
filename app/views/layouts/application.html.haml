@@ -20,6 +20,9 @@
       = user_signed_in? ? button_to("Sign out", destroy_user_session_path, method: :delete) : link_to("Sign in", new_user_session_path)
 
     = user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : ""
+    - if user_signed_in?
+      = image_tag current_user.avatar.url(:thumb), with: 50, height: 50, style: "border-radius:1px"
+
 
     %p.notice= notice
     %p.alert= alert

@@ -1,6 +1,6 @@
 %h2
   Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart:true }) do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
     = f.label :first_name
@@ -36,6 +36,11 @@
     %i (we need your current password to confirm your changes)
     %br/
     = f.password_field :current_password, autocomplete: "current-password"
+  .field
+    =f.label :avatar
+    %br/
+    %p= image_tag(@user.avatar.thumb.url) if @user.avatar.present?
+    =f.file_field :avatar
   .actions
     = f.submit "Update"
 %h3 Cancel my account
