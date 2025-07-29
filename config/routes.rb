@@ -5,4 +5,10 @@ Rails.application.routes.draw do
   }
 
   root to: "home#index"
+
+  resources :categories do
+    resources :images, only: [:create, :show]
+  end
+
+  resources :images, only: [:index]
 end
