@@ -16,16 +16,17 @@
     = javascript_importmap_tags
   %body
     %nav.navbar.navbar-light.bg-light.justify-content-between.px
-      = link_to "Home", root_path, class: "navbar-brand"
+      = link_to "Home", root_path, class: "navbar-brand ps-5"
       -if user_signed_in?
-        .dropdown
-          %button.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :type => "button"}
+        .dropdown.pe-5
+          %button.btn.btn-outline-secondary.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :type => "button"}
             = user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : ""
             - if user_signed_in?
               = image_tag current_user.avatar.url(:thumb), with: 50, height: 50, style: "border-radius:1px"
-          %ul.dropdown-menu
-            %li
-              = button_to("Sign out", destroy_user_session_path, method: :delete)
+          %ul.btn.dropdown-menu
+            %li.dropdown-item
+              = button_to("Sign out", destroy_user_session_path, method: :delete, class: "btn w-100")
+              = button_to("Sign out", destroy_user_session_path, method: :delete, class: "btn w-100")
 
       -unless user_signed_in?
         .d-flex

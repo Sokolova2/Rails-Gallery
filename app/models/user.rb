@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   include MailForm::Delivery
+  has_many :images
+  has_many :categories
 
   mount_uploader :avatar, AvatarUploader
   # Include default devise modules. Others available are:

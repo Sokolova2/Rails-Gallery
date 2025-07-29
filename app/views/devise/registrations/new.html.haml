@@ -33,10 +33,13 @@
           = f.password_field :password_confirmation, :class => "form-control", :id => "exampleDropdownFormPassword1", :placeholder => "password", autocomplete: "new-password"
       .mb-3
         .field
-          =f.label :avatar
-          %br/
-          %p= image_tag(@user.avatar.thumb.url) if @user.avatar.present?
-          =f.file_field :avatar, :class => "btn btn-outline-secondary upload-avatar"
+          %div
+            =f.label :avatar
+            = f.file_field :avatar, class: "field-style", id: "image_upload"
+            %br/
+            %label{ for: "image_upload", class: "label-field" }
+              Upload file
+            %span#file-name No file chosen
       .actions.d-flex.justify-content-center
         = f.submit "Sign up", class: "btn btn-primary btn-authenticated"
     .px-4

@@ -1,0 +1,13 @@
+%h1= @category.category_name
+
+=form_with(model: [@category, Image.new], local: true, html: {multipart: true}) do |f|
+  =f.label :file, "Upload photos"
+  %div
+    = f.file_field :images, class: "field-style", id: "image_upload"
+    %label{ for: "image_upload", class: "label-field" }
+      Upload file
+    %span#file-name No file chosen
+  =f.submit "Upload", class: "btn btn-primary mt-2 d-flex justify-content-center"
+
+-@category.images.each do |image|
+  =image_tag image.images.url
