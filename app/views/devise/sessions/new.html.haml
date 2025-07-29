@@ -1,25 +1,26 @@
 .drop-menu
-  .container{:style => "width: 400px; border:  2px solid #4f4e4e; border-radius: 5px"}
-    = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "px-4 py-3 my-box mx-auto"}) do |f|
-      %h2.text-lg-center Log in
-      .mb-3
-        .field
-          = f.label "Email adress"
-          %br/
-          = f.email_field :email, :class => "form-control", :id => "exampleDropdownFormEmail1", :placeholder => "name@example.com", autofocus: true, autocomplete: "email"
-      .mb-3
-        .field
-          = f.label :password
-          %br/
-          = f.password_field :password, :class => "form-control", :id => "exampleDropdownFormPassword1", :placeholder => "password", autocomplete: "current-password"
-
-      - if devise_mapping.rememberable?
+  .container
+    .form_authenticated
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "px-4 py-3 my-box mx-auto"}) do |f|
+        %h2.text-center.m-3 Log in
         .mb-3
-          .form-check
-            .field
-              = f.check_box :remember_me, :class => "form-check-input", :id => "dropdownCheck"
-              = f.label :remember_me, :class => "form-check-label"
-      .actions
-        = f.submit "Log in", class: "btn btn-primary"
-      %br/
-    = render "devise/shared/links"
+          .field
+            = f.label "Email address"
+            %br/
+            = f.email_field :email, :class => "form-control", :id => "exampleDropdownFormEmail1", :placeholder => "name@example.com", autofocus: true, autocomplete: "email"
+        .mb-3
+          .field
+            = f.label :password
+            %br/
+            = f.password_field :password, :class => "form-control", :id => "exampleDropdownFormPassword1", :placeholder => "password", autocomplete: "current-password"
+
+        - if devise_mapping.rememberable?
+          .mb-3
+            .form-check
+              .field
+                = f.check_box :remember_me, :class => "form-check-input", :id => "dropdownCheck"
+                = f.label :remember_me, :class => "form-check-label"
+        .actions.d-flex.justify-content-center
+          = f.submit "Log in", class: "btn btn-primary btn-authenticated"
+      .px-4
+        = render "devise/shared/links"

@@ -15,13 +15,23 @@
     = stylesheet_link_tag :app, "data-turbo-track": "reload"
     = javascript_importmap_tags
   %body
-    %nav
-      = link_to "Home", root_path
-      = user_signed_in? ? button_to("Sign out", destroy_user_session_path, method: :delete) : link_to("Sign in", new_user_session_path)
+    %nav.navbar.navbar-light.bg-light.justify-content-between.px
+      = link_to "Home", root_path, class: "navbar-brand"
+      -if user_signed_in?
+        .dropdown
+          %button.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :type => "button"}
+            = user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : ""
+            - if user_signed_in?
+              = image_tag current_user.avatar.url(:thumb), with: 50, height: 50, style: "border-radius:1px"
+          %ul.dropdown-menu
+            %li
+              = button_to("Sign out", destroy_user_session_path, method: :delete)
 
-    = user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : ""
-    - if user_signed_in?
-      = image_tag current_user.avatar.url(:thumb), with: 50, height: 50, style: "border-radius:1px"
+      -unless user_signed_in?
+        .d-flex
+          = button_to("Sign up", new_user_registration_path, method: :get)
+          = button_to("Sign in", new_user_session_path)
+
 
 
     %p.notice= notice

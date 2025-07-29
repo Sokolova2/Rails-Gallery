@@ -1,34 +1,43 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {multipart: true}) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :first_name
-    %br/
-    = f.text_field :first_name, autofocus: true, autocomplete: "first_name"
-  .field
-    = f.label :last_name
-    %br/
-    = f.text_field :last_name, autofocus: true, autocomplete: "last_name"
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    =f.label :avatar
-    %br/
-    %p= image_tag(@user.avatar.thumb.url) if @user.avatar.present?
-    =f.file_field :avatar
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.container
+  .form_authenticated
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "px-4 py-3 my-box mx-auto", multipart: true}) do |f|
+      %h2.text-center.m-3 Sign up
+      = render "devise/shared/error_messages", resource: resource
+      .mb-3
+        .field
+          = f.label :first_name
+          %br/
+          = f.text_field :first_name, :class => "form-control", :placeholder => "David", autofocus: true, autocomplete: "first_name"
+      .mb-3
+        .field
+          = f.label :last_name
+          %br/
+          = f.text_field :last_name, :class => "form-control", :placeholder => "Snow", autofocus: true, autocomplete: "last_name"
+      .mb-3
+        .field
+          = f.label :email
+          %br/
+          = f.email_field :email, :class => "form-control", :id => "exampleDropdownFormEmail1", :placeholder => "name@example.com", autofocus: true, autocomplete: "email"
+      .mb-3
+        .field
+          = f.label :password
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} characters minimum)
+          %br/
+          = f.password_field :password, :class => "form-control", :id => "exampleDropdownFormPassword1", :placeholder => "password", autocomplete: "new-password"
+      .mb-3
+        .field
+          = f.label :password_confirmation
+          %br/
+          = f.password_field :password_confirmation, :class => "form-control", :id => "exampleDropdownFormPassword1", :placeholder => "password", autocomplete: "new-password"
+      .mb-3
+        .field
+          =f.label :avatar
+          %br/
+          %p= image_tag(@user.avatar.thumb.url) if @user.avatar.present?
+          =f.file_field :avatar, :class => "btn btn-outline-secondary upload-avatar"
+      .actions.d-flex.justify-content-center
+        = f.submit "Sign up", class: "btn btn-primary btn-authenticated"
+    .px-4
+      = render "devise/shared/links"
