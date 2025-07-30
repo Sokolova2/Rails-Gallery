@@ -1,10 +1,10 @@
-.field-style{
-  display: none;
+.custom-upload-label {
+  cursor: pointer;
+  display: inline-block;
 }
 
-.label-field{
-  cursor: pointer;
-  background: #ddd;
-  padding: 10px;
-  border-radius: 5px;
+.upload-icon {
+  max-width: 100px;
+  width: 100%;
+  height: auto;
 }

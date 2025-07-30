@@ -14,7 +14,7 @@
   cursor: pointer;
   font-family: 'Roboto', arial, sans-serif;
   font-size: 14px;
-  height: 40px;
+  height: 42px;
   letter-spacing: 0.25px;
   outline: none;
   overflow: hidden;
@@ -102,12 +102,19 @@
   opacity: 8%;
 }
 
+.form-action{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
 .form_authenticated{
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
   border:  2px solid #4f4e4e;
-  border-radius: 10px
+  border-radius: 10px;
 }
 
 .upload-avatar{
@@ -117,4 +124,20 @@
 
 .btn-authenticated{
   width: 10rem;
+}
+
+.space-oauth{
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.space{
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  min-width: 0px;
+  height: 1px;
+  background-color: rgb(223, 223, 223);
 }
