@@ -6,10 +6,6 @@ class ImagesController < ApplicationController
   def create
     @category = Category.find(params[:category_id])
     @images = @category.images.create(image_params)
-    # if image_params[:images].present?
-    #   image_params[:images].each do |raw_image|
-    #     @category.images.create(images: raw_image)
-    #   end
 
     if @images.save
       redirect_to @category, notice: 'Image was successfully created.'

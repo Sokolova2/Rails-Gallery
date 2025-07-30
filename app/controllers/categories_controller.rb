@@ -1,6 +1,10 @@
 class CategoriesController < ApplicationController
   before_action :set_categories, only: %i[show]
 
+  def index
+    @categories = Category.all
+  end
+
   def show
   end
 
