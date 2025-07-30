@@ -14,27 +14,7 @@
     %link{:href => "/icon.png", :rel => "apple-touch-icon"}/
     = stylesheet_link_tag :app, "data-turbo-track": "reload"
     = javascript_importmap_tags
-  %body
-    %nav.navbar.navbar-light.bg-light.justify-content-between.px
-      = link_to "Home", root_path, class: "navbar-brand ps-5"
-      -if user_signed_in?
-        .dropdown.pe-5
-          %button.btn.btn-outline-secondary.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :type => "button"}
-            = user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : ""
-            - if user_signed_in?
-              = image_tag current_user.avatar.url(:thumb), with: 50, height: 50, style: "border-radius:1px"
-          %ul.btn.dropdown-menu
-            %li.dropdown-item
-              = button_to("Sign out", destroy_user_session_path, method: :delete, class: "btn w-100")
-              = button_to("Sign out", destroy_user_session_path, method: :delete, class: "btn w-100")
-
-      -unless user_signed_in?
-        .d-flex
-          = button_to("Sign up", new_user_registration_path, method: :get)
-          = button_to("Sign in", new_user_session_path)
-
-
-
+  %body.body
+    -# = render 'layouts/navbar'
     %p.notice= notice
-    %p.alert= alert
     = yield

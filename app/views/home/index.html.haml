@@ -1,18 +1,34 @@
-/ Button trigger modal
-%button.btn.btn-primary{"data-bs-target" => "#exampleModal", "data-bs-toggle" => "modal", :type => "button"}
-  Create category
-/ Modal
-#exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :tabindex => "-1"}
-  .modal-dialog
-    .modal-content
-      .modal-header
-        %h1#exampleModalLabel.modal-title.fs-5 Create category
-        %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
-      .modal-body
-        =render "categories/new", category: Category.new
-        %button.btn.btn-secondary{"data-bs-dismiss" => "modal", :type => "button"} Close
+.gradient
+  = render 'layouts/navbar'
+  %div.describe-site.mt-5
+    %h2.text-light.h2.fw-bold.mt-5 Online gallery for photographers
+    %p.text-light.mt-5 Good service for photographers
+    = button_to("Get start for free", new_user_session_path, method: :get, class:"btn btn-light p-3 mt-5")
+  #carouselExampleIndicators.carousel.slide{"data-bs-ride" => "true"}
+    .carousel-indicators
+      %button.active{"aria-current" => "true", "aria-label" => "Slide 1", "data-bs-slide-to" => "0", "data-bs-target" => "#carouselExampleIndicators", :type => "button"}
+      %button{"aria-label" => "Slide 2", "data-bs-slide-to" => "1", "data-bs-target" => "#carouselExampleIndicators", :type => "button"}
+      %button{"aria-label" => "Slide 3", "data-bs-slide-to" => "2", "data-bs-target" => "#carouselExampleIndicators", :type => "button"}
 
--@category.each do |category|
-  =link_to category_path(category) do
-    %p= category.category_name
-    = image_tag category.image.url(:medium) if category.image.present?
+    .carousel-inner.p-5
+      .carousel-item.active
+        =image_tag "pictures-natural1.png", class: "d-block image-carousel"
+      .carousel-item
+        =image_tag "pictures-natural2.png", class: "d-block image-carousel"
+      .carousel-item
+        =image_tag "pictures-natural3.png", class: "d-block image-carousel"
+
+    %button.carousel-control-prev{"data-bs-slide" => "prev", "data-bs-target" => "#carouselExampleIndicators", :type => "button"}
+      %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+      %span.visually-hidden Previous
+    %button.carousel-control-next{"data-bs-slide" => "next", "data-bs-target" => "#carouselExampleIndicators", :type => "button"}
+      %span.carousel-control-next-icon{"aria-hidden" => "true"}
+      %span.visually-hidden Next
+
+%div.describe-site
+  %h2.text-light.h2.fw-bold.mt-5 Online gallery for photographers
+  %p.text-light.mt-5 Good service for photographers
+
+%div.describe-site
+  %h2.text-light.h2.fw-bold.mt-5 Online gallery for photographers
+  %p.text-light.mt-5 Good service for photographers

@@ -1,46 +1,54 @@
+=render 'devise/navbar'
 .container
-  .form_authenticated
-    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "px-4 py-3 my-box mx-auto", multipart: true}) do |f|
-      %h2.text-center.m-3 Sign up
-      = render "devise/shared/error_messages", resource: resource
-      .mb-3
-        .field
-          = f.label :first_name
-          %br/
-          = f.text_field :first_name, :class => "form-control", :placeholder => "David", autofocus: true, autocomplete: "first_name"
-      .mb-3
-        .field
-          = f.label :last_name
-          %br/
-          = f.text_field :last_name, :class => "form-control", :placeholder => "Snow", autofocus: true, autocomplete: "last_name"
-      .mb-3
-        .field
-          = f.label :email
-          %br/
-          = f.email_field :email, :class => "form-control", :id => "exampleDropdownFormEmail1", :placeholder => "name@example.com", autofocus: true, autocomplete: "email"
-      .mb-3
-        .field
-          = f.label :password
-          - if @minimum_password_length
-            %em
-              (#{@minimum_password_length} characters minimum)
-          %br/
-          = f.password_field :password, :class => "form-control", :id => "exampleDropdownFormPassword1", :placeholder => "password", autocomplete: "new-password"
-      .mb-3
-        .field
-          = f.label :password_confirmation
-          %br/
-          = f.password_field :password_confirmation, :class => "form-control", :id => "exampleDropdownFormPassword1", :placeholder => "password", autocomplete: "new-password"
-      .mb-3
-        .field
-          %div
-            =f.label :avatar
-            = f.file_field :avatar, class: "field-style", id: "image_upload"
+  .form-action
+    .form_authenticated.p-3
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "px-4 py-3 my-box mx-auto", multipart: true}) do |f|
+        %h2.text-center.m-3.h3.fw-bold Sign up
+        = render "devise/shared/error_messages", resource: resource
+        = render "devise/shared/links_oauth_google"
+        .space-oauth
+          .space
+          %span or enter your credentials
+          .space
+        .mb-3
+          .field
+            = f.label :first_name
             %br/
-            %label{ for: "image_upload", class: "label-field" }
-              Upload file
-            %span#file-name No file chosen
-      .actions.d-flex.justify-content-center
-        = f.submit "Sign up", class: "btn btn-primary btn-authenticated"
-    .px-4
-      = render "devise/shared/links"
+            = f.text_field :first_name, :class => "form-control", :placeholder => "David", autocomplete: "first_name"
+        .mb-3
+          .field
+            = f.label :last_name
+            %br/
+            = f.text_field :last_name, :class => "form-control", :placeholder => "Snow", autocomplete: "last_name"
+        .mb-3
+          .field
+            = f.label :email
+            %br/
+            = f.email_field :email, :class => "form-control", :id => "exampleDropdownFormEmail1", :placeholder => "name@example.com", autofocus: true, autocomplete: "email"
+        .mb-3
+          .field
+            = f.label :password
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} characters minimum)
+            %br/
+            = f.password_field :password, :class => "form-control", :id => "exampleDropdownFormPassword1", :placeholder => "password", autocomplete: "new-password"
+        .mb-3
+          .field
+            = f.label :password_confirmation
+            %br/
+            = f.password_field :password_confirmation, :class => "form-control", :id => "exampleDropdownFormPassword2", :placeholder => "password", autocomplete: "new-password"
+        .mb-3
+          .field
+            %div
+              =f.label :avatar
+              .mt-2
+              %label{ for: "image_upload", class: "custom-upload-label btn btn-outline-secondary" } Upload avatar
+              = f.file_field :avatar, id: "image_upload", class: "d-none"
+              %br/
+        .actions.d-flex.justify-content-center
+          = f.submit "Sign up", class: "btn btn-primary btn-authenticated"
+      %br/
+      .d-flex.justify-content-center.gap-1
+        %p Already have an account?
+        = render "devise/shared/links_for_log_in"

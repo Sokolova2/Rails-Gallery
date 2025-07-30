@@ -1,0 +1,19 @@
+.bg-black
+  = render "/layouts/navbar"
+%button.btn.btn-primary{"data-bs-target" => "#exampleModal", "data-bs-toggle" => "modal", :type => "button"}
+  Create category
+/ Modal
+#exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h1#exampleModalLabel.modal-title.fs-5 Create category
+        %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+      .modal-body
+        =render "categories/new", category: Category.new
+        %button.btn.btn-secondary{"data-bs-dismiss" => "modal", :type => "button"} Close
+
+-@categories.each do |category|
+  =link_to category_path(category) do
+    %p= category.category_name
+    = image_tag category.image.url(:medium) if category.image.present?
