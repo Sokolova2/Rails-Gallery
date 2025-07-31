@@ -2,14 +2,14 @@
 .container
   .form-action
     .form_authenticated.p-3
+      %h2.text-center.m-3.h3.fw-bolder Hi, Welcome Back
+      = render "devise/shared/error_messages", resource: resource
+      = render "devise/shared/links_oauth_google"
+      .space-oauth
+        .space
+        %span or enter your credentials
+        .space
       = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "px-4 py-3 my-box mx-auto"}) do |f|
-        %h2.text-center.m-3.h3.fw-bolder Hi, Welcome Back
-        = render "devise/shared/error_messages", resource: resource
-        = render "devise/shared/links_oauth_google"
-        .space-oauth
-          .space
-          %span or enter your credentials
-          .space
         .mb-3
           .field
             = f.label "Email address"
