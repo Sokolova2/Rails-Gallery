@@ -1,0 +1,14 @@
+%nav.navbar.justify-content-between.p-3.shadow-sm
+  = link_to "Gallery", categories_path, class: "navbar-brand name-brand text-black border-none"
+  -if user_signed_in?
+    .btn-group.pe-2
+      %label{ for: "drop-down", class: "custom-avatar-label"}
+        = avatar_for(current_user)
+      %button.btn.btn-outline-secondary.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", "data-bs-display" => "static", :type => "button", "class" => "d-none", "id" => "drop-down"}
+      %ul.dropdown-menu.dropdown-menu-lg-end
+        %li.dropdown-item
+          = user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : ""
+        %li.dropdown-item
+          = button_to("Sign out", destroy_user_session_path, method: :delete, class: "btn w-100")
+        %li.dropdown-item
+          = button_to("Sign out", destroy_user_session_path, method: :delete, class: "btn w-100")

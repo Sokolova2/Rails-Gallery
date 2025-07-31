@@ -1,26 +1,20 @@
-.bg-black
-  = render "/layouts/navbar"
+= render "categories/navbar"
+.container.mt-5
+  .d-flex.justify-content-between.align-items-center
+    %h1.h2= @category.category_name
 
-%h1= @category.category_name
-
-%button.btn.btn-primary{"data-bs-target" => "#exampleModal", "data-bs-toggle" => "modal", :type => "button"}
-  Add image
-/ Modal
-#exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :tabindex => "-1"}
-  .modal-dialog
-    .modal-content
-      .modal-header
-        %h1#exampleModalLabel.modal-title.fs-5 Add image
-        %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
-      .modal-body
-        =form_with(model: [@category, Image.new], local: true, html: {multipart: true, id: "image-upload-form"}) do |f|
-          .mb-3
-            %label{ for: "image_upload", class: "custom-upload-label" }
-              =image_tag("upload.png", class: "upload-icon")
+    =form_with(model: [@category, Image.new], local: true, html: {multipart: true, id: "image-upload-form"}) do |f|
+      .mb-3
+        %div
+          .mt-2
+            %label{ for: "image_upload", class: "custom-upload-label btn btn-secondary btn-upload" } Upload
             = f.file_field :images, id: "image_upload", class: "d-none"
-          .d-flex.justify-content-between.mt-1
-            =f.submit "Upload", class: "btn btn-primary mt-2 d-flex justify-content-center d-none"
-            %button.btn.btn-secondary{"data-bs-dismiss" => "modal", :type => "button"} Close
-
--@category.images.each do |image|
-  =image_tag image.images.url
+            %br/
+      .d-flex.justify-content-between.mt-1
+        =f.submit "Upload", class: "btn btn-primary mt-2 d-flex justify-content-center d-none"
+  .mt-5
+    -@category.images.each do |image|
+      .grid
+        .grid-item
+          .card
+            =image_tag image.images.url, class: "rounded-3 img"

@@ -1,11 +1,4 @@
 = form_with(model: category, local: true, html: {multipart: true}) do |f|
-  =f.label :name, "Category name"
-  =f.text_field :category_name
+  =f.text_field :category_name, class: "form-control mt-2", placeholder: "Category Name"
   %br/
-  %div
-    = f.file_field :images, class: "field-style", id: "image_upload"
-    %label{ for: "image_upload", class: "label-field" }
-      Upload file
-    %span#file-name No file chosen
-
-  =f.submit "Create category", class: "btn btn-primary mt-2 d-flex justify-content-center"
+  =f.submit "Create ", class: "btn btn-primary mt-2 d-flex justify-content-center"
