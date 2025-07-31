@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @image = @category.images.first
   end
 
   def create
@@ -13,9 +14,9 @@ class CategoriesController < ApplicationController
     @category.user = current_user
 
     if @category.save
-      redirect_to @category, notice: "Category was successfully created."
+      redirect_to @category
     else
-      redirect_to root_path, notice: "Category was not created."
+      redirect_to @categories
     end
   end
 

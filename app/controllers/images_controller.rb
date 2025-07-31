@@ -8,9 +8,9 @@ class ImagesController < ApplicationController
     @images = @category.images.create(image_params)
 
     if @images.save
-      redirect_to @category, notice: 'Image was successfully created.'
+      redirect_to @category
     else
-      redirect_to @category, notice: 'Something went wrong.'
+      redirect_to @category
     end
   end
 
