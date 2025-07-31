@@ -1,7 +1,7 @@
 class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick, MiniMagick, or Vips support:
-  # include CarrierWave::RMagick
   # include CarrierWave::Vips
+  # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -28,7 +28,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :medium do
-    process :resize_to_fill => [400, 300]
+    process :resize_to_fill => [500, 500]
   end
 
   version :full do
