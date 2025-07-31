@@ -4,9 +4,6 @@ import "controllers"
 import "bootstrap"
 import "@popperjs/core";
 
-console.log(bootstrap.Modal)
-Popper.createPopper()
-
 document.addEventListener("DOMContentLoaded", function(){
     const fileInput = document.getElementById("image_upload");
     const form = document.getElementById("image-upload-form");
