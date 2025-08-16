@@ -60,8 +60,9 @@ gem "mini_magick"
 
 gem "bootstrap"
 gem "jquery-rails"
+gem "masonry-rails"
 
-
+gem 'bootstrap_icons_rails'
 # gem "sassc-rails"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
