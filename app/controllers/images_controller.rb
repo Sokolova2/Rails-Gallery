@@ -1,6 +1,7 @@
 class ImagesController < ApplicationController
   def show
-    @images = Image.all
+    @category = Category.find(params[:category_id])
+    @image = @category.images.find(params[:id])
   end
 
   def create
