@@ -14,7 +14,11 @@
           =render "categories/new", category: Category.new
 .container.d-flex.gap-5.flex-wrap
   -@categories.each do |category|
-    =link_to category_path(category), class: "text-decoration-none text-black" do
-      .img-wrapper
-        =preview_category(category)
-      %p.h5.text-dark= category.category_name
+    %div
+      =link_to category_path(category), class: "text-decoration-none text-black" do
+        .img-wrapper
+          =preview_category(category)
+      .d-flex.justify-content-between.align-items-end
+        %p.h5.text-dark.align-items-center= category.category_name
+        =button_to(category_path(category), method: :delete, class: "me-2 mt-1 border-0 btn btn-transparent")do
+          %i.bi.bi-trash

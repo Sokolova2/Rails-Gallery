@@ -13,8 +13,7 @@
       .d-flex.justify-content-between.mt-1
         =f.submit "Upload", class: "btn btn-primary mt-2 d-flex justify-content-center d-none"
   .mt-5
-    -@category.images.each do |image|
-      .grid
-        .grid-item
-          .card
-            =image_tag image.images.url, class: "rounded-3 img"
+    .grid
+      -@category.images.each do |img|
+        =link_to category_image_path(@category, img) do
+          =image_tag img.images.url, class: "rounded-3"

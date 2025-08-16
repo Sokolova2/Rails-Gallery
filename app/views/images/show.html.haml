@@ -1,2 +1,8 @@
--@images.images.each do |i|
-  =image_tag i.url if i.present?
+.block-image
+  = render "categories/navbar"
+  .container
+    .mt-3
+      .info-images.d-flex.gap-4
+        =button_to category_path(@category), method: :get, class: "btn btn-transparent" do
+          %i.bi.bi-arrow-left-circle
+        =image_tag @image.images.url, class: "image-category"
