@@ -11,5 +11,5 @@ Rails.application.routes.draw do
     resources :images, only: [:create, :show]
   end
 
-  resources :images, only: [:index]
+  resources :images, only: [:index, :show]
 end
