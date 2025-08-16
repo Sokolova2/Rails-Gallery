@@ -3,6 +3,7 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "bootstrap"
 import "@popperjs/core";
+//= require masonry/jquery.masonry
 
 document.addEventListener("DOMContentLoaded", function(){
     const fileInput = document.getElementById("image_upload");
