@@ -4,5 +4,20 @@
     .mt-3
       .info-images.d-flex.gap-4
         =button_to category_path(@category), method: :get, class: "btn btn-transparent" do
-          %i.bi.bi-arrow-left-circle
+          %i.bi.bi-arrow-left
         =image_tag @image.images.url, class: "image-category"
+        =turbo_frame_tag "frame1" do
+          .d-flex
+            -if @image.liked?(current_user)
+              =button_to category_image_like_path(@category, @image), method: :post, id: "btn-like", class: "btn btn-dark" do
+                %i.bi.bi-suit-heart-fill
+            -else
+              =button_to category_image_like_path(@category, @image), method: :post, id: "btn-like", class: "btn btn-dark" do
+                %i.bi.bi-suit-heart
+            %p= @likes.count
+
+        = form_with(url: category_image_comment_path(@category, @image), location: true, method: :post, data: {turbo_frame: "comment"}) do |form|
+          =form.text_field :comment
+          =form.submit "Send"
+
+

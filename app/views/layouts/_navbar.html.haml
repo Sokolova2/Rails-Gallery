@@ -5,5 +5,5 @@
       = button_to "Home", root_path, method: :get, class: "btn btn-outline-dark text-light"
       = button_to "Categories", categories_path, method: :get,class: "btn btn-outline-dark text-light"
   .d-flex.pe-2.gap-3
-    = button_to("Sign In", new_user_session_path, method: :get, class:"btn btn-secondary p-3")
+    = button_to("Sign In", new_user_session_path, class:"btn btn-secondary p-3")
     = button_to("Create Account", new_user_registration_path, method: :get, class:"btn btn-light p-3")
