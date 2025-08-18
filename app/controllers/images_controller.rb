@@ -1,7 +1,9 @@
 class ImagesController < ApplicationController
+  before_action :image, only: %i[show]
+  before_action :authenticate_user!
+
   def show
-    @category = Category.find(params[:category_id])
-    @image = @category.images.find(params[:id])
+    @likes = Like.all
   end
 
   def create
@@ -16,6 +18,11 @@ class ImagesController < ApplicationController
   end
 
   private
+
+  def image
+    @category = Category.find(params[:category_id])
+    @image = @category.images.find(params[:id])
+  end
 
   def image_params
     params.require(:image).permit(:images)
