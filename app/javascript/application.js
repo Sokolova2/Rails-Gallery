@@ -5,7 +5,8 @@ import "bootstrap"
 import "@popperjs/core";
 //= require masonry/jquery.masonry
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function(e){
+    e.preventDefault()
     const fileInput = document.getElementById("image_upload");
     const form = document.getElementById("image-upload-form");
 
@@ -17,3 +18,5 @@ document.addEventListener("DOMContentLoaded", function(){
         });
     }
 });
+
+
