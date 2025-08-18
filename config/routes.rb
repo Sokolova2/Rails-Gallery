@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :categories do
-    resources :images, only: [:create, :show]
+    resources :images, only: [:create, :show] do
+      resource :like, only: [:create]
+      resource :comment, only: [:create]
+    end
   end
-
-  resources :images, only: [:index, :show]
 end
