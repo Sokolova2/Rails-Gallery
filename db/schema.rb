@@ -39,7 +39,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_18_151247) do
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "images"
+    t.string "image"
     t.index ["category_id"], name: "index_images_on_category_id"
   end
 
