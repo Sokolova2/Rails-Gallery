@@ -7,5 +7,5 @@ class Image < ApplicationRecord
     likes.exists?(user_id: user.id)
   end
 
-  mount_uploader :images, ImageUploader
+  mount_uploader :image, ImageUploader
 end

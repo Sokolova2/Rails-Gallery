@@ -54,10 +54,13 @@
 }
 
 .image-category{
-  width: auto;
+  max-width: 100%;
   height: auto;
-  padding-bottom: 3rem;
+  padding-bottom: 8rem;
   padding-top: 5rem;
+  padding-left: 5rem;
+  image-rendering: crisp-edges;
+  display: block;
 }
 
 .block-image{

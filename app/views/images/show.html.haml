@@ -2,22 +2,30 @@
   = render "categories/navbar"
   .container
     .mt-3
-      .info-images.d-flex.gap-4
-        =button_to category_path(@category), method: :get, class: "btn btn-transparent" do
-          %i.bi.bi-arrow-left
-        =image_tag @image.images.url, class: "image-category"
-        =turbo_frame_tag "frame1" do
-          .d-flex
-            -if @image.liked?(current_user)
-              =button_to category_image_like_path(@category, @image), method: :post, id: "btn-like", class: "btn btn-dark" do
-                %i.bi.bi-suit-heart-fill
-            -else
-              =button_to category_image_like_path(@category, @image), method: :post, id: "btn-like", class: "btn btn-dark" do
-                %i.bi.bi-suit-heart
-            %p= @likes.count
+      .info-images.d-block
+        .d-flex
+          =button_to category_path(@category), method: :get, class: "btn btn-transparent" do
+            %i.bi.bi-arrow-left
+          =image_tag @image.image.url, class: "image-category me-5"
+          .d-block
+            =turbo_frame_tag "frame1" do
+              .d-flex.align-items-center
+                -if @category.user.avatar.present?
+                  =image_tag @user.avatar.url, size: 40, class: "image"
+                -else
+                  = image_tag "avatar.png", size: 40, class: "rounded-4"
+                %p= "#{@category.user.first_name + " " + @category.user.last_name}"
+              .d-flex
+                -if @image.liked?(current_user)
+                  =button_to category_image_like_path(@category, @image), method: :post, id: "btn-like", class: "btn btn-dark" do
+                    %i.bi.bi-suit-heart-fill
+                -else
+                  =button_to category_image_like_path(@category, @image), method: :post, id: "btn-like", class: "btn btn-dark" do
+                    %i.bi.bi-suit-heart
+                %p= @likes.count
 
-        = form_with(url: category_image_comment_path(@category, @image), location: true, method: :post, data: {turbo_frame: "comment"}) do |form|
-          =form.text_field :comment
-          =form.submit "Send"
+            = form_with(url: category_image_comment_path(@category, @image), location: true, method: :post, data: {turbo_frame: "comment"}) do |form|
+              =form.text_field :comment
+              =form.submit "Send"
 
 

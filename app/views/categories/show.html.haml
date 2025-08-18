@@ -8,7 +8,7 @@
         %div
           .mt-2
             %label{ for: "image_upload", class: "custom-upload-label btn btn-secondary btn-upload" } Upload
-            = f.file_field :images, id: "image_upload", class: "d-none"
+            = f.file_field :image, id: "image_upload", class: "d-none"
             %br/
       .d-flex.justify-content-between.mt-1
         =f.submit "Upload", class: "btn btn-primary mt-2 d-flex justify-content-center d-none"
@@ -16,4 +16,4 @@
     .grid
       -@category.images.each do |img|
         =link_to category_image_path(@category, img) do
-          =image_tag img.images.url, class: "rounded-3"
+          =image_tag img.image.url, class: "rounded-3"

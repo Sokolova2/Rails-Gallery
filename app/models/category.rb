@@ -4,7 +4,7 @@ class Category < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  mount_uploader :image, ImageUploader
+  # mount_uploader :image, ImageUploader
 
   validate :category_name_must_be_present
 
