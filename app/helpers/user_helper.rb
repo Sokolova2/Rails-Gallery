@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UserHelper
   def avatar_for(user, options = { size: 50 })
     size = options[:size]

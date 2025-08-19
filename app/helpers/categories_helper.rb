@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CategoriesHelper
   def preview_category(category, options = { size: 200 })
     size = options[:size]
