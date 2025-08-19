@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :app do
   desc "Parse the folder, create a category and put image"
   task migrate_images: :environment do
