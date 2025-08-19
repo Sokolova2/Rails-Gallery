@@ -16,4 +16,4 @@
     .grid
       -@category.images.each do |img|
         =link_to category_image_path(@category, img) do
-          =image_tag img.image.url, class: "rounded-3"
+          =image_tag img.image.url(:thumb), class: "rounded-3"
