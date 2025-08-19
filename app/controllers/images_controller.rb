@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ImagesController < ApplicationController
   before_action :image, only: %i[show]
   before_action :authenticate_user!

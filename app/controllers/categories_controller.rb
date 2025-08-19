@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show destroy]
-  before_action :categories_all, only: %i[index destroy]
+  before_action :categories_all, only: %i[index my_categories]
   before_action :authenticate_user!
 
   def index
@@ -20,6 +22,9 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def my_categories
+  end
+
   def destroy
     @category.destroy
     redirect_to categories_path
@@ -36,6 +41,6 @@ class CategoriesController < ApplicationController
   end
 
   def categories_all
-    @categories = Category.all
+    @categories = Category.page(params[:page]).per(5)
   end
 end
