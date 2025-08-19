@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   private
 
   def set_comment
-    @category = Category.find(params[:category_id])
+    @category = Category.friendly.find(params[:category_id])
     @image = Image.find(params[:image_id])
   end
 end

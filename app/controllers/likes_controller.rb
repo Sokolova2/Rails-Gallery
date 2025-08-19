@@ -5,7 +5,7 @@ class LikesController < ApplicationController
 
   def create
     unless @image.liked?(current_user)
-      Like.create(category_id: @category.id, user_id: current_user.id, image_id: @image.id, like: 1)
+      Like.create(category_id: @category.id, user_id: current_user.id, image_id: @image.id)
     end
 
     redirect_to category_image_path(@category, @image)
@@ -22,7 +22,7 @@ class LikesController < ApplicationController
   private
 
   def set_image
-    @category = Category.find(params[:category_id])
+    @category = Category.friendly.find(params[:category_id])
     @image = @category.images.find(params[:image_id])
   end
 end

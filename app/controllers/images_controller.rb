@@ -9,7 +9,7 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @category = Category.find(params[:category_id])
+    @category = Category.friendly.find(params[:category_id])
     @images = @category.images.create(image_params)
 
     if @images.save
@@ -22,7 +22,7 @@ class ImagesController < ApplicationController
   private
 
   def image
-    @category = Category.find(params[:category_id])
+    @category = Category.friendly.find(params[:category_id])
     @image = @category.images.find(params[:id])
   end
 
