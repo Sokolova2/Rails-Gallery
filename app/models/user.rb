@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   include MailForm::Delivery
   has_many :images
@@ -7,8 +9,7 @@ class User < ApplicationRecord
   has_many :subscribers, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, :omniauth_providers => [:google_oauth2]
