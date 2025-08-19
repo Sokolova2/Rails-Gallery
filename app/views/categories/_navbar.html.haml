@@ -8,6 +8,6 @@
       %button.btn.btn-outline-secondary.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", "data-bs-display" => "static", :type => "button", "class" => "d-none", "id" => "drop-down"}
       %ul.dropdown-menu.dropdown-menu-lg-end
         %li.dropdown-item
-          = button_to("Edit profile", destroy_user_session_path, method: :delete, class: "btn w-100")
+          = button_to("Edit profile", edit_user_registration_path, method: :get, class: "btn w-100")
         %li.dropdown-item
           = button_to("Sign out", destroy_user_session_path, method: :delete, class: "btn w-100")
