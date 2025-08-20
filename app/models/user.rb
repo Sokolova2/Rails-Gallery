@@ -3,12 +3,10 @@
 class User < ApplicationRecord
   include MailForm::Delivery
   has_many :images
-  has_many :categories
-  has_many :likes
+  has_many :categories, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :subscribers, dependent: :destroy
-
-  validates :avatar, presence: true
 
   mount_uploader :avatar, AvatarUploader
 
@@ -29,11 +27,13 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      Rails.logger.info(auth.info)
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.avatar = auth.info.image
+      user.language = :en
     end
   end
 end
