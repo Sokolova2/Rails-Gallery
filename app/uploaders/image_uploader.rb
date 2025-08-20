@@ -9,8 +9,12 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def size_range
+    0..50.megabytes
+  end
+
   version :thumb do
-    process :resize_to_fit => [200, 300]
+    process :resize_to_fit => [300, 400]
   end
 
   version :full do
