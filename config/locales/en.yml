@@ -28,6 +28,17 @@
 #       enabled: "ON"
 
 en:
+  home:
+    index:
+      welcome: "Welcome!"
+      info-about-app: "Online gallery for photographers"
+      info-about-app-second: "Good service for photographers"
+      btn-start: "Get start for free"
+    navbar:
+      home-link: "Home"
+      categories-btn: "Categories"
+      login-link: "Sign In"
+      logout-link: "Create Account"
   activerecord:
     errors:
       full_messages:

@@ -11,5 +11,9 @@ module RailsGallery
     config.autoload_lib(ignore: %w[assets tasks])
 
     config.active_model.i18n_customize_full_message = true
+
+    config.i18n.default_locale = :en
+    config.i18n.available_locales = [:en, :ru, :uk]
+    config.i18n.fallbacks = true
   end
 end

@@ -1,0 +1,12 @@
+ru:
+  home:
+    index:
+      welcome: "Добро пожаловать!"
+      info-about-app: "Онлайн галерея для фотографов"
+      info-about-app-second: "Хороший сервис для фотографов"
+      btn-start: "Начать бесплатно"
+    navbar:
+      home-link: "Главная страница"
+      categories-btn: "Категории"
+      login-link: "Войти"
+      logout-link: "Создать аккаунт"
