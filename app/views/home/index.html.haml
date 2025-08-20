@@ -1,9 +1,10 @@
 .gradient
-  = render 'layouts/navbar'
+  = render 'home/navbar'
   %div.describe-site.mt-5
-    %h2.text-light.h2.fw-bold.mt-5 Online gallery for photographers
-    %p.text-light.mt-5 Good service for photographers
-    = button_to("Get start for free", new_user_session_path, method: :get, class:"btn btn-light p-3 mt-5")
+    %h2.text-light.h2.fw-bold.mt-5= t(".info-about-app")
+    %p.text-light.mt-5= t(".info-about-app-second")
+    = button_to(new_user_session_path, method: :get, class:"btn btn-light p-3 mt-5") do
+      =t(".btn-start")
   #carouselExampleIndicators.carousel.slide{"data-bs-ride" => "true"}
     .carousel-indicators
       %button.active{"aria-current" => "true", "aria-label" => "Slide 1", "data-bs-slide-to" => "0", "data-bs-target" => "#carouselExampleIndicators", :type => "button"}
