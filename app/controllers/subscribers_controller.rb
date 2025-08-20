@@ -7,6 +7,7 @@ class SubscribersController < ApplicationController
     unless @category.subscribe?(current_user)
       Subscriber.create(user_id: current_user.id, category_id: @category.id)
     end
+
     redirect_to categories_path
   end
 
