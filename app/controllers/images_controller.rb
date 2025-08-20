@@ -10,11 +10,12 @@ class ImagesController < ApplicationController
 
   def create
     @category = Category.friendly.find(params[:category_id])
-    @images = @category.images.create(image_params)
+    @images = @category.images.build(image_params)
 
     if @images.save
       redirect_to @category
     else
+      flash[:alert] = @images.errors.full_messages.to_sentence
       redirect_to @category
     end
   end
