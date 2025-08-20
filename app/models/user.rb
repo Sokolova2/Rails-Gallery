@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :subscribers, dependent: :destroy
 
+  validates :avatar, presence: true
+
   mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable,

@@ -5,6 +5,8 @@ class Image < ApplicationRecord
   has_many :likes
   has_many :comments, dependent: :destroy
 
+  validates :image, presence: true
+
   def liked?(user)
     likes.exists?(user_id: user.id)
   end
