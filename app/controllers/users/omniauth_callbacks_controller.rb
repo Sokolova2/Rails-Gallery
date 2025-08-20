@@ -4,6 +4,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
     user = User.from_omniauth(auth)
 
+    Rails.logger.info(user)
+    Rails.logger.info(user.errors.full_messages)
+
     if user.present?
       sign_out_all_scopes
       flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
@@ -37,7 +40,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def after_sign_in_path_for(resource_or_scope)
     stored_location_for(resource_or_scope) || categories_path
   end
-
 
   private
 
