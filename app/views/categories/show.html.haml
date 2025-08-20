@@ -4,6 +4,10 @@
     %h1.h2= @category.category_name
 
     =form_with(model: [@category, Image.new], local: true, html: {multipart: true, id: "image-upload-form"}, data: {turbo_frame: "frame2" }) do |f|
+      -if flash[:alert]
+        %p Check the size of your photo, it should not exceed 50mb
+      - if flash[:notice]
+        .alert.alert-success.mt-3= flash[:notice]
       .mb-3
         %div
           .mt-2
@@ -14,6 +18,9 @@
         =f.submit "Upload", class: "btn btn-primary mt-2 d-flex justify-content-center d-none"
   .mt-5
     .grid
-      -@category.images.each do |img|
+      -@image.each do |img|
         =link_to category_image_path(@category, img) do
           =image_tag img.image.url(:thumb), class: "rounded-3"
+
+.container.d-flex.justify-content-center.mt-5
+  =paginate @image
