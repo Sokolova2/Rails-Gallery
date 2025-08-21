@@ -18,25 +18,3 @@ document.addEventListener("DOMContentLoaded", function(e){
     }
 });
 
-
-document.addEventListener("DOMContentLoaded", function (){
-    const button_english = document.getElementById('english')
-    const button_russian = document.getElementById('russian')
-    const button_ukraine = document.getElementById('ukraine')
-
-    if(button_english) {
-        button_english.addEventListener('click', function () {
-            I18n.locale = en
-        })
-    }
-    else if(button_russian){
-        button_russian.addEventListener('click', function (){
-            I18n.locale = ru
-        })
-    }
-    else{
-        button_ukraine.addEventListener('click', function (){
-            I18n.locale = uk
-        })
-    }
-})
