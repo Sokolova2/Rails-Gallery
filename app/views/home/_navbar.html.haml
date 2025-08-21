@@ -7,16 +7,6 @@
       = button_to(categories_path, method: :get,class: "btn btn-outline-dark text-light") do
         =t(".categories-btn")
   .d-flex.pe-2.gap-3
-    .dropdown
-      %button.btn.btn-dark.dropdown-toggle.h-100{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :type => "button"}
-        %i.bi.bi-translate.fs-5
-      %ul.dropdown-menu.bg-dark
-        %li.dropdown-item.text-light.bg-dark
-          %button#english English
-        %li.dropdown-item.text-light.bg-dark
-          %button#russian Русский
-        %li.dropdown-item.text-light.bg-dark
-          %button#ukraine Українська
     = button_to(new_user_session_path, class:"btn btn-secondary p-3") do
       =t(".login-link")
     = button_to(new_user_registration_path, method: :get, class:"btn btn-light p-3") do

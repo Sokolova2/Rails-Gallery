@@ -2,6 +2,16 @@
   = link_to "Gallery", categories_path, class: "navbar-brand name-brand text-black border-none"
   -if user_signed_in?
     .btn-group.pe-2.d-flex.align-items-center
+      .dropdown.me-3
+        %button.btn.btn-dark.dropdown-toggle.h-100{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :type => "button"}
+          %i.bi.bi-translate.fs-5
+        %ul.dropdown-menu.bg-dark
+          %li.dropdown-item.text-light.bg-dark
+            =button_to "English", update_user_language_path(language: "en"), method: :put
+          %li.dropdown-item.text-light.bg-dark
+            =button_to "Русский", update_user_language_path(language: "ru"), method: :put
+          %li.dropdown-item.text-light.bg-dark
+            =button_to "Українська", update_user_language_path(language: "uk"), method: :put
       %p.login= user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : ""
       %label{ for: "drop-down", class: "custom-avatar-label"}
         = avatar_for(current_user)

@@ -1,14 +1,14 @@
 = render "categories/navbar"
 .container.d-flex.justify-content-between.mt-4.align-items-center.mb-5
-  %h2.h2 My categories
+  %h2.h2= t(".my-categories")
   %button.btn.btn-dark.p-2{"data-bs-target" => "#exampleModal", "data-bs-toggle" => "modal", :type => "button"}
-    + Create category
+    = t(".create-category")
   / Modal
   #exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :tabindex => "-1"}
     .modal-dialog
       .modal-content
         .modal-header
-          %h1#exampleModalLabel.modal-title.fs-5 Create category
+          %h1#exampleModalLabel.modal-title.fs-5= t(".create-category-title")
           %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
         .modal-body
           =render "categories/new", category: Category.new

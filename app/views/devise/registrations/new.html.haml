@@ -2,53 +2,56 @@
 .container
   .form-action.mt-5
     .form_authenticated.p-3
-      %h2.text-center.m-3.h3.fw-bold Sign up
+      %h2.text-center.m-3.h3.fw-bold= t("sign-up")
       = render "devise/shared/error_messages", resource: resource
       = render "devise/shared/links_oauth_google"
       .space-oauth
         .space
-        %span or enter your credentials
+        %span= t("offer-enter-credentials")
         .space
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "px-4 py-3 my-box mx-auto", multipart: true}) do |f|
         .mb-3
           .field
-            = f.label :first_name
+            = t("first-name")
             %br/
-            = f.text_field :first_name, :class => "form-control", :placeholder => "David", autocomplete: "first_name"
+            = f.text_field :first_name, :class => "form-control", :placeholder => t(".first-name-placeholder"), autocomplete: "first_name"
         .mb-3
           .field
-            = f.label :last_name
+            = t("last-name")
             %br/
-            = f.text_field :last_name, :class => "form-control", :placeholder => "Snow", autocomplete: "last_name"
+            = f.text_field :last_name, :class => "form-control", :placeholder => t(".last-name-placeholder"), autocomplete: "last_name"
         .mb-3
           .field
-            = f.label :email
+            = t("email")
             %br/
-            = f.email_field :email, :class => "form-control", :id => "exampleDropdownFormEmail1", :placeholder => "name@example.com", autocomplete: "email"
+            = f.email_field :email, :class => "form-control", :id => "exampleDropdownFormEmail1", :placeholder => t("email-placeholder"), autocomplete: "email"
         .mb-3
           .field
-            = f.label :password
+            = t("password")
             - if @minimum_password_length
               %em
-                (#{@minimum_password_length} characters minimum)
+                (#{@minimum_password_length}
+                =t("password-length")
+                )
             %br/
-            = f.password_field :password, :class => "form-control", :id => "exampleDropdownFormPassword1", :placeholder => "password", autocomplete: "new-password"
+            = f.password_field :password, :class => "form-control", :id => "exampleDropdownFormPassword1", :placeholder => t("password-placeholder"), autocomplete: "new-password"
         .mb-3
           .field
-            = f.label :password_confirmation
+            = t("password-confirmation")
             %br/
-            = f.password_field :password_confirmation, :class => "form-control", :id => "exampleDropdownFormPassword2", :placeholder => "password", autocomplete: "new-password"
+            = f.password_field :password_confirmation, :class => "form-control", :id => "exampleDropdownFormPassword2", :placeholder => t("password-placeholder"), autocomplete: "new-password"
         .mb-3
           .field
             %div
-              =f.label :avatar
+              = t("avatar")
               .mt-2
-              %label{ for: "image_upload", class: "custom-upload-label btn btn-outline-secondary" } Upload avatar
+              %label{ for: "image_upload", class: "custom-upload-label btn btn-outline-secondary" }= t("upload-image")
               = f.file_field :avatar, id: "image_upload", class: "d-none"
               %br/
         .actions.d-flex.justify-content-center
-          = f.submit "Sign up", class: "btn btn-primary btn-authenticated"
+          = button_tag type:"submit", class: "btn btn-primary btn-authenticated" do
+            = t("sign-up")
       %br/
       .d-flex.justify-content-center.gap-1
-        %p Already have an account?
+        %p= t(".already-have-account")
         = render "devise/shared/links_for_log_in"

@@ -2,37 +2,39 @@
 .container
   .form-action.mt-5
     .form_authenticated.p-3
-      %h2.text-center.m-3.h3.fw-bolder Hi, Welcome Back
+      %h2.text-center.m-3.h3.fw-bolder= t(".log-in-welcome")
       = render "devise/shared/error_messages", resource: resource
       = render "devise/shared/links_oauth_google"
       .space-oauth
         .space
-        %span or enter your credentials
+        %span= t("offer-enter-credentials")
         .space
       = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "px-4 py-3 my-box mx-auto"}) do |f|
         .mb-3
           .field
-            = f.label "Email address"
+            = t("email")
             %br/
-            = f.email_field :email, :class => "form-control", :id => "exampleDropdownFormEmail1", :placeholder => "name@example.com", autocomplete: "email"
+            = f.email_field :email, :class => "form-control", :id => "exampleDropdownFormEmail1", :placeholder => t("email-placeholder"), autocomplete: "email"
         .mb-3
           .field
-            = f.label :password
+            = t("password")
             %br/
-            = f.password_field :password, :class => "form-control", :id => "exampleDropdownFormPassword3", :placeholder => "password", autocomplete: "current-password"
+            = f.password_field :password, :class => "form-control", :id => "exampleDropdownFormPassword3", :placeholder => t("password-placeholder"), autocomplete: "current-password"
 
         - if devise_mapping.rememberable?
           .mb-3
             .form-check
               .field
                 = f.check_box :remember_me, :class => "form-check-input", :id => "dropdownCheck"
-                = f.label :remember_me, :class => "form-check-label"
+                .form-check-label
+                  = t(".remember-me")
         .d-flex.justify-content-end.mb-3
           = render "devise/shared/links_forgot_password"
         .actions.d-flex.justify-content-center
-          = f.submit "Log in", class: "btn btn-primary btn-authenticated"
+          = button_tag type:"submit", class: "btn btn-primary btn-authenticated" do
+            = t("log-in")
       %br/
       .d-flex.justify-content-center.gap-1
-        %p Don`t have and account?
+        %p= t(".don`t-have-an-account")
         = render "devise/shared/links_for_register"
 

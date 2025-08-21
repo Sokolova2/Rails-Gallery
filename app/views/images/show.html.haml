@@ -11,7 +11,7 @@
             =turbo_frame_tag "frame1" do
               .d-flex.align-items-center
                 -if @category.user.avatar.present?
-                  =image_tag @user.avatar.url, size: 40, class: "image"
+                  =image_tag @category.user.avatar.url, size: 40, class: "rounded-4"
                 -else
                   = image_tag "avatar.png", size: 40, class: "rounded-4"
                 %p= "#{@category.user.first_name + " " + @category.user.last_name}"
@@ -25,8 +25,9 @@
                 %p.text-light= @likes.count
 
             = form_with(url: category_image_comment_path(@category, @image), location: true, method: :post, data: {turbo_frame: "comment"}) do |form|
-              .d-flex.gap-2
-                =form.text_field :comment
-                =form.submit "Send"
+              .d-flex.gap-2.border.border-dark.border-1.p-2
+                =form.text_field :comment, class: "comment-tag"
+                =button_tag class: "icon-button" do
+                  %i.bi.bi-arrow-up-circle-fill
 
 

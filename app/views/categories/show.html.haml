@@ -11,7 +11,7 @@
       .mb-3
         %div
           .mt-2
-            %label{ for: "image_upload", class: "custom-upload-label btn btn-secondary btn-upload" } Upload
+            %label{ for: "image_upload", class: "custom-upload-label btn btn-secondary btn-upload w-100" }= t("upload-image")
             = f.file_field :image, id: "image_upload", class: "d-none"
             %br/
       .d-flex.justify-content-between.mt-1

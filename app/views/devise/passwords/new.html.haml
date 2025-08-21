@@ -3,16 +3,17 @@
   .form-action
     .form_authenticated.p-3
       = form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: "px-4 py-3 my-box mx-auto", method: :post }) do |f|
-        %h2.text-center.m-3.h3.fw-bolder  Forgot your password?
+        %h2.text-center.m-3.h3.fw-bolder= t("forgot-password")
         = render "devise/shared/error_messages", resource: resource
         .mb-3
           .field
-            = f.label :email
+            = t("email")
             %br/
-            = f.email_field :email, :class => "form-control", :id => "exampleDropdownFormEmail1", :placeholder => "name@example.com", autocomplete: "email"
+            = f.email_field :email, :class => "form-control", :id => "exampleDropdownFormEmail1", :placeholder => t("email-placeholder"), autocomplete: "email"
         .actions.d-flex.justify-content-center
-          = f.submit "Send me", class: "btn btn-primary btn-authenticated"
+          = button_tag type:"submit", class: "btn btn-primary btn-authenticated" do
+            = t(".send-btn")
         %br/
         .d-flex.justify-content-center.gap-1
-          %p Remember your password?
+          %p= t("remember-password")
           = render "devise/shared/links_for_log_in"
