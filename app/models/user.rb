@@ -8,6 +8,12 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :subscribers, dependent: :destroy
 
+  after_initialize :set_default_language, :if => :new_record?
+
+  def set_default_language
+    self.language ||= I18n.locale
+  end
+
   mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable,
@@ -25,7 +31,7 @@ class User < ApplicationRecord
     }
   end
 
-  def self.from_omniauth(auth)
+  def self.from_omniauth(auth, lang = nil)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       Rails.logger.info(auth.info)
       user.email = auth.info.email
@@ -33,7 +39,7 @@ class User < ApplicationRecord
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.avatar = auth.info.image
-      user.language = :en
+      user.language = lang || I18n.default_locale
     end
   end
 end
