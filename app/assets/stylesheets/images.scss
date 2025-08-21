@@ -1,0 +1,38 @@
+.info-images{
+  margin-top: 8rem;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.image-category{
+  max-width: 50%;
+  height: auto;
+  padding-bottom: 8rem;
+  padding-top: 5rem;
+  padding-left: 2rem;
+  image-rendering: crisp-edges;
+  display: block;
+}
+
+.comment-tag{
+  height: 3rem;
+}
+
+.icon-button{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  background-color: #1d1d1d;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+}
+
+.icon-button i{
+  font-size: 50px;
+}
