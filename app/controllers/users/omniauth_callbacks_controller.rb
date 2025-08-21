@@ -2,10 +2,7 @@
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
-    user = User.from_omniauth(auth)
-
-    Rails.logger.info(user)
-    Rails.logger.info(user.errors.full_messages)
+    user = User.from_omniauth(auth, locale_from_header || params[:lang])
 
     if user.present?
       sign_out_all_scopes
