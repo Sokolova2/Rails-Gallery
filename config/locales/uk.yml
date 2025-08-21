@@ -1,7 +1,6 @@
 uk:
   home:
     index:
-      welcome: "Ласкаво просимо!"
       info-about-app: "Онлайн галерея для фотографів"
       info-about-app-second: "Зручний сервіс для фотографів"
       btn-start: "Почати безкоштовно"
@@ -10,3 +9,56 @@ uk:
       categories-btn: "Категорії"
       login-link: "Вхід"
       logout-link: "Створити аккаунт"
+  devise:
+    registrations:
+      new:
+        already-have-account: "У вас вже є обліковий запис?"
+        first-name-placeholder: "Петро"
+        last-name-placeholder: "Коваленко"
+      edit:
+        update-btn: "Оновити"
+        edit: "Зміна"
+        cancel-account: "Видалити мій аккаунт"
+    sessions:
+      new:
+        log-in-welcome: "Привіт, з поверненням!"
+        remember-me: "Запам'ятати мене"
+        don`t-have-an-account: "У вас немає облікового запису?"
+    passwords:
+      new:
+        send-btn: "Надіслати лист"
+      edit:
+        new-password: "Новий пароль"
+        new-password_confirmation: "Підтвердити новий пароль"
+        change-btn: "Змінити"
+    shared:
+      links_oauth_google:
+        material-button-auth: "Увійти через Google"
+  categories:
+    new:
+      category-name: "Назва категорії"
+      create: "Створити"
+    index:
+      my-categories: "Мої категорії"
+      create-category: "+ Створити категорію"
+      create-category-title: "Створити категорію"
+    my_categories:
+      my-categories: "Мої категорії"
+      create-category: "+ Створити категорію"
+      create-category-title: "Створити категорію"
+  sign-up: "Реєєтрація"
+  log-in: "Вхід"
+  forgot-password: "Забули свій пароль?"
+  change-password: "Змініть свій пароль"
+  remember-password: "Пам'ятаєте пароль?"
+  offer-enter-credentials: "або введіть свої облікові дані"
+  first-name: "Ім'я"
+  last-name: "Прізвище"
+  email: "Електронна пошта"
+  password: "Пароль"
+  password-length: "мінімум символів"
+  password-confirmation: "Підтвердження паролю"
+  avatar: "Аватар"
+  upload-image: "Завантажити"
+  email-placeholder: "name@example.com"
+  password-placeholder: "пароль"

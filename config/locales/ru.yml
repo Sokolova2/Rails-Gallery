@@ -1,7 +1,6 @@
 ru:
   home:
     index:
-      welcome: "Добро пожаловать!"
       info-about-app: "Онлайн галерея для фотографов"
       info-about-app-second: "Хороший сервис для фотографов"
       btn-start: "Начать бесплатно"
@@ -10,3 +9,56 @@ ru:
       categories-btn: "Категории"
       login-link: "Войти"
       logout-link: "Создать аккаунт"
+  devise:
+    registrations:
+      new:
+        already-have-account: "У вас уже есть аккаунт?"
+        first-name-placeholder: "Иван"
+        last-name-placeholder: "Иванов"
+      edit:
+        update-btn: "Обновить"
+        edit: "Изменение"
+        cancel-account: "Удалить мой аккаунт"
+    sessions:
+      new:
+        log-in-welcome: "Привет, с возвращением!"
+        remember-me:  "Запомнить меня"
+        don`t-have-an-account: "У вас нет аккаунта?"
+    passwords:
+      new:
+        send-btn: "Отправить письмо"
+      edit:
+        new-password: "Новый пароль"
+        new-password_confirmation: "Подтвердить новый пароль"
+        change-btn: "Изменить"
+    shared:
+      links_oauth_google:
+        material-button-auth: "Войти через Google"
+  categories:
+    new:
+      category-name: "Название категории"
+      create: "Создать"
+    index:
+      my-categories: "Mои категории"
+      create-category: "+ Создать категорию"
+      create-category-title: "Создать категорию"
+    my_categories:
+      my-categories: "Mои категории"
+      create-category: "+ Создать категорию"
+      create-category-title: "Создать категорию"
+  sign-up: "Регистрация"
+  log-in: "Войти"
+  forgot-password: "Забыли пароль?"
+  change-password: "Измените свой пароль"
+  remember-password: "Помните свой пароль?"
+  offer-enter-credentials: "или введите свои учетные данные"
+  first-name: "Имя"
+  last-name: "Фамилия"
+  email: "Электронная почта"
+  password: "Пароль"
+  password-length: "минимум символов"
+  password-confirmation: "Подтеврдить пароль"
+  avatar: "Аватар"
+  upload-image: "Загрузить"
+  email-placeholder: "name@example.com"
+  password-placeholder: "пароль"

@@ -30,7 +30,6 @@
 en:
   home:
     index:
-      welcome: "Welcome!"
       info-about-app: "Online gallery for photographers"
       info-about-app-second: "Good service for photographers"
       btn-start: "Get start for free"
@@ -39,6 +38,59 @@ en:
       categories-btn: "Categories"
       login-link: "Sign In"
       logout-link: "Create Account"
+  devise:
+    registrations:
+      new:
+        already-have-account: "Already have an account?"
+        first-name-placeholder: "David"
+        last-name-placeholder: "Snow"
+      edit:
+        update-btn: "Update"
+        edit: "Edit"
+        cancel-account: "Cancel my account"
+    sessions:
+      new:
+        log-in-welcome: "Hi, Welcome Back!"
+        remember-me: "Remember me"
+        don`t-have-an-account: "Don`t have an account?"
+    passwords:
+      new:
+        send-btn: "Send me"
+      edit:
+        new-password: "New password"
+        new-password_confirmation: "Confirm new password"
+        change-btn: "Change"
+    shared:
+      links_oauth_google:
+        material-button-auth: "Sign in with Google"
+  categories:
+    new:
+      category-name: "Category name"
+      create: "Create"
+    index:
+      my-categories: "My categories"
+      create-category: "+ Create category"
+      create-category-title: "Create category"
+    my_categories:
+      my-categories: "My categories"
+      create-category: "+ Create category"
+      create-category-title: "Create category"
+  sign-up: "Sign up"
+  log-in: "Log in"
+  forgot-password: "Forgot your password?"
+  change-password: "Change your password"
+  remember-password: "Remember your password?"
+  offer-enter-credentials: "or enter your credentials"
+  first-name: "First name"
+  last-name: "Last name"
+  email: "Email"
+  password: "Password"
+  password-length: "characters minimum"
+  password-confirmation: "Password confirmation"
+  avatar: "Avatar"
+  upload-image: "Upload"
+  email-placeholder: "name@example.com"
+  password-placeholder: "password"
   activerecord:
     errors:
       full_messages:
