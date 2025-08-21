@@ -89,7 +89,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_20_135712) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
-    t.string "language", default: "en"
+    t.string "language"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
