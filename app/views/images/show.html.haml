@@ -29,5 +29,7 @@
                 =form.text_field :comment, class: "comment-tag"
                 =button_tag class: "icon-button" do
                   %i.bi.bi-arrow-up-circle-fill
+            -@comments.each do |comment|
+              %p= comment.comment
 
 
