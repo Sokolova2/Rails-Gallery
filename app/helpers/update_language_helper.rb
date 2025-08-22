@@ -1,0 +1,2 @@
+module UpdateLanguageHelper
+end

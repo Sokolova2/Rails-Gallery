@@ -7,7 +7,7 @@
       -if flash[:alert]
         %p Check the size of your photo, it should not exceed 50mb
       - if flash[:notice]
-        .alert.alert-success.mt-3= flash[:notice]
+        .alert.alert-danger= flash[:notice]
       .mb-3
         %div
           .mt-2

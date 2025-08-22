@@ -9,7 +9,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @image = @category.images.page(params[:page]).per(5)
+    @image = @category.images.page(
+      params[:page]).per(5)
   end
 
   def create
@@ -19,7 +20,15 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to @category
     else
-      redirect_to @categories
+      if @category.errors.added?(:category, :blank)
+        flash[:blank_name] = "Category name must be present"
+      elsif @category.errors.added?(:category, :taken)
+        flash[:duplicate_name] = "A category with this name already exists"
+      else
+        flash[:alert] = @category.errors.full_messages.to_sentence
+      end
+
+      redirect_to categories_path
     end
   end
 

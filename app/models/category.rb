@@ -9,7 +9,7 @@ class Category < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :subscribers, dependent: :destroy
   validate :category_name_must_be_present
-
+  validates :category_name, uniqueness: true
 
   friendly_id :category_name, use: :slugged
 
