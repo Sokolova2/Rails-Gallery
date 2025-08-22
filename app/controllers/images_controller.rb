@@ -5,7 +5,8 @@ class ImagesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @likes = Like.all
+    @likes = Like.where(image_id: @image.id)
+    @comments = Comment.where(image_id: @image.id)
   end
 
   def create
