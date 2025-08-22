@@ -37,7 +37,7 @@ en:
       home-link: "Home"
       categories-btn: "Categories"
       login-link: "Sign In"
-      logout-link: "Create Account"
+      sign-out-link: "Create Account"
   devise:
     registrations:
       new:

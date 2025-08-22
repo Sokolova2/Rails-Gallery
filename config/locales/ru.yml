@@ -8,7 +8,7 @@ ru:
       home-link: "Главная страница"
       categories-btn: "Категории"
       login-link: "Войти"
-      logout-link: "Создать аккаунт"
+      sign-out-link: "Создать аккаунт"
   devise:
     registrations:
       new:
