@@ -5,24 +5,58 @@
     %p.text-light.mt-5= t(".info-about-app-second")
     = button_to(new_user_session_path, method: :get, class:"btn btn-light p-3 mt-5") do
       =t(".btn-start")
-  #carouselExampleIndicators.carousel.slide{"data-bs-ride" => "true"}
-    .carousel-indicators
-      %button.active{"aria-current" => "true", "aria-label" => "Slide 1", "data-bs-slide-to" => "0", "data-bs-target" => "#carouselExampleIndicators", :type => "button"}
-      %button{"aria-label" => "Slide 2", "data-bs-slide-to" => "1", "data-bs-target" => "#carouselExampleIndicators", :type => "button"}
-      %button{"aria-label" => "Slide 3", "data-bs-slide-to" => "2", "data-bs-target" => "#carouselExampleIndicators", :type => "button"}
 
-    .carousel-inner.p-5
-      .carousel-item.active
-        =image_tag "pictures-natural1.png", class: "d-block image-carousel"
-      .carousel-item
-        =image_tag "pictures-natural2.png", class: "d-block image-carousel"
-      .carousel-item
-        =image_tag "pictures-natural3.png", class: "d-block image-carousel"
+    #carouselExampleInterval.carousel.slide{"data-bs-ride" => "carousel"}
+      .carousel-inner.p-5
+        -@top_images.each_with_index do |image, index|
+          .carousel-item{ class:("active" if index == 0), "data-bs-interval" => "2000"}
+            =image_tag image.image.url, class: "d-block image-carousel"
+      %button.carousel-control-prev{"data-bs-slide" => "prev", "data-bs-target" => "#carouselExampleInterval", :type => "button"}
+        %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+        %span.visually-hidden Previous
+      %button.carousel-control-next{"data-bs-slide" => "next", "data-bs-target" => "#carouselExampleInterval", :type => "button"}
+        %span.carousel-control-next-icon{"aria-hidden" => "true"}
+        %span.visually-hidden Next
 
-    %button.carousel-control-prev{"data-bs-slide" => "prev", "data-bs-target" => "#carouselExampleIndicators", :type => "button"}
-      %span.carousel-control-prev-icon{"aria-hidden" => "true"}
-      %span.visually-hidden Previous
-    %button.carousel-control-next{"data-bs-slide" => "next", "data-bs-target" => "#carouselExampleIndicators", :type => "button"}
-      %span.carousel-control-next-icon{"aria-hidden" => "true"}
-      %span.visually-hidden Next
+.navbar-big.d-none.d-lg-block
+  -@top_categories.each do |category|
+    .card-category.p-4.mt-5.mb-1.d-flex.justify-content-between.align-items-center
+      .card.bg-dark.m-5{:style => "width: 18rem;"}
+        -if category.images.present?
+          =image_tag category.images.first.image.url
+        .card-body
+          %h5.card-title= category.category_name
+          .d-flex.gap-1.bg-dark.align-items-center
+            =button_tag class: "btn btn-dark" do
+              %i.bi.bi-suit-heart-fill
+            %p.h4.card-text.text-light= category.likes.count
+          %p.card-text.text-light= category.comments.first.comment
+          =button_to "Go to category", category_path(category), method: :get, class: "btn btn-outline-secondary"
+      %div
+        .grid.me-5
+          -category.images.limit(6).each do |image|
+            =image_tag image.image.url(:thumb), class: "rounded-3"
+.navbar-small.d-block.d-lg-none
+  -@top_categories.each do |category|
+    .card-category.p-4.mt-5.mb-1
+      .card.bg-dark.m-5{:style => "width: 90%;"}
+        -if category.images.present?
+          =image_tag category.images.first.image.url
+        .card-body
+          %h5.card-title= category.category_name
+          .d-flex.gap-1.bg-dark.align-items-center.mt-2
+            =button_tag class: "btn btn-dark" do
+              %i.bi.bi-suit-heart-fill
+            %p.h4.card-text.text-light= category.likes.count
+          =button_to "Go to category", category_path(category), method: :get, class: "btn btn-outline-secondary"
+      %div
+        .grid.me-5
+          -category.images.limit(6).each do |image|
+            =image_tag image.image.url, class: "rounded-3 images"
+
+
+
+
+
+
 

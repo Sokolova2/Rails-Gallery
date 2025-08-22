@@ -1,13 +1,40 @@
-%nav.navbar.justify-content-between.p-3
-  %div.d-flex.gap-5
-    %h1.navbar-brand.name-brand.text-light Gallery
-    %div.d-flex.align-items-center.gap-3
-      = button_to(root_path, method: :get, class: "btn btn-outline-dark text-light") do
-        =t(".home-link")
-      = button_to(categories_path, method: :get,class: "btn btn-outline-dark text-light") do
-        =t(".categories-btn")
-  .d-flex.pe-2.gap-3
-    = button_to(new_user_session_path, class:"btn btn-secondary p-3") do
-      =t(".login-link")
-    = button_to(new_user_registration_path, method: :get, class:"btn btn-light p-3") do
-      =t(".logout-link")
+.navbar-big.d-none.d-lg-block
+  %nav.navbar.justify-content-between.p-3
+    %div.d-flex.gap-5
+      %h1.navbar-brand.name-brand.text-light Gallery
+      %div.d-flex.align-items-center.gap-3
+        = button_to(root_path, method: :get, class: "btn btn-outline-dark text-light") do
+          =t(".home-link")
+        = button_to(categories_path, method: :get,class: "btn btn-outline-dark text-light") do
+          =t(".categories-btn")
+    .d-flex.pe-2.gap-3
+      = button_to(new_user_session_path, class:"btn btn-secondary p-3") do
+        =t(".login-link")
+      = button_to(new_user_registration_path, method: :get, class:"btn btn-light p-3") do
+        =t(".sign-out-link")
+
+.navbar-small.d-block.d-lg-none
+  %nav.navbar.justify-content-between.p-3
+    %div.d-flex.gap-1.align-items-center
+      %nav.navbar
+        %button.navbar-toggler{"aria-controls" => "navbarOffcanvasLg", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarOffcanvasLg", "data-bs-toggle" => "offcanvas", :type => "button"}
+          %span.bi.bi-list
+        #navbarOffcanvasLg.offcanvas.offcanvas-start.bg-dark{"aria-labelledby" => "navbarOffcanvasLgLabel", :tabindex => "-1"}
+          %nav.navbar.navbar-dark.m-3
+            %h1.navbar-brand.name-brand.text-light Gallery
+            %button.btn-close.btn-close-white{"aria-label" => "Close", "data-bs-dismiss" => "offcanvas", :type => "button"}
+          .offcanvas-body
+            %ul.navbar-nav.justify-content-end.flex-grow-1.pe-3
+              %li.nav-item.mb-3
+                = button_to(root_path, method: :get, class: "btn btn-transparent text-light") do
+                  =t(".home-link")
+              %li.nav-item.mb-3
+                = button_to(categories_path, method: :get,class: "btn btn-transparent text-light") do
+                  =t(".categories-btn")
+              %li.nav-item.mb-3
+                = button_to(new_user_registration_path, method: :get, class:"btn btn-transparent text-light") do
+                  =t(".sign-out-link")
+      %h1.navbar-brand.name-brand.text-light Gallery
+    .d-flex.pe-2.gap-3
+      = button_to(new_user_session_path, class:"btn btn-light p-3") do
+        =t(".login-link")
