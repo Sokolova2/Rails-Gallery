@@ -48,6 +48,7 @@ en:
         update-btn: "Update"
         edit: "Edit"
         cancel-account: "Cancel my account"
+        current-password: "Current password"
     sessions:
       new:
         log-in-welcome: "Hi, Welcome Back!"

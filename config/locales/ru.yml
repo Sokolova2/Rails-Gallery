@@ -19,6 +19,7 @@ ru:
         update-btn: "Обновить"
         edit: "Изменение"
         cancel-account: "Удалить мой аккаунт"
+        current-password: "Текущий пароль"
     sessions:
       new:
         log-in-welcome: "Привет, с возвращением!"

@@ -19,6 +19,7 @@ uk:
         update-btn: "Оновити"
         edit: "Зміна"
         cancel-account: "Видалити мій аккаунт"
+        current-password: "Поточний пароль"
     sessions:
       new:
         log-in-welcome: "Привіт, з поверненням!"
