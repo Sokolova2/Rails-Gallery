@@ -64,7 +64,6 @@ gem "mini_magick"
 
 gem "bootstrap"
 gem "jquery-rails"
-gem "masonry-rails"
 
 gem 'bootstrap_icons_rails'
 # gem "sassc-rails"
@@ -92,3 +91,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'dotenv', groups: [:development, :test]
