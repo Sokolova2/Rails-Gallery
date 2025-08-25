@@ -225,8 +225,6 @@ GEM
       actionmailer (>= 5.2)
       activemodel (>= 5.2)
     marcel (1.0.4)
-    masonry-rails (0.2.4)
-      railties
     matrix (0.4.3)
     mini_magick (5.3.0)
       logger
@@ -492,6 +490,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise
+  dotenv
   friendly_id (~> 5.5.0)
   haml-rails
   html2haml
@@ -501,7 +500,6 @@ DEPENDENCIES
   kamal
   kaminari
   mail_form
-  masonry-rails
   mini_magick
   omniauth
   omniauth-google-oauth2
