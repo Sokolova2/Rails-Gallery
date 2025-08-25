@@ -14,5 +14,8 @@
     %link{:href => "/icon.png", :rel => "apple-touch-icon"}/
     = stylesheet_link_tag :app, "data-turbo-track": "reload"
     = javascript_importmap_tags
+    %script{:src => "https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"}
+    %script{:src => "https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"}
+
   %body.body
     = yield
