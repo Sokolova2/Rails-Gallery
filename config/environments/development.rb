@@ -4,7 +4,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
 
-  ENV['GOOGLE_OAUTH_CLIENT_ID'] = Rails.application.credentials.dig(:google_oauth_client_id)
+  ENV['GOOGLE_OAUTH_CLIENT_ID'] = ENV['GOOGLE_OAUTH_CLIENT_ID']
 
   config.enable_reloading = true
 
@@ -50,8 +50,8 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'gmail.com',
-    user_name: Rails.application.credentials.dig(:username_for_mail),
-    password: Rails.application.credentials.dig(:password_for_mail),
+    user_name: ENV['USER_FOR_MAIL'],
+    password: ENV['PASSWORD_FOR_MAIL'],
     authentication: 'plain',
     enable_starttls_auto: true
   }
