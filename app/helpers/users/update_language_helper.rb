@@ -1,2 +1,6 @@
-module Users::UpdateLanguageHelper
+# frozen_string_literal: true
+
+module Users
+  module UpdateLanguageHelper
+  end
 end

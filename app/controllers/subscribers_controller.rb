@@ -4,9 +4,7 @@ class SubscribersController < ApplicationController
   before_action :set_category, only: %i[create destroy]
 
   def create
-    unless @category.subscribe?(current_user)
-      Subscriber.create(user_id: current_user.id, category_id: @category.id)
-    end
+    Subscriber.create(user_id: current_user.id, category_id: @category.id) unless @category.subscribe?(current_user)
 
     redirect_to categories_path
   end

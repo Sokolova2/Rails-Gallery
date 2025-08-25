@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :subscribers, dependent: :destroy
 
-  after_initialize :set_default_language, :if => :new_record?
+  after_initialize :set_default_language, if: :new_record?
 
   def set_default_language
     self.language ||= I18n.locale
@@ -18,16 +18,16 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, :omniauth_providers => [:google_oauth2]
+         :omniauthable, omniauth_providers: [:google_oauth2]
 
   validates_integrity_of :avatar
   validates_processing_of :avatar
 
   def headers
     {
-      :subject => 'Welcome to Rails Gallery. We nice to see you! You can log in follow the link: http://localhost:3000/users/sign_in',
-      :from => 'apponrails2025@gmail.com',
-      :to => email
+      subject: 'Welcome to Rails Gallery. We nice to see you! You can log in follow the link: http://localhost:3000/users/sign_in',
+      from: 'apponrails2025@gmail.com',
+      to: email
     }
   end
 

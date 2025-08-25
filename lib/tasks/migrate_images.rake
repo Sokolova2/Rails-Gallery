@@ -1,22 +1,18 @@
 # frozen_string_literal: true
 
 namespace :app do
-  desc "Parse the folder, create a category and put image"
+  desc 'Parse the folder, create a category and put image'
   task migrate_images: :environment do
-    user = User.find_or_create_by(email: "email@example.com")
+    user = User.find_or_create_by(email: 'email@example.com')
 
-    root_path = Rails.root.join('public', 'migrate_images')
+    root_path = Rails.root.join('public/migrate_images')
 
-    unless Dir.exist?(root_path)
-      p "Directory #{root_path} does not exist. You need create it folder"
-    end
+    p "Directory #{root_path} does not exist. You need create it folder" unless Dir.exist?(root_path)
 
     Dir.entries(root_path).each do |folder_name|
       category_folder = File.join(root_path, folder_name)
 
-      unless File.directory?(category_folder)
-        Dir.mkdir(category_folder)
-      end
+      Dir.mkdir(category_folder) unless File.directory?(category_folder)
 
       new_category = Category.find_or_create_by(category_name: folder_name) do |category|
         category.description = folder_name

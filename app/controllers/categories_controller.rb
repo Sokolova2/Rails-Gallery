@@ -5,8 +5,7 @@ class CategoriesController < ApplicationController
   before_action :categories_all, only: %i[index my_categories]
   before_action :authenticate_user!
 
-  def index
-  end
+  def index; end
 
   def show
     @image = @category.images.page(params[:page]).per(5)
@@ -20,9 +19,9 @@ class CategoriesController < ApplicationController
       redirect_to @category
     else
       if @category.errors.added?(:category, :blank)
-        flash[:blank_name] = "Category name must be present"
+        flash[:blank_name] = 'Category name must be present'
       elsif @category.errors.added?(:category, :taken)
-        flash[:duplicate_name] = "A category with this name already exists"
+        flash[:duplicate_name] = 'A category with this name already exists'
       else
         flash[:alert] = @category.errors.full_messages.to_sentence
       end
@@ -31,8 +30,7 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def my_categories
-  end
+  def my_categories; end
 
   def destroy
     @category.destroy

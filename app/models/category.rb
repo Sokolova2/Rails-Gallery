@@ -18,8 +18,8 @@ class Category < ApplicationRecord
   end
 
   def category_name_must_be_present
-    unless category_name.present?
-      errors.add(:base, "Name category must be present")
-    end
+    return if category_name.present?
+
+    errors.add(:base, 'Name category must be present')
   end
 end

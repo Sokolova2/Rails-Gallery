@@ -3,8 +3,8 @@
 class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  def default_url(*args)
-    ActionController::Base.helpers.asset_path("avatar.png")
+  def default_url(*_args)
+    ActionController::Base.helpers.asset_path('avatar.png')
   end
 
   storage :file
@@ -22,6 +22,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def extension_allowlist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 end

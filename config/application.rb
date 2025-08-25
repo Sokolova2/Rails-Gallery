@@ -1,6 +1,8 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
+
+require 'rails/all'
 
 Bundler.require(*Rails.groups)
 
@@ -13,7 +15,7 @@ module RailsGallery
     config.active_model.i18n_customize_full_message = true
 
     config.i18n.default_locale = :en
-    config.i18n.available_locales = [:en, :ru, :uk]
+    config.i18n.available_locales = %i[en ru uk]
     config.i18n.fallbacks = true
   end
 end

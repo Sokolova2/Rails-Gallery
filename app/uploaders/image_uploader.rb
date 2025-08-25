@@ -14,14 +14,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process :resize_to_fit => [300, 400]
+    process resize_to_fit: [300, 400]
   end
 
   version :full do
-    process :resize_to_fill => [800, 750]
+    process resize_to_fill: [800, 750]
   end
 
   def extension_allowlist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 end

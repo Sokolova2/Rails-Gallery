@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddSlugToCategory < ActiveRecord::Migration[8.0]
   def change
     add_column :categories, :slug, :string
