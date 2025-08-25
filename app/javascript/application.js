@@ -17,3 +17,18 @@ document.addEventListener("DOMContentLoaded", function(e){
     }
 });
 
+function init_masonry() {
+    let masonryContainer = document.querySelector(".masonry-container");
+    if (masonryContainer) {
+        imagesLoaded(masonryContainer, function () {
+            new window.Masonry(masonryContainer, {
+                itemSelector: ".masonry-item",
+                percentPosition: true,
+                gutter: 0,
+            });
+        });
+    }
+}
+
+document.addEventListener("turbo:load", init_masonry);
+document.addEventListener("DOMContentLoaded", init_masonry);
