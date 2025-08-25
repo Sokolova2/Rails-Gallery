@@ -79,6 +79,9 @@ en:
     navbar:
       edit-profile: "Edit profile"
       sign-out: "Sign out"
+  images:
+    show:
+      subscriber: "Сategory subscriber"
   sign-up: "Sign up"
   log-in: "Log in"
   forgot-password: "Forgot your password?"

@@ -50,6 +50,9 @@ ru:
     navbar:
       edit-profile: "Редактировать профиль"
       sign-out: "Выход"
+  images:
+    show:
+      subscriber: "Подписчик категории"
   sign-up: "Регистрация"
   log-in: "Войти"
   forgot-password: "Забыли пароль?"
