@@ -44,7 +44,7 @@ class CategoriesController < ApplicationController
   end
 
   def categories_params
-    params.require(:category).permit(:category_name, :image)
+    params.expect(category: %i[category_name image])
   end
 
   def categories_all

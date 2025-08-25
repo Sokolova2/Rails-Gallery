@@ -3,7 +3,7 @@
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
-  ENV['GOOGLE_OAUTH_CLIENT_ID'] = ENV['GOOGLE_OAUTH_CLIENT_ID']
+  ENV['GOOGLE_OAUTH_CLIENT_ID'] = ENV.fetch('GOOGLE_OAUTH_CLIENT_ID', nil)
 
   config.enable_reloading = true
 
@@ -49,8 +49,8 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'gmail.com',
-    user_name: ENV['USER_FOR_MAIL'],
-    password: ENV['PASSWORD_FOR_MAIL'],
+    user_name: ENV.fetch('USER_FOR_MAIL', nil),
+    password: ENV.fetch('PASSWORD_FOR_MAIL', nil),
     authentication: 'plain',
     enable_starttls_auto: true
   }

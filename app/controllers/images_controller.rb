@@ -25,6 +25,6 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:image)
+    params.expect(image: [:image])
   end
 end

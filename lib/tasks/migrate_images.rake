@@ -5,7 +5,7 @@ namespace :app do
   task migrate_images: :environment do
     user = User.find_or_create_by(email: 'email@example.com')
 
-    root_path = Rails.root.join('public/migrate_images')
+    root_path = Rails.public_path.join('migrate_images')
 
     p "Directory #{root_path} does not exist. You need create it folder" unless Dir.exist?(root_path)
 
