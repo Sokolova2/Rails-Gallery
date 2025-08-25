@@ -18,6 +18,8 @@
       %button.btn.btn-outline-secondary.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", "data-bs-display" => "static", :type => "button", "class" => "d-none", "id" => "drop-down"}
       %ul.dropdown-menu.dropdown-menu-lg-end
         %li.dropdown-item.bg-white
-          = button_to("Edit profile", edit_user_registration_path, method: :get, class: "btn btn-transparent w-100")
+          = button_to edit_user_registration_path, method: :get, class: "btn btn-transparent w-100" do
+            = t(".edit-profile")
         %li.dropdown-item.bg-white
-          = button_to("Sign out", destroy_user_session_path, method: :delete, class: "btn w-100")
+          = button_to destroy_user_session_path, method: :delete, class: "btn w-100" do
+            = t(".sign-out")
