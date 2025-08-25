@@ -7,11 +7,11 @@
           %i.bi.bi-translate.fs-5
         %ul.dropdown-menu.bg-dark
           %li.dropdown-item.text-light.bg-dark
-            =button_to "English", update_language_path("en"), method: :put
+            =button_to "English", update_language_path("en"), method: :put, class: "btn btn-transparent text-light"
           %li.dropdown-item.text-light.bg-dark
-            =button_to "Русский", update_language_path("ru"), method: :put
+            =button_to "Русский", update_language_path("ru"), method: :put, class: "btn btn-transparent text-light"
           %li.dropdown-item.text-light.bg-dark
-            =button_to "Українська", update_language_path("uk"), method: :put
+            =button_to "Українська", update_language_path("uk"), method: :put, class: "btn btn-transparent text-light"
       %p.login= user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : ""
       %label{ for: "drop-down", class: "custom-avatar-label"}
         = avatar_for(current_user)

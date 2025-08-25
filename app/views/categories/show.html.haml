@@ -8,19 +8,20 @@
         %p Check the size of your photo, it should not exceed 50mb
       - if flash[:notice]
         .alert.alert-danger= flash[:notice]
-      .mb-3
-        %div
-          .mt-2
-            %label{ for: "image_upload", class: "custom-upload-label btn btn-secondary btn-upload w-100" }= t("upload-image")
-            = f.file_field :image, id: "image_upload", class: "d-none"
-            %br/
-      .d-flex.justify-content-between.mt-1
-        =f.submit "Upload", class: "btn btn-primary mt-2 d-flex justify-content-center d-none"
+      -if @category.user_id == current_user.id
+        .mb-3
+          %div
+            .mt-2
+              %label{ for: "image_upload", class: "custom-upload-label btn btn-secondary btn-upload w-100" }= t("upload-image")
+              = f.file_field :image, id: "image_upload", class: "d-none"
+              %br/
+        .d-flex.justify-content-between.mt-1
+          =f.submit "Upload", class: "btn btn-primary mt-2 d-flex justify-content-center d-none"
   .mt-5
-    .grid
+    .masonry-container
       -@image.each do |img|
         =link_to category_image_path(@category, img) do
-          =image_tag img.image.url(:thumb), class: "rounded-3"
+          =image_tag img.image.url(:thumb), class: "rounded-3 masonry-item"
 
 .container.d-flex.justify-content-center.mt-5
   =paginate @image
