@@ -47,6 +47,9 @@ uk:
       my-categories: "Мої категорії"
       create-category: "+ Створити категорію"
       create-category-title: "Створити категорію"
+    navbar:
+      edit-profile: "Редагувати профіль"
+      sign-out: "Вихід"
   sign-up: "Реєєтрація"
   log-in: "Вхід"
   forgot-password: "Забули свій пароль?"

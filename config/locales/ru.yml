@@ -47,6 +47,9 @@ ru:
       my-categories: "Mои категории"
       create-category: "+ Создать категорию"
       create-category-title: "Создать категорию"
+    navbar:
+      edit-profile: "Редактировать профиль"
+      sign-out: "Выход"
   sign-up: "Регистрация"
   log-in: "Войти"
   forgot-password: "Забыли пароль?"

@@ -76,6 +76,9 @@ en:
       my-categories: "My categories"
       create-category: "+ Create category"
       create-category-title: "Create category"
+    navbar:
+      edit-profile: "Edit profile"
+      sign-out: "Sign out"
   sign-up: "Sign up"
   log-in: "Log in"
   forgot-password: "Forgot your password?"
