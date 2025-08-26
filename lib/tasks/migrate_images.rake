@@ -2,42 +2,45 @@
 
 namespace :app do
   desc 'Parse the folder, create a category and put image'
-  task migrate_images: :environment do
-    user = User.find_or_create_by(email: 'email@example.com')
+  task :migrate_images => :environment do
+    default_user = User.find_or_create_by!(email: 'email@example.com') do |user|
+      user.first_name = 'default'
+      user.last_name = 'default'
+      user.password = '123456'
+    end
 
-    root_path = Rails.public_path.join('migrate_images')
+    root_path = Rails.root.join('public', 'migrate_images')
 
-    p "Directory #{root_path} does not exist. You need create it folder" unless Dir.exist?(root_path)
+    unless Dir.exist?(root_path)
+      p "Does not exist: #{root_path}"
+    end
 
-    Dir.entries(root_path).each do |folder_name|
-      category_folder = File.join(root_path, folder_name)
+    Dir.entries(root_path).each do |name_folder|
+      next if name_folder.start_with?('.')
 
-      Dir.mkdir(category_folder) unless File.directory?(category_folder)
+      category = File.join(root_path, name_folder)
 
-      new_category = Category.find_or_create_by(category_name: folder_name) do |category|
-        category.description = folder_name
-        category.user = user
+      new_category = Category.find_or_create_by!(category_name: name_folder) do |new_category|
+        new_category.user = default_user
       end
-      p "Created #{folder_name} category"
+      p "Created #{new_category.category_name}"
 
-      Dir.entries(category_folder).each do |file_name|
-        image_file = File.join(category_folder, file_name)
-
-        next unless File.join(image_file) && file_name =~ /\.(jpeg|png|jpg)\z/i
+      Dir.entries(category).each do |file|
+        next if file.start_with?('.')
+        image = File.join(category, file)
 
         image = Image.new(
-          title: File.basename(file_name),
           category: new_category,
-          user: user,
-          image: File.open(image_file)
+          image: File.open(image)
         )
+
         if image.save
-          p "Added #{image_file} to Category #{folder_name}"
+          p "Added image to category: #{name_folder}"
         else
-          p "Failed to save Image #{file_name}"
+          p "Failed to add image to category: #{name_folder}"
         end
       end
     end
-    p 'Image migration completed'
+    p "Image migration completed"
   end
 end
