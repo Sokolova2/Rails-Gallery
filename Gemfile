@@ -96,3 +96,4 @@ group :test do
 end
 
 gem 'dotenv', groups: %i[development test]
+gem 'faker'
