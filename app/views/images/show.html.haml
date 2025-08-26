@@ -22,7 +22,30 @@
               -else
                 =button_to category_image_like_path(@category, @image), method: :post, id: "btn-like", class: "btn btn-outline-dark" do
                   %i.bi.bi-suit-heart
-              %p.h5.pe-3= @likes.count
+              %button.btn.btn-transparent{"data-bs-target" => "#exampleModal", "data-bs-toggle" => "modal", :type => "button"}
+                %p.h5.pe-3= @likes.count
+              #exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :tabindex => "-1"}
+                .modal-dialog
+                  .modal-content
+                    .modal-header
+                      %h1#exampleModalLabel.modal-title.fs-5= t(".liked")
+                      %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+                    .modal-body
+                      -@likes.each do |like|
+                        .d-flex.justify-content-between.align-items-center.mb-2
+                          .d-flex.align-items-center
+                            -if like.user.avatar.present?
+                              =image_tag comment.user.avatar.url, size: 50, class: "rounded-4"
+                            -else
+                              = image_tag "avatar.png", size: 50, class: "rounded-4"
+                            %p= "#{like.user.first_name} " " #{like.user.last_name}"
+                          -@category.subscribers.each do |subscriber|
+                            -if like.user.id == subscriber.user.id
+                              %p.text-secondary= t(".subscriber")
+                    .modal-footer
+                      %button.btn.btn-secondary{"data-bs-dismiss" => "modal", :type => "button"} Close
+
+
 
         = form_with(url: category_image_comment_path(@category, @image), location: true, method: :post, data: {turbo_frame: "comment"}) do |form|
           .d-flex.gap-2.p-2
@@ -30,13 +53,17 @@
             =button_tag class: "icon-button" do
               %i.bi.bi-arrow-up-circle-fill
         -@comments.each do |comment|
-          .d-block.ms-5.mt-3
-            .d-flex.align-items-center
-              -if comment.user.avatar.present?
-                =image_tag comment.user.avatar.url, size: 50, class: "rounded-4"
-              -else
-                = image_tag "avatar.png", size: 50, class: "rounded-4"
-              .d-block
-                %p.login-user= "#{comment.user.first_name + " " + comment.user.last_name}"
-                %p.comment-view= comment.comment
-            %p.comment-data.pb-3= comment.created_at.strftime("%Y-%m-%d")
+          .d-flex.justify-content-between.align-items-center
+            .d-block.ms-5.mt-3
+              .d-flex.align-items-center
+                -if comment.user.avatar.present?
+                  =image_tag comment.user.avatar.url, size: 50, class: "rounded-4"
+                -else
+                  = image_tag "avatar.png", size: 50, class: "rounded-4"
+                .d-block
+                  %p.login-user= "#{comment.user.first_name + " " + comment.user.last_name}"
+                  %p.comment-view= comment.comment
+              %p.comment-data.pb-3= comment.created_at.strftime("%Y-%m-%d")
+            -@category.subscribers.each do |subscriber|
+              -if comment.user.id == subscriber.user.id
+                %p.text-secondary.me-5= t(".subscriber")

@@ -23,3 +23,6 @@
         %li.dropdown-item.bg-white
           = button_to destroy_user_session_path, method: :delete, class: "btn w-100" do
             = t(".sign-out")
+        %li.dropdown-item.bg-white
+          = button_to  subscriptions_categories_path, method: :get, class: "btn w-100" do
+            = t(".subscriptions")
