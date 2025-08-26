@@ -3,7 +3,7 @@
 module Users
   class SessionsController < Devise::SessionsController
     # before_action :configure_sign_in_params, only: [:create]
-
+    prepend_before_action :check_captcha, only: [:create]
     # GET /resource/sign_in
     # def new
     #   super
@@ -33,5 +33,14 @@ module Users
     # def configure_sign_in_params
     #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
     # end
+    private
+
+    def check_captcha
+      return if verify_recaptcha(model: resource)
+
+      flash.now[:alert] = 'CAPTCHA failed. Please try again.'
+      self.resource = resource_class.new(sign_in_params)
+      redirect_to new_user_session_path
+    end
   end
 end
