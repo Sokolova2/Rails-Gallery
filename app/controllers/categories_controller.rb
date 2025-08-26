@@ -2,7 +2,7 @@
 
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show destroy]
-  before_action :categories_all, only: %i[index my_categories]
+  before_action :categories_all, only: %i[index my_categories subscriptions]
   before_action :authenticate_user!
 
   def index; end
@@ -31,6 +31,8 @@ class CategoriesController < ApplicationController
   end
 
   def my_categories; end
+
+  def subscriptions; end
 
   def destroy
     @category.destroy
