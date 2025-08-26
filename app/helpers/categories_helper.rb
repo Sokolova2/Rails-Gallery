@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module CategoriesHelper
-  def preview_category(category, options = { size: 300 })
+  def preview_category(category, options = { size: 250 })
     size = options[:size]
     if category.images.any?
       image_tag category.images.first.image.url, size: size, class: 'image-preview rounded-4'
