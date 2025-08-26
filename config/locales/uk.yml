@@ -50,9 +50,13 @@ uk:
     navbar:
       edit-profile: "Редагувати профіль"
       sign-out: "Вихід"
+      subscriptions: "Підписки"
+    subscriptions:
+      subscriptions: "Підписки"
   images:
     show:
-      subscriber: "Підписник категорії"
+      subscriber: "Підписник"
+      liked: "Лайкнули"
   sign-up: "Реєєтрація"
   log-in: "Вхід"
   forgot-password: "Забули свій пароль?"

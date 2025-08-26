@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :categories do
     get :my_categories, on: :collection
+    get :subscriptions, on: :collection
     resources :subscribers, only: %i[create destroy]
     resources :images, only: %i[create show] do
       resource :like, only: %i[create destroy]

@@ -50,9 +50,13 @@ ru:
     navbar:
       edit-profile: "Редактировать профиль"
       sign-out: "Выход"
+      subscriptions: "Подписки"
+    subscriptions:
+      subscriptions: "Подписки"
   images:
     show:
-      subscriber: "Подписчик категории"
+      subscriber: "Подписчик"
+      liked: "Лайкнувшие"
   sign-up: "Регистрация"
   log-in: "Войти"
   forgot-password: "Забыли пароль?"
