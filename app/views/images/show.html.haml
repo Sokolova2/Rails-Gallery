@@ -54,7 +54,7 @@
               %i.bi.bi-arrow-up-circle-fill
         -@comments.each do |comment|
           .d-flex.justify-content-between.align-items-center
-            .d-block.ms-5.mt-3
+            .d-block.ms-5
               .d-flex.align-items-center
                 -if comment.user.avatar.present?
                   =image_tag comment.user.avatar.url, size: 50, class: "rounded-4"

@@ -32,8 +32,10 @@
         %p.h5.text-dark.align-items-center= category.category_name
         =turbo_frame_tag "subscriber" do
           .d-flex.align-items-center.gap-2
-            %p.h5= category.subscribers.count
+            -if current_user.id == category.user_id
+              %p.h5= "#{category.subscribers.count} sub"
             -unless current_user.id == category.user_id
+              %p.h5= category.subscribers.count
               -if category.subscribe?(current_user)
                 =button_to "Unsubscribe", category_subscriber_path(category, current_user.id), method: :delete, class: "btn btn-outline-secondary p-2"
               -else
