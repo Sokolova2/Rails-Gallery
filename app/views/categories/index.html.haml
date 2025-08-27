@@ -22,7 +22,7 @@
           %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
         .modal-body
           =render "categories/new", category: Category.new
-.container.d-flex.gap-5.flex-wrap
+.d-flex.gap-5.flex-wrap.category-block
   -@categories.each do |category|
     %div
       =link_to category_path(category), class: "text-decoration-none text-black" do

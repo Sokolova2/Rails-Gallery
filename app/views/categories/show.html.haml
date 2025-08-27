@@ -30,7 +30,7 @@
     .masonry-container
       -@image.each do |img|
         =link_to category_image_path(@category, img) do
-          =image_tag img.image.url(:thumb), class: "rounded-3 masonry-item"
+          =image_tag img.image.url(:medium), class: "rounded-3 masonry-item"
 
 .container.d-flex.justify-content-center.mt-5
   =paginate @image

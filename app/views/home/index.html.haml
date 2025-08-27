@@ -2,31 +2,25 @@
   = render 'home/navbar'
   %div.describe-site.mt-5
     %h2.text-light.h2.fw-bold.mt-5= t(".info-about-app")
-    %p.text-light.mt-5= t(".info-about-app-second")
-    = button_to(new_user_session_path, method: :get, class:"btn btn-light p-3 mt-5") do
+    %p.text-light= t(".info-about-app-second")
+    = button_to(new_user_session_path, method: :get, class:"btn btn-light p-3 mt-5 ") do
       =t(".btn-start")
+  #carouselExampleInterval.carousel.slide{"data-bs-ride" => "carousel"}
+    .carousel-inner.p-5
+      -@top_images.each_with_index do |image, index|
+        .carousel-item{ class:("active" if index == 0), "data-bs-interval" => "2000"}
+          =image_tag image.image.url, class: "d-block image-carousel"
+    %button.carousel-control-prev{"data-bs-slide" => "prev", "data-bs-target" => "#carouselExampleInterval", :type => "button"}
+      %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+      %span.visually-hidden Previous
+    %button.carousel-control-next{"data-bs-slide" => "next", "data-bs-target" => "#carouselExampleInterval", :type => "button"}
+      %span.carousel-control-next-icon{"aria-hidden" => "true"}
+      %span.visually-hidden Next
 
-    #carouselExampleInterval.carousel.slide{"data-bs-ride" => "carousel"}
-      .carousel-inner.p-5
-        -@top_images.each_with_index do |image, index|
-          .carousel-item{ class:("active" if index == 0), "data-bs-interval" => "2000"}
-            =image_tag image.image.url, class: "d-block image-carousel"
-      %button.carousel-control-prev{"data-bs-slide" => "prev", "data-bs-target" => "#carouselExampleInterval", :type => "button"}
-        %span.carousel-control-prev-icon{"aria-hidden" => "true"}
-        %span.visually-hidden Previous
-      %button.carousel-control-next{"data-bs-slide" => "next", "data-bs-target" => "#carouselExampleInterval", :type => "button"}
-        %span.carousel-control-next-icon{"aria-hidden" => "true"}
-        %span.visually-hidden Next
-.navbar-big.d-none.d-lg-block
-  .masonry-container.mt-5
-    -@top_categories.each do |category|
-      -category.images.limit(3).each do |image|
-        =image_tag image.image.url(:thumb), class: "rounded-3 masonry-item"
-
-.navbar-small.d-block.d-lg-none
-  .masonry-container.mt-5
-    -@top_categories.each do |category|
-      -category.images.limit(3).each do |image|
+.masonry-container.mt-5
+  -@top_categories.each do |category|
+    -category.images.limit(3).each do |image|
+      .masonry-item
         =image_tag image.image.url, class: "rounded-3 image-home"
 
 
