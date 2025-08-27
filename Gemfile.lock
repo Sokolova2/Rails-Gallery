@@ -490,6 +490,7 @@ DEPENDENCIES
   friendly_id (~> 5.5.0)
   haml-rails
   html2haml
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   jquery-rails
