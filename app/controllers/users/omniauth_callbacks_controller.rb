@@ -16,19 +16,6 @@ module Users
       end
     end
 
-    # More info at:
-    # https://github.com/heartcombo/devise#omniauth
-
-    # GET|POST /resource/auth/twitter
-    # def passthru
-    #   super
-    # end
-
-    # GET|POST /users/auth/twitter/callback
-    # def failure
-    #   super
-    # end
-
     protected
 
     def after_omniauth_failure_path_for(_scope)
