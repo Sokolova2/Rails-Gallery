@@ -32,3 +32,6 @@ function init_masonry() {
 
 document.addEventListener("turbo:load", init_masonry);
 document.addEventListener("DOMContentLoaded", init_masonry);
+
+import "trix"
+import "@rails/actiontext"
