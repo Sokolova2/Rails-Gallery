@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
 
   def show
     @likes = Like.where(image_id: @image.id)
-    @comments = Comment.where(image_id: @image.id)
+    @comments = Comment.where(image_id: @image.id).order(created_at: :desc)
   end
 
   def create

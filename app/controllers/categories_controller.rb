@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   def index; end
 
   def show
-    @image = @category.images.page(params[:page]).per(5)
+    @image = @category.images.page(params[:page]).per(10)
   end
 
   def create
@@ -50,6 +50,6 @@ class CategoriesController < ApplicationController
   end
 
   def categories_all
-    @categories = Category.page(params[:page]).per(5)
+    @categories = Category.page(params[:page]).per(20)
   end
 end
