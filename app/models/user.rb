@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  include MailForm::Delivery
   has_many :images
   has_many :categories, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -23,12 +22,10 @@ class User < ApplicationRecord
   validates_integrity_of :avatar
   validates_processing_of :avatar
 
-  def headers
-    {
-      subject: 'Welcome to Rails Gallery. We nice to see you! You can log in follow the link: http://localhost:3000/users/sign_in',
-      from: 'apponrails2025@gmail.com',
-      to: email
-    }
+  after_create :send_welcome_email
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver_later
   end
 
   def self.from_omniauth(auth, lang = nil)

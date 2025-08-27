@@ -12,4 +12,15 @@ class Image < ApplicationRecord
   end
 
   mount_uploader :image, ImageUploader
+
+  after_create :send_image_email
+
+  def send_image_email
+    category.subscribers.includes(:user).each do |subscriber|
+      user = subscriber.user
+      next unless user
+
+      UserMailer.image_email(category, user).deliver_later
+    end
+  end
 end
