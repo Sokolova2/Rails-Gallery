@@ -5,13 +5,11 @@ cat_category = Category.find_by(slug: 'cats')
 
 images = Image.where(category: cat_category)
 
-content_comments = ["it's perfect", "so pretty", "so beautiful!!!", "cuteeee!!!", "cool", "like this"]
+content_comments = ["it's perfect", 'so pretty', 'so beautiful!!!', 'cuteeee!!!', 'cool', 'like this']
 
 images.each do |image|
   image.likes.create(user: user, category: cat_category)
   content_comments.each do |comment|
-    image.comments.create(user: user, category: cat_category, comment: comment)
+    image.comments.create(user: user, category: cat_category, comment: comment, created_at: '2025-08-26')
   end
 end
-
-
