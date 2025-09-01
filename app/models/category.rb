@@ -22,4 +22,12 @@ class Category < ApplicationRecord
 
     errors.add(:base, 'Name category must be present')
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[id id_value user_id category_name created_at updated_at slug]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[comments subscribers images likes user]
+  end
 end

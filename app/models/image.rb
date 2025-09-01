@@ -23,4 +23,12 @@ class Image < ApplicationRecord
       UserMailer.image_email(category, user).deliver_later
     end
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[id id_value category_id image created_at updated_at slug]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[category comments likes]
+  end
 end

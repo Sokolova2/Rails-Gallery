@@ -39,4 +39,12 @@ class User < ApplicationRecord
       user.language = lang || I18n.default_locale
     end
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[id id_value uid provider email encrypt_password reset_password_token first_name last_name avatar role language created_at updated_at]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[categories comments subscribers images likes]
+  end
 end

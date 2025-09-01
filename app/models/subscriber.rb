@@ -10,4 +10,12 @@ class Subscriber < ApplicationRecord
   def send_subscribe_email
     UserMailer.subscribe_email(user).deliver_later
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[id id_value category_id user_id comment created_at updated_at slug]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[category user]
+  end
 end
