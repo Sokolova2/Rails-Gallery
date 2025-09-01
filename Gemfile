@@ -98,3 +98,9 @@ end
 gem 'dotenv', groups: %i[development test]
 gem 'faker'
 gem "recaptcha", require: "recaptcha/rails"
+gem 'activeadmin'
+
+gem 'devise'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
