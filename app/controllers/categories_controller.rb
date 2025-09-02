@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[show destroy]
+  before_action :set_category, only: %i[show update destroy]
   before_action :categories_all, only: %i[index my_categories subscriptions]
   before_action :authenticate_user!
 
@@ -30,6 +30,10 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def update
+    @category.update(category_params)
+  end
+
   def my_categories; end
 
   def subscriptions; end
@@ -45,8 +49,8 @@ class CategoriesController < ApplicationController
     @category = Category.friendly.find(params[:id])
   end
 
-  def categories_params
-    params.expect(category: %i[category_name image])
+  def category_params
+    params.require(:category).permit(:category_name)
   end
 
   def categories_all

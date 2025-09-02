@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ImagesController < ApplicationController
-  before_action :image, only: %i[show]
+  before_action :image, only: %i[show destroy]
   before_action :authenticate_user!
 
   def show
@@ -15,6 +15,10 @@ class ImagesController < ApplicationController
 
     flash[:alert] = @images.errors.full_messages.to_sentence unless @images.save
     redirect_to @category
+  end
+
+  def destroy
+    @image.destroy
   end
 
   private
