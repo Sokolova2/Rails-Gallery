@@ -10,7 +10,6 @@ ActiveAdmin.setup do |config|
   config.filter_attributes = [:encrypted_password, :password, :password_confirmation]
   config.localize_format = :long
 
-  config.view_factory.layout = "active_admin"
   config.register_stylesheet 'active_admin.css'
   config.register_javascript 'active_admin.js'
 end
