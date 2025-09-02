@@ -1,20 +1,19 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register User do
+  actions :all, except: [:create, :new, :update, :edit]
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :email, :encrypted_password, :first_name, :last_name, :role, :uid, :provider, :reset_password_token, :reset_password_sent_at, :remember_created_at, :avatar, :language
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:email, :encrypted_password, :first_name, :last_name, :role, :uid, :provider, :reset_password_token, :reset_password_sent_at, :remember_created_at, :avatar, :language]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+  controller do
+    def find_resource
+      User.find(params[:id])
+    end
+  end
+
+  action_item :destroy, only: :show do
+    link_to "Удалить пользователя", admin_user_path(resource),
+            method: :delete,
+            form: { data: { turbo: false } },
+            data: { confirm: "Вы уверены, что хотите удалить этого пользователя?" }
+  end
 end
+

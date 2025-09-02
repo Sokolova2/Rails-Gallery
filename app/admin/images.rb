@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Image do
+  permit_params :category_id, :image
 
+  controller do
+    def find_resource
+      Image.find(params[:id])
+    end
+  end
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
