@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def add_default_action_items_for(resource_class)
   config.clear_action_items!
 
