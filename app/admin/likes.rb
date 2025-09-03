@@ -1,20 +1,12 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Like do
+  menu priority: 1, label: proc { I18n.t("like") }
+  permit_params :image_id, :user_id, :category_id
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :image_id, :user_id, :category_id
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:image_id, :user_id, :category_id]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+  actions :all, except: [:update, :edit]
+
+  load Rails.root.join('app/admin/actions_item.rb')
+
+  add_default_action_items_for(Like)
 end

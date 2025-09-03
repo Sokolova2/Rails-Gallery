@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Image do
+  menu priority: 1, label: proc { I18n.t("image") }
   permit_params :category_id, :image
 
   controller do
@@ -8,19 +9,8 @@ ActiveAdmin.register Image do
       Image.find(params[:id])
     end
   end
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :category_id, :image
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:category_id, :image]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+
+  load Rails.root.join('app/admin/actions_item.rb')
+
+  add_default_action_items_for(Image)
 end

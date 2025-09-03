@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Category do
+  menu priority: 1, label: proc { I18n.t("category") }
   permit_params :category_name, :user_id
 
   controller do
@@ -9,21 +10,7 @@ ActiveAdmin.register Category do
     end
   end
 
-  config.clear_action_items!
+  load Rails.root.join('app/admin/actions_item.rb')
 
-  action_item :new, only: :index do
-    link_to "New Category", new_resource_path
-  end
-
-  action_item :edit, only: :show do
-    link_to "Edit Category", edit_resource_path(resource)
-  end
-
-  action_item :custom_destroy, only: :show do
-    button_to "Удалить", admin_category_path(resource),
-            method: :delete,
-            form: {data: { turbo: false } },
-            data: { confirm: "Точно удалить?" },
-            class: "delete_button"
-  end
+  add_default_action_items_for(Category)
 end
