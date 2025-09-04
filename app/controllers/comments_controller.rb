@@ -5,7 +5,10 @@ class CommentsController < ApplicationController
 
   def create
     Comment.create(category_id: @category.id, user_id: current_user.id, image_id: @image.id, comment: params[:comment])
+    UserAction.create(user: current_user, action_type: "add comment", url: request.original_url)
+
     redirect_to category_image_path(@category, @image)
+    UserAction.create(user: current_user, action_type: "add comment", url: request.original_url)
   end
 
   private

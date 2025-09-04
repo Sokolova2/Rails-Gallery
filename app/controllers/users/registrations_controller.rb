@@ -16,10 +16,12 @@ module Users
     end
 
     def after_sign_up_path_for(resource_or_scope)
+      UserAction.create(user: resource_or_scope, action_type: "sign in", url: request.original_url)
       stored_location_for(resource_or_scope) || categories_path
     end
 
     def after_inactive_sign_up_path_for(resource_or_scope)
+      UserAction.create(user: resource_or_scope, action_type: "sign in", url: request.original_url)
       stored_location_for(resource_or_scope) || categories_path
     end
 
