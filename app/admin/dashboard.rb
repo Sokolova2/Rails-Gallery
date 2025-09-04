@@ -41,9 +41,21 @@ ActiveAdmin.register_page "Dashboard" do
           ul class:"image-grid" do
             Image.order(created_at: :desc).limit(10).map do |image|
               li class: "image-item" do
-                link_to(image_tag(image.image.url(:medium)), admin_images_path(image), class: "masonry-item")
+                link_to(image_tag(image.image.url(:medium)), admin_image_path(image), class: "masonry-item")
               end
             end
+          end
+        end
+      end
+    end
+    columns do
+      column do
+        panel "Last 10 user actions" do
+          table_for UserAction.order(created_at: :desc).limit(10) do
+            column("Пользователь") {|action| action.user&.email}
+            column("Действия") {|action| action.action_type}
+            column("URL") {|action| action.url}
+            column("Дата и время") {|action| action.created_at.strftime("%d-%m-%Y %H:%M")}
           end
         end
       end
