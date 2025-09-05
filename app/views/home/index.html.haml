@@ -7,9 +7,12 @@
       =t(".btn-start")
   #carouselExampleInterval.carousel.slide{"data-bs-ride" => "carousel"}
     .carousel-inner.p-5
-      -@top_images.each_with_index do |image, index|
-        .carousel-item{ class:("active" if index == 0), "data-bs-interval" => "2000"}
-          =image_tag image.image.url, class: "d-block image-carousel"
+      -index = 0
+      -@top_categories.each do |category|
+        -category.images.limit(3).each do |image|
+          .carousel-item{ class:("active" if index == 0), "data-bs-interval" => "2000"}
+            =image_tag image.image.url, class: "d-block image-carousel"
+          -index += 1
     %button.carousel-control-prev{"data-bs-slide" => "prev", "data-bs-target" => "#carouselExampleInterval", :type => "button"}
       %span.carousel-control-prev-icon{"aria-hidden" => "true"}
       %span.visually-hidden Previous
@@ -17,7 +20,7 @@
       %span.carousel-control-next-icon{"aria-hidden" => "true"}
       %span.visually-hidden Next
 
-.masonry-container.mt-5
+.masonry-container.mt-5.mb-5
   -@top_categories.each do |category|
     -category.images.limit(3).each do |image|
       .masonry-item
