@@ -1,58 +1,28 @@
-.navbar-big.d-none.d-lg-block
-  %nav.navbar.justify-content-between.p-3.shadow-sm
-    = link_to "Gallery", categories_path, class: "navbar-brand name-brand text-black border-none"
-    -if user_signed_in?
-      .btn-group.pe-2.d-flex.align-items-center
-        .dropdown.me-3
-          %button.btn.btn-dark.dropdown-toggle.h-100{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :type => "button"}
-            %i.bi.bi-translate.fs-5
-          %ul.dropdown-menu.bg-dark
-            %li.dropdown-item.text-light.bg-dark
-              =button_to "English", update_language_path("en"), method: :put, class: "btn btn-transparent text-light"
-            %li.dropdown-item.text-light.bg-dark
-              =button_to "Русский", update_language_path("ru"), method: :put, class: "btn btn-transparent text-light"
-            %li.dropdown-item.text-light.bg-dark
-              =button_to "Українська", update_language_path("uk"), method: :put, class: "btn btn-transparent text-light"
-        %p.login= user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : ""
-        %label{ for: "drop-down", class: "custom-avatar-label"}
-          = avatar_for(current_user)
-        %button.btn.btn-outline-secondary.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", "data-bs-display" => "static", :type => "button", "class" => "d-none", "id" => "drop-down"}
-        %ul.dropdown-menu.dropdown-menu-lg-end
-          %li.dropdown-item.bg-white
-            = button_to edit_user_registration_path, method: :get, class: "btn btn-transparent w-100" do
-              = t(".edit-profile")
-          %li.dropdown-item.bg-white
-            = button_to destroy_user_session_path, method: :delete, class: "btn w-100" do
-              = t(".sign-out")
-          %li.dropdown-item.bg-white
-            = button_to  subscriptions_categories_path, method: :get, class: "btn w-100" do
-              = t(".subscriptions")
-.navbar-small.d-block.d-lg-none
-  %nav.navbar.justify-content-between.p-3.shadow-sm
-    = link_to "Gallery", categories_path, class: "navbar-brand name-brand text-black border-none"
-    -if user_signed_in?
-      .btn-group.pe-2.d-flex.align-items-center
-        .dropdown.me-3
-          %button.btn.btn-dark.dropdown-toggle.h-100{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :type => "button"}
-            %i.bi.bi-translate.fs-5
-          %ul.dropdown-menu.bg-dark
-            %li.dropdown-item.text-light.bg-dark
-              =button_to "English", update_language_path("en"), method: :put, class: "btn btn-transparent text-light"
-            %li.dropdown-item.text-light.bg-dark
-              =button_to "Русский", update_language_path("ru"), method: :put, class: "btn btn-transparent text-light"
-            %li.dropdown-item.text-light.bg-dark
-              =button_to "Українська", update_language_path("uk"), method: :put, class: "btn btn-transparent text-light"
-        %p.login= user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : ""
-        %label{ for: "drop-down", class: "custom-avatar-label"}
-          = avatar_for(current_user)
-        %button.btn.btn-outline-secondary.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", "data-bs-display" => "static", :type => "button", "class" => "d-none", "id" => "drop-down"}
-        %ul.dropdown-menu.dropdown-menu-lg-end
-          %li.dropdown-item.bg-white
-            = button_to edit_user_registration_path, method: :get, class: "btn btn-transparent w-100" do
-              = t(".edit-profile")
-          %li.dropdown-item.bg-white
-            = button_to destroy_user_session_path, method: :delete, class: "btn w-100" do
-              = t(".sign-out")
-          %li.dropdown-item.bg-white
-            = button_to  subscriptions_categories_path, method: :get, class: "btn w-100" do
-              = t(".subscriptions")
+%nav.navbar.justify-content-between.p-3.shadow-sm
+  = link_to "Gallery", categories_path, class: "navbar-brand name-brand text-black border-none"
+  -if user_signed_in?
+    .btn-group.pe-2.d-flex.align-items-center
+      .dropdown.me-3
+        %button.btn.btn-dark.dropdown-toggle.h-100{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :type => "button"}
+          %i.bi.bi-translate.fs-5
+        %ul.dropdown-menu.bg-dark
+          %li.dropdown-item.text-light.bg-dark
+            =button_to "English", update_language_path("en"), method: :put, class: "btn btn-transparent text-light"
+          %li.dropdown-item.text-light.bg-dark
+            =button_to "Русский", update_language_path("ru"), method: :put, class: "btn btn-transparent text-light"
+          %li.dropdown-item.text-light.bg-dark
+            =button_to "Українська", update_language_path("uk"), method: :put, class: "btn btn-transparent text-light"
+      %p.login= user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : ""
+      %label{ for: "drop-down", class: "custom-avatar-label"}
+        = avatar_for(current_user)
+      %button.btn.btn-outline-secondary.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", "data-bs-display" => "static", :type => "button", "class" => "d-none", "id" => "drop-down"}
+      %ul.dropdown-menu.dropdown-menu-lg-end
+        %li.dropdown-item.bg-white
+          = button_to edit_user_registration_path, method: :get, class: "btn btn-transparent w-100" do
+            = t(".edit-profile")
+        %li.dropdown-item.bg-white
+          = button_to destroy_user_session_path, method: :delete, class: "btn w-100" do
+            = t(".sign-out")
+        %li.dropdown-item.bg-white
+          = button_to  subscriptions_categories_path, method: :get, class: "btn w-100" do
+            = t(".subscriptions")
