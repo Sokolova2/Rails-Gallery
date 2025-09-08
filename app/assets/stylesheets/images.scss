@@ -16,14 +16,6 @@
   display: block;
 }
 
-.comment-tag{
-  height: 3.5rem;
-  width: 90%;
-  margin-left: 3rem;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-}
-
 .icon-button{
   width: 50px;
   height: 50px;
@@ -56,69 +48,58 @@
   font-size: 30px;
 }
 
-@media screen and  (max-width: 800px){
-  .image-home{
-    max-width: 350px;
-    max-height: 450px;
-  }
 
-  .masonry-container {
-    display: block;
-    max-width: 1000px;
-    margin-left: 3rem;
-  }
+.image-home{
+  max-width: 350px;
+  max-height: 450px;
 }
 
-@media screen and  (max-width: 775px){
-  .image-home{
-    max-width: 300px;
-    max-height: 400px;
-  }
-
-  .masonry-container {
-    display: block;
-    max-width: 1000px;
-    margin-left: 2.5rem;
-  }
+.masonry-container {
+  display: block;
+  max-width: 1000px;
+  margin-left: 3rem;
 }
 
-@media screen and  (max-width: 603px){
-  .image-home{
-    max-width: 250px;
-    max-height: 350px;
-  }
-  .masonry-container {
-    display: block;
-    max-width: 1000px;
-    margin-left: 2rem;
-  }
+
+
+.image-home{
+  max-width: 300px;
+  max-height: 400px;
 }
 
-@media screen and  (max-width: 495px){
-  .images{
-    max-width: 250px;
-    max-height: 150px;
-  }
-
-  .masonry-container {
-    display: block;
-    max-width: 1000px;
-    margin-left: 1.7rem;
-  }
-
-  .comment-tag{
-    height: 3.5rem;
-    width: 80%;
-    margin-left: 3rem;
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .image-home{
-    max-width: 150px;
-    max-height: 250px;
-  }
+.masonry-container {
+  display: block;
+  max-width: 1000px;
+  margin-left: 2.5rem;
 }
+
+
+.image-home{
+  max-width: 250px;
+  max-height: 350px;
+}
+.masonry-container {
+  display: block;
+  max-width: 1000px;
+  margin-left: 2rem;
+}
+
+.images{
+  max-width: 250px;
+  max-height: 150px;
+}
+
+.masonry-container {
+  display: block;
+  max-width: 1000px;
+  margin-left: 1.7rem;
+}
+
+.image-home{
+  max-width: 150px;
+  max-height: 250px;
+}
+
 
 .info-image-object{
   margin-top: 1rem;
