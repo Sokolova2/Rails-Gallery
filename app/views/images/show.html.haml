@@ -35,7 +35,7 @@
                         .d-flex.justify-content-between.align-items-center.mb-2
                           .d-flex.align-items-center
                             -if like.user.avatar.present?
-                              =image_tag comment.user.avatar.url, size: 50, class: "rounded-4"
+                              =image_tag like.user.avatar.url, size: 50, class: "rounded-5"
                             -else
                               = image_tag "avatar.png", size: 50, class: "rounded-4"
                             %p= "#{like.user.first_name} " " #{like.user.last_name}"
@@ -57,7 +57,7 @@
             .d-block.ms-5
               .d-flex.align-items-center
                 -if comment.user.avatar.present?
-                  =image_tag comment.user.avatar.url, size: 50, class: "rounded-4"
+                  =image_tag comment.user.avatar.url, size: 50, class: "rounded-circle"
                 -else
                   = image_tag "avatar.png", size: 50, class: "rounded-4"
                 .d-block

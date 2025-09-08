@@ -11,7 +11,7 @@
       = button_to(new_user_session_path, class:"btn btn-secondary p-3") do
         =t(".login-link")
       = button_to(new_user_registration_path, method: :get, class:"btn btn-light p-3") do
-        =t(".sign-out-link")
+        =t(".sign-up-link")
 
 .navbar-small.d-block.d-lg-none
   %nav.navbar.justify-content-between.p-3
@@ -33,7 +33,7 @@
                   =t(".categories-btn")
               %li.nav-item.mb-3
                 = button_to(new_user_registration_path, method: :get, class:"btn btn-transparent text-light") do
-                  =t(".sign-out-link")
+                  =t(".sign-up-link")
       %h1.navbar-brand.name-brand.text-light Gallery
     .d-flex.pe-2.gap-3
       = button_to(new_user_session_path, class:"btn btn-light p-3") do
