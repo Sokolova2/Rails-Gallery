@@ -8,7 +8,7 @@ uk:
       home-link: "Головна сторінка"
       categories-btn: "Категорії"
       login-link: "Вхід"
-      sign-out-link: "Створити аккаунт"
+      sign-up-link: "Створити аккаунт"
   devise:
     registrations:
       new:

@@ -8,7 +8,7 @@ en:
       home-link: "Home"
       categories-btn: "Categories"
       login-link: "Sign In"
-      sign-out-link: "Create Account"
+      sign-up-link: "Create Account"
   devise:
     registrations:
       new:
