@@ -52,7 +52,7 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:category_name)
   end
-
+  # TODO: change method name to set_categories
   def categories_all
     @categories = Category.page(params[:page]).per(20)
   end

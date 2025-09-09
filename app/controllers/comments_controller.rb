@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   end
 
   private
-
+  # TODO: separate to two methods
   def set_comment
     @category = Category.friendly.find(params[:category_id])
     @image = Image.find(params[:image_id])

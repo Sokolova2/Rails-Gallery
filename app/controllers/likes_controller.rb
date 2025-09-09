@@ -14,7 +14,8 @@ class LikesController < ApplicationController
 
   def destroy
     if @image.liked?(current_user)
-      Like.find_by(category_id: @category.id, user_id: current_user.id, image_id: @image.id)&.destroy
+      like = Like.find_by(category_id: @category.id, user_id: current_user.id, image_id: @image.id)
+      like&.destroy
       UserAction.create(user: current_user, action_type: "delete like", url: request.original_url)
     end
 
@@ -23,6 +24,7 @@ class LikesController < ApplicationController
 
   private
 
+  # TODO: move to another method
   def set_image
     @category = Category.friendly.find(params[:category_id])
     @image = @category.images.find(params[:image_id])

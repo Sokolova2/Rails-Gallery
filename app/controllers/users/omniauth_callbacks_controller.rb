@@ -23,6 +23,7 @@ module Users
     end
 
     def after_sign_in_path_for(resource_or_scope)
+      # TODO: move user action logging to separate method
       UserAction.create(user: resource_or_scope, action_type: "sign in", url: request.original_url)
       stored_location_for(resource_or_scope) || categories_path
     end

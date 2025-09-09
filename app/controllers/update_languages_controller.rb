@@ -4,6 +4,8 @@ class UpdateLanguagesController < ApplicationController
   def update
     language = params[:language]
 
+    # TODO: add constant with languages, then update user language in separate method
+    # FIXME: fix this  User.where(id: current_user.id).update_all(language: 'en')
     case language
     when 'en'
       User.where(id: current_user.id).update_all(language: 'en')

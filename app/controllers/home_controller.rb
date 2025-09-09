@@ -2,6 +2,7 @@
 
 class HomeController < ApplicationController
   def index
+    # TODO: Move both queries to image scope
     @top_images = Image
                   .select('images.*, count(distinct likes.id) as likes_count, count(distinct comments.id) as comments_count')
                   .joins(:likes, :comments)

@@ -28,6 +28,7 @@ class ImagesController < ApplicationController
     @image = @category.images.find(params[:id])
   end
 
+  # TODO: permit, require
   def image_params
     params.expect(image: [:image])
   end
