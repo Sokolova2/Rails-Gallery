@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(categories_params)
+    @category = Category.new(category_params)
     @category.user = current_user
 
     if @category.save
