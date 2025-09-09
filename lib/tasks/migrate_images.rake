@@ -13,6 +13,7 @@ namespace :app do
 
     unless Dir.exist?(root_path)
       p "Does not exist: #{root_path}"
+      return
     end
 
     Dir.entries(root_path).each do |name_folder|
