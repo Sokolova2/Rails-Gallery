@@ -8,19 +8,12 @@ class Category < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :subscribers, dependent: :destroy
-  validate :category_name_must_be_present
-  validates :category_name, uniqueness: true
+  validates :category_name, uniqueness: true, presence: true
 
   friendly_id :category_name, use: :slugged
 
   def subscribe?(user)
     subscribers.exists?(user_id: user.id)
-  end
-
-  def category_name_must_be_present
-    return if category_name.present?
-
-    errors.add(:base, 'Name category must be present')
   end
 
   def self.ransackable_attributes(auth_object = nil)
