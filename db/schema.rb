@@ -24,15 +24,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_04_174252) do
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
-  create_table "action_types", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "action"
-    t.string "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_action_types_on_user_id"
-  end
-
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -176,7 +167,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_04_174252) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "action_types", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "categories", "users"
