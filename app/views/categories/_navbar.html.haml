@@ -13,7 +13,7 @@
               =button_to "Русский", update_language_path("ru"), method: :put, class: "btn btn-transparent text-light"
             %li.dropdown-item.text-light.bg-dark
               =button_to "Українська", update_language_path("uk"), method: :put, class: "btn btn-transparent text-light"
-        %p.login= user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : ""
+        %p.login.pe-1= user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : ""
         %label{ for: "drop-down", class: "custom-avatar-label"}
           = avatar_for(current_user)
         %button.btn.btn-outline-secondary.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", "data-bs-display" => "static", :type => "button", "class" => "d-none", "id" => "drop-down"}
@@ -42,6 +42,16 @@
                 = avatar_for(current_user)
               %p.login= user_signed_in? ? "#{current_user.first_name} #{current_user.last_name}" : ""
           %button.btn-close.btn-close-dark{"aria-label" => "Close", "data-bs-dismiss" => "offcanvas", :type => "button"}
+        .dropdown.ms-3
+          %button.btn.btn-dark.dropdown-toggle.h-100{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :type => "button"}
+            %i.bi.bi-translate.fs-5
+          %ul.dropdown-menu.bg-dark
+            %li.dropdown-item.text-light.bg-dark
+              =button_to "English", update_language_path("en"), method: :put, class: "btn btn-transparent text-light"
+            %li.dropdown-item.text-light.bg-dark
+              =button_to "Русский", update_language_path("ru"), method: :put, class: "btn btn-transparent text-light"
+            %li.dropdown-item.text-light.bg-dark
+              =button_to "Українська", update_language_path("uk"), method: :put, class: "btn btn-transparent text-light"
         .offcanvas-body
           %ul.navbar-nav.justify-content-end.flex-grow-1.pe-3
             %li.nav-item.mb-3
