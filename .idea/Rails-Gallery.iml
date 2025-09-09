@@ -50,6 +50,7 @@
     <orderEntry type="library" scope="PROVIDED" name="date (v3.4.1, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug (v1.11.0, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="devise (v4.9.4, ruby-3.2.3-p157) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.6.2, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="dotenv (v3.1.8, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="draper (v4.0.4, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="drb (v2.2.3, ruby-3.2.3-p157) [gem]" level="application" />
@@ -150,9 +151,15 @@
     <orderEntry type="library" scope="PROVIDED" name="request_store (v1.7.0, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="responders (v3.1.1, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rexml (v3.4.1, ruby-3.2.3-p157) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.13.5, ruby-3.2.3-p157) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v3.13.5, ruby-3.2.3-p157) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.13.5, ruby-3.2.3-p157) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-rails (v8.0.2, ruby-3.2.3-p157) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.13.5, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop (v1.78.0, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.46.0, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rails (v2.32.0, ruby-3.2.3-p157) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop-rspec (v3.7.0, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.13.0, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-vips (v2.2.4, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby2_keywords (v0.0.5, ruby-3.2.3-p157) [gem]" level="application" />
@@ -161,6 +168,7 @@
     <orderEntry type="library" scope="PROVIDED" name="securerandom (v0.4.1, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.34.0, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sexp_processor (v4.17.3, ruby-3.2.3-p157) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="shoulda-matchers (v6.5.0, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="snaky_hash (v2.0.3, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="solid_cable (v3.0.11, ruby-3.2.3-p157) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="solid_cache (v1.0.7, ruby-3.2.3-p157) [gem]" level="application" />
