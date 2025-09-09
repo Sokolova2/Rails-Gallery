@@ -2,3 +2,6 @@ plugins:
   - rubocop-rails
 AllCops:
   NewCops: enable
+
+Style/Documentation:
+  Enabled: false
