@@ -11,6 +11,7 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'You have subscribed successfully')
   end
 
+  # TODO: change name
   def image_email(category, user)
     @category = category
     @users = user
