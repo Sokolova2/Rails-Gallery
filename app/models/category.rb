@@ -19,7 +19,7 @@ class Category < ApplicationRecord
       .order('likes_count desc, comments_count desc')
       .limit(5)
   }
-
+  # TODO: change name
   def subscribe?(user)
     subscribers.exists?(user_id: user.id)
   end
