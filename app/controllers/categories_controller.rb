@@ -42,7 +42,7 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    expect(category: [:category_name])
+    params.require(:category).permit(:category_name)
   end
 
   # TODO: change method name to set_categories

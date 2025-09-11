@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class LikesController < ApplicationController
+  include ApplicationHelper
+
   before_action :set_category, only: %i[create destroy]
   before_action :set_image, only: %i[create destroy]
 
