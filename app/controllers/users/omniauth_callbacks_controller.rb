@@ -2,18 +2,11 @@
 
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+    include ApplicationHelper
+
     def google_oauth2
       user = User.from_omniauth(auth, locale_from_header || params[:lang])
-
-      if user.present?
-        sign_out_all_scopes
-        flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
-        sign_in_and_redirect user, event: :authentication
-      else
-        flash[:alert] =
-          t 'devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{auth.info.email} is not authorized."
-        redirect_to new_user_session_path
-      end
+      user_present(user)
     end
 
     protected
@@ -24,7 +17,7 @@ module Users
 
     def after_sign_in_path_for(resource_or_scope)
       # TODO: move user action logging to separate method
-      UserAction.create(user: resource_or_scope, action_type: "sign in", url: request.original_url)
+      add_user_active(resource_or_scope, 'sign_in')
       stored_location_for(resource_or_scope) || categories_path
     end
 
@@ -32,6 +25,18 @@ module Users
 
     def auth
       @auth ||= request.env['omniauth.auth']
+    end
+
+    def user_present(user)
+      if user.present?
+        sign_out_all_scopes
+        flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
+        sign_in_and_redirect user, event: :authentication
+      else
+        flash[:alert] =
+          t 'devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{auth.info.email} is not authorized."
+        redirect_to new_user_session_path
+      end
     end
   end
 end

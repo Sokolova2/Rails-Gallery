@@ -10,4 +10,20 @@ Rails/LexicallyScopedActionFilter:
   Enabled: false
 
 Metrics/BlockLength:
-  Enabled: false
+  Exclude:
+    - 'app/admin/**'
+    - 'config/environments/**'
+    - 'lib/tasks/**'
+
+Layout/LineLength:
+  Exclude:
+    - 'app/models/**'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/**'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/**'
+    - 'app/models/**'

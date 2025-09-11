@@ -83,6 +83,12 @@ en:
   like: "Likes"
   subscriber: "Subscribers"
   user: "Users"
+  captcha: 'CAPTCHA failed. Please try again.'
+  message-category-must-be-present: 'Category name must be present'
+  message-category-already-exist: 'A category with this name already exists'
+  welcome-gallery: 'Welcome to Rails Gallery'
+  subscribe: 'You have subscribed successfully'
+  new-photo: "A new photo has been added to the category"
   activerecord:
     errors:
       full_messages:

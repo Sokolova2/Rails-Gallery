@@ -2,14 +2,14 @@
 
 namespace :app do
   desc 'Parse the folder, create a category and put image'
-  task :migrate_images => :environment do
+  task migrate_images: :environment do
     default_user = User.find_or_create_by!(email: 'email@example.com') do |user|
       user.first_name = 'default'
       user.last_name = 'default'
       user.password = '123456'
     end
 
-    root_path = Rails.root.join('public', 'migrate_images')
+    root_path = Rails.public_path.join('migrate_images')
 
     unless Dir.exist?(root_path)
       p "Does not exist: #{root_path}"
@@ -28,6 +28,7 @@ namespace :app do
 
       Dir.entries(category).each do |file|
         next if file.start_with?('.')
+
         image = File.join(category, file)
 
         image = Image.new(
@@ -42,6 +43,6 @@ namespace :app do
         end
       end
     end
-    p "Image migration completed"
+    p 'Image migration completed'
   end
 end

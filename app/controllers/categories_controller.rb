@@ -2,7 +2,7 @@
 
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show update destroy]
-  before_action :categories_all, only: %i[index my_categories subscriptions]
+  before_action :set_categories, only: %i[index my_categories subscriptions]
   before_action :authenticate_user!
 
   def index; end
@@ -18,15 +18,7 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to @category
     else
-      if @category.errors.added?(:category, :blank)
-        flash[:blank_name] = 'Category name must be present'
-      elsif @category.errors.added?(:category, :taken)
-        flash[:duplicate_name] = 'A category with this name already exists'
-      else
-        flash[:alert] = @category.errors.full_messages.to_sentence
-      end
-
-      redirect_to categories_path
+      category_save
     end
   end
 
@@ -50,10 +42,26 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:category_name)
+    expect(category: [:category_name])
   end
+
   # TODO: change method name to set_categories
-  def categories_all
+  def set_categories
     @categories = Category.page(params[:page]).per(20)
+  end
+
+  def category_save
+    set_flash_message
+    redirect_to categories_path
+  end
+
+  def set_flash_message
+    if @category.errors.added?(:category, :blank)
+      flash[:blank_name] = t('message-category-must-be-present')
+    elsif @category.errors.added?(:category, :taken)
+      flash[:duplicate_name] = t('message-category-already-exist')
+    else
+      flash[:alert] = @category.errors.full_messages.to_sentence
+    end
   end
 end

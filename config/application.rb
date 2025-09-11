@@ -13,7 +13,7 @@ module RailsGallery
     config.autoload_lib(ignore: %w[assets tasks])
 
     config.active_model.i18n_customize_full_message = true
-    config.assets.paths << Rails.root.join("app/assets/builds")
+    config.assets.paths << Rails.root.join('app/assets/builds')
 
     config.i18n.default_locale = :en
     config.i18n.available_locales = %i[en ru uk]

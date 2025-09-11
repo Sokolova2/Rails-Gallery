@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class ImagesController < ApplicationController
-  before_action :image, only: %i[show destroy]
+  before_action :set_category, only: %i[show destroy]
+  before_action :set_image, only: %i[show destroy]
   before_action :authenticate_user!
 
   def show
@@ -23,13 +24,15 @@ class ImagesController < ApplicationController
 
   private
 
-  def image
+  def set_category
     @category = Category.friendly.find(params[:category_id])
+  end
+
+  def set_image
     @image = @category.images.find(params[:id])
   end
 
-  # TODO: permit, require
   def image_params
-    params.expect(image: [:image])
+    expect(image: [:image])
   end
 end

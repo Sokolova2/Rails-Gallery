@@ -92,3 +92,9 @@ uk:
       subscriber: "Підписники"
       image: "Зображення"
       user: "Користувачі"
+  captcha: 'Не вдалося виконати капчу. Спробуйте ще раз.'
+  message-category-must-be-present: 'Назва категорії має бути присутня'
+  message-category-already-exist: 'Категорія з такою назвою вже існує'
+  welcome-gallery: 'Ласкаво просимо до галереї Rails'
+  subscribe: 'Ви успішно підписалися'
+  new-photo: "До категорії додано нове фото"

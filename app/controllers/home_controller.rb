@@ -1,20 +1,13 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  def index
-    # TODO: Move both queries to image scope
-    @top_images = Image
-                  .select('images.*, count(distinct likes.id) as likes_count, count(distinct comments.id) as comments_count')
-                  .joins(:likes, :comments)
-                  .group('images.id')
-                  .order('likes_count DESC, comments_count DESC')
-                  .limit(5)
+  before_action :set_top_categories, only: %i[index]
 
-    @top_categories = Category
-                      .select('categories.*, count(distinct likes.id) as likes_count, count(distinct comments.id) as comments_count')
-                      .joins(:likes, :comments)
-                      .group('categories.id')
-                      .order('likes_count DESC, comments_count DESC')
-                      .limit(5)
+  def index; end
+
+  private
+
+  def set_top_categories
+    @top_categories = Category.order_by_likes_and_comments
   end
 end

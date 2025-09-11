@@ -8,5 +8,7 @@ class CreateSubscribers < ActiveRecord::Migration[8.0]
 
       t.timestamps
     end
+
+    add_index :subscribers, %i[category_id user_id], unique: true
   end
 end

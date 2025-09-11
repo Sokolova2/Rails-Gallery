@@ -2,19 +2,21 @@
 
 module Users
   class SessionsController < Devise::SessionsController
-    prepend_before_action :check_captcha, only: [:create]
+    include ApplicationHelper
+
+    prepend_before_action :check_captcha, only: %i[create]
 
     def destroy
-      UserAction.create(user: current_user, action_type: "sign out", url: request.original_url)
+      add_user_active(current_user, 'sign_out')
       super
     end
 
-    def after_sign_out_path_for(resource_or_scope)
+    def after_sign_out_path_for(_resource_or_scope)
       root_path
     end
 
     def after_sign_in_path_for(resource_or_scope)
-      UserAction.create(user: resource_or_scope, action_type: "sign in", url: request.original_url)
+      add_user_active(resource_or_scope, 'sign_in')
       stored_location_for(resource_or_scope) || categories_path
     end
 
@@ -22,8 +24,9 @@ module Users
 
     def check_captcha
       return if verify_recaptcha(model: resource)
+
       # TODO: move to yml and use t()
-      flash.now[:alert] = 'CAPTCHA failed. Please try again.'
+      flash.now[:alert] = t('captcha')
       self.resource = resource_class.new(sign_in_params)
       redirect_to new_user_session_path
     end

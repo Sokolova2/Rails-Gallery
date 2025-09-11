@@ -16,7 +16,7 @@ class Image < ApplicationRecord
   after_create :send_image_email
 
   def send_image_email
-    category.subscribers.includes(:user).each do |subscriber|
+    category.subscribers.includes(:user).find_each do |subscriber|
       user = subscriber.user
       next unless user
 
@@ -24,11 +24,11 @@ class Image < ApplicationRecord
     end
   end
 
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     %w[id id_value category_id image created_at updated_at slug]
   end
 
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(_auth_object = nil)
     %w[category comments likes]
   end
 end

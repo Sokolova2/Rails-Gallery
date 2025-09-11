@@ -9,5 +9,7 @@ class CreateLikes < ActiveRecord::Migration[8.0]
 
       t.timestamps
     end
+
+    add_index :likes, %i[image_id user_id], unique: true
   end
 end

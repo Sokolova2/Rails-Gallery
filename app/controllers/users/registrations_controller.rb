@@ -2,9 +2,7 @@
 
 module Users
   class RegistrationsController < Devise::RegistrationsController
-    # FIXME: here
-    before_action :configure_sign_up_params, only: [:create]
-    before_action :configure_account_update_params, only: [:update]
+    include ApplicationHelper
 
     protected
 
@@ -17,12 +15,12 @@ module Users
     end
 
     def after_sign_up_path_for(resource_or_scope)
-      UserAction.create(user: resource_or_scope, action_type: "sign in", url: request.original_url)
+      add_user_active(resource_or_scope, 'sign_up')
       stored_location_for(resource_or_scope) || categories_path
     end
 
     def after_inactive_sign_up_path_for(resource_or_scope)
-      UserAction.create(user: resource_or_scope, action_type: "sign in", url: request.original_url)
+      add_user_active(resource_or_scope, 'sign_up')
       stored_location_for(resource_or_scope) || categories_path
     end
 

@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Users
   before_action :set_locale
 
   def set_locale
-    # TODO: leave only I18n.default_locale
     I18n.locale = if user_signed_in?
-                    current_user.language
+                    I18n.locale = current_user.language
                   else
-                    params[:lang] || locale_from_header || I18n.default_locale
+                    I18n.default_locale
                   end
   end
 

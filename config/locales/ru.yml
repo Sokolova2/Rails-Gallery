@@ -92,3 +92,9 @@ ru:
       subscriber: "Подписчики"
       image: "Изображения"
       user: "Пользователи"
+  captcha: 'CAPTCHA не пройдена. Попробуйте ещё раз.'
+  message-category-must-be-present: 'Название категории должно присутствовать'
+  message-category-already-exist: 'Категория с таким названием уже существует'
+  welcome-gallery: 'Добро пожаловать в галерею Rails'
+  subscribe: 'Вы успешно подписались'
+  new-photo: "В категорию добавлено новое фото."
