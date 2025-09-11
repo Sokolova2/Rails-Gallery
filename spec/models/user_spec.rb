@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -12,7 +14,7 @@ RSpec.describe User, type: :model do
 
   describe 'methods' do
     context 'set_default_language' do
-      let(:default_language) {I18n.locale.to_s}
+      let(:default_language) { I18n.locale.to_s }
 
       it 'sets default language as I18n locale' do
         # expect { subject.set_default_language }.not_to change(subject, :language)
