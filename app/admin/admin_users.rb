@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register AdminUser do
-  menu priority: 1, label: proc { I18n.t("admin-user") }
+  menu priority: 1, label: proc { I18n.t('admin-user') }
   permit_params :email, :password, :password_confirmation
 
-  actions :all, except: [:edit, :update]
+  actions :all, except: %i[edit update]
 
   index do
     selectable_column
@@ -21,16 +21,6 @@ ActiveAdmin.register AdminUser do
   filter :sign_in_count
   filter :created_at
 
-  form do |f|
-    f.inputs do
-      f.input :email
-      f.input :password
-      f.input :password_confirmation
-    end
-    f.actions
-  end
-
   load Rails.root.join('app/admin/actions_item.rb')
-
-  add_default_action_items_for(AdminUser)
+  action_items(AdminUser)
 end

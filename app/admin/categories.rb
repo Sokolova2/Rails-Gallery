@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Category do
-  menu priority: 1, label: proc { I18n.t("category") }
+  menu priority: 1, label: proc { I18n.t('category') }
   permit_params :category_name, :user_id
 
   controller do
@@ -12,5 +12,5 @@ ActiveAdmin.register Category do
 
   load Rails.root.join('app/admin/actions_item.rb')
 
-  add_default_action_items_for(Category)
+  action_items(Category)
 end

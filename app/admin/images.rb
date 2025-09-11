@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Image do
-  menu priority: 1, label: proc { I18n.t("image") }
+  menu priority: 1, label: proc { I18n.t('image') }
   permit_params :category_id, :image
 
   controller do
@@ -12,5 +12,5 @@ ActiveAdmin.register Image do
 
   load Rails.root.join('app/admin/actions_item.rb')
 
-  add_default_action_items_for(Image)
+  action_items(Image)
 end
