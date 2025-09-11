@@ -27,3 +27,5 @@ Metrics/AbcSize:
   Exclude:
     - 'db/migrate/**'
     - 'app/models/**'
+Rails/StrongParametersExpect:
+  Enabled: false
