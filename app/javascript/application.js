@@ -3,13 +3,15 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core";
 import "bootstrap"
+import "trix"
+import "@rails/actiontext"
 
-document.addEventListener("DOMContentLoaded", function(e){
-    const fileInput = document.getElementById("image_upload");
-    const form = document.getElementById("image-upload-form");
+document.addEventListener('DOMContentLoaded', function(e){
+    const fileInput = document.getElementById('image_upload');
+    const form = document.getElementById('image-upload-form');
 
     if(fileInput && form){
-        fileInput.addEventListener("change", function (){
+        fileInput.addEventListener('change', function (){
             if (fileInput.files.length > 0){
                 form.submit();
             }
@@ -18,11 +20,11 @@ document.addEventListener("DOMContentLoaded", function(e){
 });
 
 function init_masonry() {
-    let masonryContainer = document.querySelector(".masonry-container");
+    let masonryContainer = document.querySelector('.masonry-container');
     if (masonryContainer) {
         imagesLoaded(masonryContainer, function () {
             new window.Masonry(masonryContainer, {
-                itemSelector: ".masonry-item",
+                itemSelector: '.masonry-item',
                 percentPosition: true,
                 gutter: 0,
             });
@@ -33,6 +35,17 @@ function init_masonry() {
 document.addEventListener("turbo:load", init_masonry);
 document.addEventListener("DOMContentLoaded", init_masonry);
 
-// FIXME
-import "trix"
-import "@rails/actiontext"
+
+const fileUpload =  document.getElementById('file-upload')
+
+if (fileUpload){
+  fileUpload.addEventListener('change', function(){
+    const fileName = document.getElementById('file-name');
+
+    if(fileUpload.files.length > 0){
+      fileName.textContent = fileUpload.files[0].name;
+    }else{
+      fileName.textContent = 'No file chosen';
+    }
+  });
+}
