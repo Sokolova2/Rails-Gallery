@@ -11,8 +11,7 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: t('subscribe'))
   end
 
-  # TODO: change name
-  def image_email(category, user)
+  def add_image_email(category, user)
     @category = category
     @users = user
     mail(to: @users.email, subject: t('new-photo'))
