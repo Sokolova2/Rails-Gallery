@@ -1,6 +1,6 @@
-= render "categories/navbar"
+= render 'categories/navbar'
 .container.d-flex.justify-content-between.mt-4.align-items-center.mb-5
-  %h2.my-category= t(".my-categories")
+  %h2.my-category= t('.my-categories')
   -if flash[:blank_name]
     .alert.alert-danger = flash[:blank_name]
 
@@ -10,27 +10,27 @@
   -if flash[:alert]
     .alert.alert-danger= flash[:alert]
 
-  %button.btn.btn-dark.p-2{"data-bs-target" => "#exampleModal", "data-bs-toggle" => "modal", :type => "button"}
-    = t(".create-category")
+  %button.btn.btn-dark.p-2{'data-bs-target' => '#exampleModal', 'data-bs-toggle' => 'modal', :type => 'button'}
+    = t('.create-category')
   / Modal
-  #exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :tabindex => "-1"}
+  #exampleModal.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'exampleModalLabel', :tabindex => '-1'}
     .modal-dialog
       .modal-content
         .modal-header
-          %h1#exampleModalLabel.modal-title.fs-5= t(".create-category-title")
-          %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+          %h1#exampleModalLabel.modal-title.fs-5= t('.create-category-title')
+          %button.btn-close{'aria-label' => 'Close', 'data-bs-dismiss' => 'modal', :type => 'button'}
         .modal-body
-          =render "categories/new", category: Category.new
+          =render 'categories/new', category: Category.new
 .d-flex.gap-5.flex-wrap.category-block
   -@categories.each do |category|
     -if category.user.id == current_user.id
       %div
-        =link_to category_path(category), class: "text-decoration-none text-black" do
+        =link_to category_path(category), class: 'text-decoration-none text-black' do
           .img-wrapper
             =preview_category(category)
         .my-category-info
           %p.text-category.text-dark.align-items-center= category.category_name
-          =button_to category_path(category), method: :delete, class: "me-2 mt-1 border-0 btn btn-transparent" do
+          =button_to category_path(category), method: :delete, class: 'me-2 mt-1 border-0 btn btn-transparent' do
             %i.bi.bi-trash
 .container.d-flex.justify-content-center.mt-5
   =paginate @categories

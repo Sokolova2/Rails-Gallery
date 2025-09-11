@@ -1,17 +1,17 @@
-= render "categories/navbar"
+= render 'categories/navbar'
 .container.d-flex.justify-content-between.mt-4.align-items-center.mb-5
-  %h2.my-category= t(".subscriptions")
+  %h2.my-category= t('.subscriptions')
 .d-flex.gap-5.flex-wrap.category-block
   -@categories.each do |category|
     -category.subscribers.each do |subscriber|
       -if subscriber.user.id == current_user.id
         %div
-          =link_to category_path(category), class: "text-decoration-none text-black" do
+          =link_to category_path(category), class: 'text-decoration-none text-black' do
             .img-wrapper
               =preview_category(category)
           .my-category-info
             %p.text-category.text-dark.align-items-center= category.category_name
-            =button_to "Unsub", category_subscriber_path(category, current_user.id), method: :delete, class: "btn btn-outline-secondary p-2"
+            =button_to 'Unsub', category_subscriber_path(category, current_user.id), method: :delete, class: 'btn btn-outline-secondary p-2'
 .container.d-flex.justify-content-center.mt-5
   =paginate @categories
 

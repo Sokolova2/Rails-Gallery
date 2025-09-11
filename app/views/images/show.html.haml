@@ -1,69 +1,67 @@
 .block-image
-  = render "categories/navbar"
+  = render 'categories/navbar'
   .container
     .mt-3
       .info-images.d-block
         .d-flex.justify-content-between.align-items-center.me-4.pt-3
-          =button_to category_path(@category), method: :get, class: "btn btn-transparent ms-2" do
+          =button_to category_path(@category), method: :get, class: 'btn btn-transparent ms-2' do
             %i.bi.bi-arrow-left
           .d-flex.align-items-center
             -if @category.user.avatar.present?
-              =image_tag @category.user.avatar.url, size: 40, class: "rounded-4"
+              =image_tag @category.user.avatar.url, size: 40, class: 'rounded-4'
             -else
-              = image_tag "avatar.png", size: 40, class: "rounded-4"
-            %p= "#{@category.user.first_name + " " + @category.user.last_name}"
-        =image_tag @image.image.url, class: "image-category"
-        =turbo_frame_tag "frame1" do
+              = image_tag 'avatar.png', size: 40, class: 'rounded-4'
+            %p= "#{@category.user.first_name + ' ' + @category.user.last_name}"
+        =image_tag @image.image.url, class: 'image-category'
+        =turbo_frame_tag 'frame1' do
           .d-flex.justify-content-between.align-items-center.info-image-object
             .d-flex.align-items-center.gap-1.mb-1
               -if @image.liked?(current_user)
-                =button_to category_image_like_path(@category, @image), method: :delete, id: "btn-like", class: "btn btn-outline-dark" do
+                =button_to category_image_like_path(@category, @image), method: :delete, id: 'btn-like', class: 'btn btn-outline-dark' do
                   %i.bi.bi-suit-heart-fill
               -else
-                =button_to category_image_like_path(@category, @image), method: :post, id: "btn-like", class: "btn btn-outline-dark" do
+                =button_to category_image_like_path(@category, @image), method: :post, id: 'btn-like', class: 'btn btn-outline-dark' do
                   %i.bi.bi-suit-heart
-              %button.btn.btn-transparent{"data-bs-target" => "#exampleModal", "data-bs-toggle" => "modal", :type => "button"}
+              %button.btn.btn-transparent{'data-bs-target' => '#exampleModal', 'data-bs-toggle' => 'modal', :type => 'button'}
                 %p.h5.pe-3= @likes.count
-              #exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :tabindex => "-1"}
+              #exampleModal.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'exampleModalLabel', :tabindex => '-1'}
                 .modal-dialog
                   .modal-content
                     .modal-header
-                      %h1#exampleModalLabel.modal-title.fs-5= t(".liked")
-                      %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+                      %h1#exampleModalLabel.modal-title.fs-5= t('.liked')
+                      %button.btn-close{'aria-label' => 'Close', 'data-bs-dismiss' => 'modal', :type => 'button'}
                     .modal-body
                       -@likes.each do |like|
                         .d-flex.justify-content-between.align-items-center.mb-2
                           .d-flex.align-items-center
                             -if like.user.avatar.present?
-                              =image_tag like.user.avatar.url, size: 50, class: "rounded-5"
+                              =image_tag like.user.avatar.url, size: 50, class: 'rounded-5'
                             -else
-                              = image_tag "avatar.png", size: 50, class: "rounded-4"
-                            %p= "#{like.user.first_name} " " #{like.user.last_name}"
+                              = image_tag 'avatar.png', size: 50, class: 'rounded-4'
+                            %p= "#{like.user.first_name}  #{like.user.last_name}"
                           -@category.subscribers.each do |subscriber|
                             -if like.user.id == subscriber.user.id
-                              %p.text-secondary= t(".subscriber")
+                              %p.text-secondary= t('.subscriber')
                     .modal-footer
-                      %button.btn.btn-secondary{"data-bs-dismiss" => "modal", :type => "button"} Close
+                      %button.btn.btn-secondary{'data-bs-dismiss' => 'modal', :type => 'button'} Close
 
-
-
-        = form_with(url: category_image_comment_path(@category, @image), location: true, method: :post, data: {turbo_frame: "comment"}) do |form|
+        = form_with(url: category_image_comment_path(@category, @image), location: true, method: :post, data: {turbo_frame: 'comment'}) do |form|
           .d-flex.gap-2.p-2
-            =form.text_field :comment, class: "comment-tag"
-            =button_tag class: "icon-button" do
+            =form.text_field :comment, class: 'comment-tag'
+            =button_tag class: 'icon-button' do
               %i.bi.bi-arrow-up-circle-fill
         -@comments.each do |comment|
           .d-flex.justify-content-between.align-items-center
             .d-block.ms-5
               .d-flex.align-items-center
                 -if comment.user.avatar.present?
-                  =image_tag comment.user.avatar.url, size: 50, class: "rounded-circle"
+                  =image_tag comment.user.avatar.url, size: 50, class: 'rounded-circle'
                 -else
-                  = image_tag "avatar.png", size: 50, class: "rounded-4"
+                  = image_tag 'avatar.png', size: 50, class: 'rounded-4'
                 .d-block
-                  %p.login-user= "#{comment.user.first_name + " " + comment.user.last_name}"
+                  %p.login-user= "#{comment.user.first_name + ' ' + comment.user.last_name}"
                   %p.comment-view= comment.comment
-              %p.comment-data.pb-3= comment.created_at.strftime("%Y-%m-%d")
+              %p.comment-data.pb-3= comment.created_at.strftime('%Y-%m-%d')
             -@category.subscribers.each do |subscriber|
               -if comment.user.id == subscriber.user.id
-                %p.text-secondary.me-5= t(".subscriber")
+                %p.text-secondary.me-5= t('.subscriber')

@@ -2,40 +2,40 @@
 .container
   .form-action.mt-5.mb-5
     .form_authenticated.p-3
-      %h2.text-center.m-3.h3.fw-bolder= t(".log-in-welcome")
-      = render "devise/shared/error_messages", resource: resource
-      = render "devise/shared/links_oauth_google"
+      %h2.text-center.m-3.h3.fw-bolder= t('.log-in-welcome')
+      = render 'devise/shared/error_messages', resource: resource
+      = render 'devise/shared/links_oauth_google'
       .space-oauth
         .space
-        %span= t("offer-enter-credentials")
+        %span= t('offer-enter-credentials')
         .space
-      = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "px-4 py-3 my-box mx-auto", data: { turbo: false }}) do |f|
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'px-4 py-3 my-box mx-auto', data: { turbo: false }}) do |f|
         .mb-3
           .field
-            = t("email")
+            = t('email')
             %br/
-            = f.email_field :email, :class => "form-control", :id => "exampleDropdownFormEmail1", :placeholder => t("email-placeholder"), autocomplete: "email"
+            = f.email_field :email, :class => 'form-control', :id => 'exampleDropdownFormEmail1', :placeholder => t('email-placeholder'), autocomplete: 'email'
         .mb-3
           .field
-            = t("password")
+            = t('password')
             %br/
-            = f.password_field :password, :class => "form-control", :id => "exampleDropdownFormPassword3", :placeholder => t("password-placeholder"), autocomplete: "current-password"
+            = f.password_field :password, :class => 'form-control', :id => 'exampleDropdownFormPassword3', :placeholder => t('password-placeholder'), autocomplete: 'current-password'
 
         - if devise_mapping.rememberable?
           .mb-3
             .form-check
               .field
-                = f.check_box :remember_me, :class => "form-check-input", :id => "dropdownCheck"
+                = f.check_box :remember_me, :class => 'form-check-input', :id => 'dropdownCheck'
                 .form-check-label
-                  = t(".remember-me")
+                  = t('.remember-me')
         .d-flex.justify-content-end.mb-3
-          = render "devise/shared/links_forgot_password"
+          = render 'devise/shared/links_forgot_password'
         .actions.d-flex.justify-content-center
-          = button_tag type:"submit", class: "btn btn-primary btn-authenticated" do
-            = t("log-in")
-        = render "devise/sessions/recaptcha"
+          = button_tag type:'submit', class: 'btn btn-primary btn-authenticated' do
+            = t('log-in')
+        = render 'devise/sessions/recaptcha'
       %br/
       .d-flex.justify-content-center.gap-1
-        %p= t(".don`t-have-an-account")
-        = render "devise/shared/links_for_register"
+        %p= t('.don`t-have-an-account')
+        = render 'devise/shared/links_for_register'
 

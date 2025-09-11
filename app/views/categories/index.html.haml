@@ -1,7 +1,7 @@
-= render "categories/navbar"
+= render 'categories/navbar'
 .container.d-flex.justify-content-between.mt-4.align-items-center.mb-5
-  =button_to my_categories_categories_path, method: :get, class:"btn btn-dark p-2" do
-    = t(".my-categories")
+  =button_to my_categories_categories_path, method: :get, class:'btn btn-dark p-2' do
+    = t('.my-categories')
   -if flash[:blank_name]
     .alert.alert-danger = flash[:blank_name]
 
@@ -11,34 +11,35 @@
   -if flash[:alert]
     .alert.alert-danger= flash[:alert]
 
-  %button.btn.btn-dark.p-2{"data-bs-target" => "#exampleModal", "data-bs-toggle" => "modal", :type => "button"}
-    = t(".create-category")
+  %button.btn.btn-dark.p-2{'data-bs-target' => '#exampleModal', 'data-bs-toggle' => 'modal', :type => 'button'}
+    = t('.create-category')
   / Modal
-  #exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :tabindex => "-1"}
+  #exampleModal.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'exampleModalLabel', :tabindex => '-1'}
     .modal-dialog
       .modal-content
         .modal-header
-          %h1#exampleModalLabel.modal-title.fs-5= t(".create-category-title")
-          %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+          %h1#exampleModalLabel.modal-title.fs-5= t('.create-category-title')
+          %button.btn-close{'aria-label' => 'Close', 'data-bs-dismiss' => 'modal', :type => 'button'}
         .modal-body
-          =render "categories/new", category: Category.new
+          =render 'categories/new', category: Category.new
 .d-flex.gap-5.flex-wrap.category-block
   -@categories.each do |category|
     %div
-      =link_to category_path(category), class: "text-decoration-none text-black" do
+      =link_to category_path(category), class: 'text-decoration-none text-black' do
         .img-wrapper
           =preview_category(category)
       .category-info
         %p.text-category.text-dark.align-items-center= category.category_name
-        =turbo_frame_tag "subscriber" do
+        =turbo_frame_tag 'subscriber' do
           .d-flex.align-items-center.gap-2
             -if current_user.id == category.user_id
               %p.text-category= "#{category.subscribers.count} sub"
             -unless current_user.id == category.user_id
               %p.text-category= category.subscribers.count
-              -if category.subscribe?(current_user)
-                =button_to "Unsub", category_subscriber_path(category, current_user.id), method: :delete, class: "btn btn-outline-secondary btn-category"
+              -subscriber = category.subscribers.find_by(user:current_user)
+              -if subscriber
+                = button_to 'Unsub', category_subscriber_path(category, subscriber), method: :delete, class: 'btn btn-outline-secondary btn-category'
               -else
-                =button_to "Sub", category_subscribers_path(category, current_user.id), method: :post, class: "btn btn-outline-secondary btn-category"
+                = button_to 'Sub', category_subscribers_path(category), method: :post, class: 'btn btn-outline-secondary btn-category'
 .container.d-flex.justify-content-center.mt-5
   =paginate @categories
