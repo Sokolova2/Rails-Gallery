@@ -5,10 +5,10 @@ class Subscriber < ApplicationRecord
   belongs_to :user
   validates :user_id, uniqueness: { scope: :category_id }
 
-  after_create :send_subscribe_email
+  after_create :send_subscribed_email
 
-  def send_subscribe_email
-    UserMailer.subscribe_email(user).deliver_later
+  def send_subscribed_email
+    UserMailer.subscribed_email(user).deliver_later
   end
 
   def self.ransackable_attributes(_auth_object = nil)
