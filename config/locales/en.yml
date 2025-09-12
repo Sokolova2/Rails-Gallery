@@ -4,7 +4,12 @@ en:
       info-about-app: "Online gallery for photographers"
       info-about-app-second: "Good service for photographers"
       btn-start: "Get start for free"
-    navbar:
+    navbar_large:
+      home-link: "Home"
+      categories-btn: "Categories"
+      login-link: "Sign In"
+      sign-up-link: "Create Account"
+    navbar_small:
       home-link: "Home"
       categories-btn: "Categories"
       login-link: "Sign In"
@@ -12,29 +17,89 @@ en:
   devise:
     registrations:
       new:
+        sign-up: "Sign up"
+        offer-enter-credentials: "or enter your credentials"
+        first-name: "First name"
+        last-name: "Last name"
+        email: "Email"
+        password: "Password"
+        password-length: "characters minimum"
+        password-confirmation: "Password confirmation"
+        avatar: "Avatar"
+        upload-image: "Upload"
         already-have-account: "Already have an account?"
         first-name-placeholder: "David"
         last-name-placeholder: "Snow"
+        email-placeholder: "name@example.com"
+        password-placeholder: "password"
       edit:
-        update-btn: "Update"
         edit: "Edit"
         cancel-account: "Cancel my account"
+        upload-image: "Upload"
+        first-name: "First name"
+        last-name: "Last name"
+        email: "Email"
+        password: "Password"
+        password-length: "characters minimum"
+        password-confirmation: "Password confirmation"
         current-password: "Current password"
+        password-placeholder: "password"
+        update-btn: "Update"
     sessions:
       new:
         log-in-welcome: "Hi, Welcome Back!"
+        offer-enter-credentials: "or enter your credentials"
+        email: "Email"
+        password: "Password"
+        email-placeholder: "name@example.com"
+        password-placeholder: "password"
+        log-in: "Log in"
         remember-me: "Remember me"
         don`t-have-an-account: "Don`t have an account?"
     passwords:
       new:
+        forgot-password: "Forgot your password?"
+        email: "Email"
+        email-placeholder: "name@example.com"
         send-btn: "Send me"
+        remember-password: "Remember your password?"
       edit:
+        change-password: "Change your password"
         new-password: "New password"
+        password-length: "characters minimum"
+        password-placeholder: "password"
         new-password_confirmation: "Confirm new password"
         change-btn: "Change"
+        remember-password: "Remember your password?"
+    mailer:
+      reset_password_instructions:
+        topic-message: 'Hello, %{name}'
+        message: 'Someone has requested a link to change your password. You can do this through the link below.'
+        reset_password_token: 'Change my password'
+        extra-info: "If you didn't request this, please ignore this email."
+        extra-info-second: "Your password won't change until you access the link above and create a new one."
     shared:
       links_oauth_google:
         material-button-auth: "Sign in with Google"
+      links_for_log_in:
+        log-in: "Log in"
+      links_for_register:
+        sign-up: "Sign up"
+      links_forgot_password:
+        forgot-password: "Forgot your password?"
+  user_mailer:
+    add_image_email:
+      topic-message: 'Added a new photo!'
+      message: 'We nice to see you!'
+      info-message: 'A new photo has been added to the category you are subscribed to.'
+    subscribed_email:
+      topic-message: 'You have subscribed successfully!'
+      message: 'We nice to see you!'
+      info-message: 'You have subscribed successfully to category!'
+    welcome_email:
+      topic-message: 'Welcome to Rails Gallery!'
+      message: 'We nice to see you! You have registered successfully!'
+      info-message: 'You can log in follow the link:'
   categories:
     new:
       category-name: "Category name"
@@ -43,36 +108,29 @@ en:
       my-categories: "My categories"
       create-category: "+ Create category"
       create-category-title: "Create category"
+      subscriber: "Sub"
+      unsubscriber: "Unsub"
     my_categories:
       my-categories: "My categories"
       create-category: "+ Create category"
       create-category-title: "Create category"
-    navbar:
+    navbar_large:
       edit-profile: "Edit profile"
       sign-out: "Sign out"
       subscriptions: "Subscriptions"
+    navbar_small:
+      edit-profile: "Edit profile"
+      sign-out: "Sign out"
+      subscriptions: "Subscriptions"
+    show:
+      upload-image: "Upload"
     subscriptions:
       subscriptions: "Subscriptions"
+      unsubscriber: "Unsub"
   images:
     show:
       subscriber: "Subscriber"
       liked: "Liked"
-  sign-up: "Sign up"
-  log-in: "Log in"
-  forgot-password: "Forgot your password?"
-  change-password: "Change your password"
-  remember-password: "Remember your password?"
-  offer-enter-credentials: "or enter your credentials"
-  first-name: "First name"
-  last-name: "Last name"
-  email: "Email"
-  password: "Password"
-  password-length: "characters minimum"
-  password-confirmation: "Password confirmation"
-  avatar: "Avatar"
-  upload-image: "Upload"
-  email-placeholder: "name@example.com"
-  password-placeholder: "password"
   new-action-item: "Create"
   edit-action-item: "Edit"
   delete-action-item: "Delete"

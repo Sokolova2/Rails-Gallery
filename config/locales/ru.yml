@@ -4,7 +4,12 @@ ru:
       info-about-app: "Онлайн галерея для фотографов"
       info-about-app-second: "Хороший сервис для фотографов"
       btn-start: "Начать бесплатно"
-    navbar:
+    navbar_large:
+      home-link: "Главная страница"
+      categories-btn: "Категории"
+      login-link: "Войти"
+      sign-up-link: "Создать аккаунт"
+    navbar_small:
       home-link: "Главная страница"
       categories-btn: "Категории"
       login-link: "Войти"
@@ -12,29 +17,89 @@ ru:
   devise:
     registrations:
       new:
+        sign-up: "Регистрация"
+        offer-enter-credentials: "или введите свои учетные данные"
+        first-name: "Имя"
+        last-name: "Фамилия"
+        email: "Электронная почта"
+        password: "Пароль"
+        password-length: "минимум символов"
+        password-confirmation: "Подтеврдить пароль"
+        avatar: "Аватар"
+        upload-image: "Загрузить"
+        email-placeholder: "name@example.com"
+        password-placeholder: "пароль"
         already-have-account: "У вас уже есть аккаунт?"
         first-name-placeholder: "Иван"
         last-name-placeholder: "Иванов"
       edit:
-        update-btn: "Обновить"
         edit: "Изменение"
         cancel-account: "Удалить мой аккаунт"
+        upload-image: "Загрузить"
+        first-name: "Имя"
+        last-name: "Фамилия"
+        email: "Электронная почта"
+        password: "Пароль"
+        password-length: "минимум символов"
+        password-confirmation: "Подтеврдить пароль"
         current-password: "Текущий пароль"
+        password-placeholder: "пароль"
+        update-btn: "Обновить"
     sessions:
       new:
         log-in-welcome: "Привет, с возвращением!"
+        offer-enter-credentials: "или введите свои учетные данные"
+        email: "Электронная почта"
+        password: "Пароль"
+        email-placeholder: "name@example.com"
+        password-placeholder: "пароль"
+        log-in: "Войти"
         remember-me:  "Запомнить меня"
         don`t-have-an-account: "У вас нет аккаунта?"
     passwords:
       new:
+        forgot-password: "Забыли пароль?"
+        email: "Электронная почта"
+        email-placeholder: "name@example.com"
         send-btn: "Отправить письмо"
+        remember-password: "Помните свой пароль?"
       edit:
+        change-password: "Измените свой пароль"
         new-password: "Новый пароль"
+        password-length: "минимум символов"
+        password-placeholder: "пароль"
         new-password_confirmation: "Подтвердить новый пароль"
         change-btn: "Изменить"
+        remember-password: "Помните свой пароль?"
+    mailer:
+      reset_password_instructions:
+        topic-message: 'Привет, %{name}'
+        message: 'Кто-то запросил ссылку для смены пароля. Вы можете сделать это по ссылке ниже.'
+        reset_password_token: 'Изменить мой пароль'
+        extra-info: 'Если вы этого не запрашивали, пожалуйста, проигнорируйте это письмо.'
+        extra-info-second: 'Ваш пароль не изменится, пока вы не перейдете по ссылке выше и не создадите новый.'
     shared:
       links_oauth_google:
         material-button-auth: "Войти через Google"
+      links_for_log_in:
+        log-in: "Войти"
+      links_for_register:
+        sign-up: "Регистрация"
+      links_forgot_password:
+        forgot-password: "Забыли пароль?"
+  user_mailer:
+    add_image_email:
+      topic-message: 'Добавлено новое фото!'
+      message: 'Мы рады вас видеть!'
+      info-message: 'В категорию, на которую вы подписаны, добавлена новая фотография.'
+    subscribed_email:
+      topic-message: 'Вы успешно подписались!'
+      message: 'Мы рады вас видеть!'
+      info-message: 'Вы успешно подписались на категорию!'
+    welcome_email:
+      topic-message: 'Добро пожаловать в галерею Rails!'
+      message: 'Мы рады вас видеть! Вы успешно зарегистрировались!'
+      info-message: 'Войти можно перейдя по ссылке:'
   categories:
     new:
       category-name: "Название категории"
@@ -43,36 +108,29 @@ ru:
       my-categories: "Mои категории"
       create-category: "+ Создать категорию"
       create-category-title: "Создать категорию"
+      subscriber: "Подпис"
+      unsubscriber: "Отпис"
     my_categories:
       my-categories: "Mои категории"
       create-category: "+ Создать категорию"
       create-category-title: "Создать категорию"
-    navbar:
+    navbar_large:
       edit-profile: "Редактировать профиль"
       sign-out: "Выход"
       subscriptions: "Подписки"
+    navbar_small:
+      edit-profile: "Редактировать профиль"
+      sign-out: "Выход"
+      subscriptions: "Подписки"
+    show:
+      upload-image: "Загрузить"
     subscriptions:
       subscriptions: "Подписки"
+      unsubscriber: "Отпис"
   images:
     show:
       subscriber: "Подписчик"
       liked: "Лайкнувшие"
-  sign-up: "Регистрация"
-  log-in: "Войти"
-  forgot-password: "Забыли пароль?"
-  change-password: "Измените свой пароль"
-  remember-password: "Помните свой пароль?"
-  offer-enter-credentials: "или введите свои учетные данные"
-  first-name: "Имя"
-  last-name: "Фамилия"
-  email: "Электронная почта"
-  password: "Пароль"
-  password-length: "минимум символов"
-  password-confirmation: "Подтеврдить пароль"
-  avatar: "Аватар"
-  upload-image: "Загрузить"
-  email-placeholder: "name@example.com"
-  password-placeholder: "пароль"
   new-action-item: "Создать"
   edit-action-item: "Изменить"
   delete-action-item: "Удалить"
@@ -83,6 +141,12 @@ ru:
   like: "Лайки"
   subscriber: "Подписчики"
   user: "Пользователи"
+  captcha: 'CAPTCHA не пройдена. Попробуйте ещё раз.'
+  message-category-must-be-present: 'Название категории должно присутствовать'
+  message-category-already-exist: 'Категория с таким названием уже существует'
+  welcome-gallery: 'Добро пожаловать в галерею Rails'
+  subscribe: 'Вы успешно подписались'
+  new-photo: "В категорию добавлено новое фото."
   activerecord:
     models:
       admin_user: "Администратор"
@@ -92,9 +156,3 @@ ru:
       subscriber: "Подписчики"
       image: "Изображения"
       user: "Пользователи"
-  captcha: 'CAPTCHA не пройдена. Попробуйте ещё раз.'
-  message-category-must-be-present: 'Название категории должно присутствовать'
-  message-category-already-exist: 'Категория с таким названием уже существует'
-  welcome-gallery: 'Добро пожаловать в галерею Rails'
-  subscribe: 'Вы успешно подписались'
-  new-photo: "В категорию добавлено новое фото."
