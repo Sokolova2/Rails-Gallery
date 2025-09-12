@@ -1,31 +1,29 @@
-= render 'categories/navbar'
+=render 'categories/navbar'
 .container.mt-5
   .d-flex.justify-content-between.align-items-center
     %h1.h2= @category.category_name
     -if @category.user_id == current_user.id
       %button.btn.btn-dark.p-2{'data-bs-target' => '#exampleModal', 'data-bs-toggle' => 'modal', :type => 'button'}
-        = t('upload-image')
+        =t('.upload-image')
       #exampleModal.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'exampleModalLabel', :tabindex => '-1'}
         .modal-dialog
           .modal-content
             .modal-header
-              %h1#exampleModalLabel.modal-title.fs-5= t('upload-image')
+              %h1#exampleModalLabel.modal-title.fs-5= t('.upload-image')
               %button.btn-close{'aria-label' => 'Close', 'data-bs-dismiss' => 'modal', :type => 'button'}
             .modal-body
               =form_with(model: [@category, Image.new], local: true, html: { id: 'image-upload-form' }, data: { turbo: false} ) do |f|
-                -if flash[:alert]
-                  %p Check the size of your photo, it should not exceed 50mb
-                -if flash[:notice]
-                  .alert.alert-danger= flash[:notice]
+                =render 'categories/images_error_message'
                 .mb-3
                   %div
                     .mt-2
-                      %label{ for: 'file-upload', class: 'custom-upload-label btn btn-secondary btn-upload w-100' }= t('upload-image')
-                      = f.file_field :image, id: 'file-upload', class: 'd-none'
+                      %label{ for: 'file-upload', class: 'custom-upload-label btn btn-secondary btn-upload w-100' }= t('.upload-image')
+                      =f.file_field :image, id: 'file-upload', class: 'd-none'
                       %span{:id => 'file-name'} No file chosen
                       %br/
                 .d-flex.justify-content-between.mt-1
-                  =f.submit 'Upload', class: 'btn btn-primary mt-2 d-flex justify-content-center'
+                  =f.submit class: 'btn btn-primary mt-2 d-flex justify-content-center' do
+                    =t('.upload-image')
   .masonry-container.mt-5.mb-5
     -@image.each do |img|
       =link_to category_image_path(@category, img) do

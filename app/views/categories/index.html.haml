@@ -1,18 +1,10 @@
-= render 'categories/navbar'
+=render 'categories/navbar'
 .container.d-flex.justify-content-between.mt-4.align-items-center.mb-5
   =button_to my_categories_categories_path, method: :get, class:'btn btn-dark p-2' do
-    = t('.my-categories')
-  -if flash[:blank_name]
-    .alert.alert-danger = flash[:blank_name]
-
-  - if flash[:duplicate_name]
-    .alert.alert-danger= flash[:duplicate_name]
-
-  -if flash[:alert]
-    .alert.alert-danger= flash[:alert]
-
+    =t('.my-categories')
+  =render 'categories/category_errors_messages'
   %button.btn.btn-dark.p-2{'data-bs-target' => '#exampleModal', 'data-bs-toggle' => 'modal', :type => 'button'}
-    = t('.create-category')
+    =t('.create-category')
   / Modal
   #exampleModal.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'exampleModalLabel', :tabindex => '-1'}
     .modal-dialog
@@ -30,16 +22,18 @@
           =preview_category(category)
       .category-info
         %p.text-category.text-dark.align-items-center= category.category_name
-        =turbo_frame_tag 'subscriber' do
+        =turbo_frame_tag "subscriber_#{category.id}" do
           .d-flex.align-items-center.gap-2
             -if current_user.id == category.user_id
-              %p.text-category= "#{category.subscribers.count} sub"
+              %p.text-category= "#{category.subscribers.count} #{t('.subscriber')}"
             -unless current_user.id == category.user_id
               %p.text-category= category.subscribers.count
               -subscriber = category.subscribers.find_by(user:current_user)
               -if subscriber
-                = button_to 'Unsub', category_subscriber_path(category, subscriber), method: :delete, class: 'btn btn-outline-secondary btn-category'
+                =button_to category_subscriber_path(category, subscriber), method: :delete, class: 'btn btn-outline-secondary btn-category' do
+                  =t('.unsubscriber')
               -else
-                = button_to 'Sub', category_subscribers_path(category), method: :post, class: 'btn btn-outline-secondary btn-category'
+                =button_to category_subscribers_path(category), method: :post, class: 'btn btn-outline-secondary btn-category' do
+                  =t('.subscriber')
 .container.d-flex.justify-content-center.mt-5
   =paginate @categories

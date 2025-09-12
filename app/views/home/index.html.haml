@@ -1,9 +1,9 @@
 .gradient
-  = render 'home/navbar'
+  =render 'home/navbar'
   %div.describe-site.mt-5
     %h2.text-light.h2.fw-bold.mt-5= t('.info-about-app')
     %p.text-light= t('.info-about-app-second')
-    = button_to(new_user_session_path, method: :get, class:'btn btn-light p-3 mt-5 ') do
+    =button_to(new_user_session_path, method: :get, class:'btn btn-light p-3 mt-5 ') do
       =t('.btn-start')
   #carouselExampleInterval.carousel.slide{'data-bs-ride' => 'carousel'}
     .carousel-inner.p-5

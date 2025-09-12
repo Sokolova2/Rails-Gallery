@@ -1,6 +1,6 @@
-- if controller_name != 'sessions'
-  = link_to new_session_path(resource_name) do
-    = t('log-in')
+-if controller_name != 'sessions'
+  =link_to new_session_path(resource_name) do
+    =t('.log-in')
   %br/
 
 

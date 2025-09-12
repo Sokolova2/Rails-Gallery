@@ -2,56 +2,52 @@
 .container
   .form-action.mt-5.mb-5
     .form_authenticated.p-3
-      %h2.text-center.m-3.h3.fw-bold= t('sign-up')
-      = render 'devise/shared/error_messages', resource: resource
-      = render 'devise/shared/links_oauth_google'
+      %h2.text-center.m-3.h3.fw-bold= t('.sign-up')
+      =render 'devise/shared/error_messages', resource: resource
+      =render 'devise/shared/links_oauth_google'
       .space-oauth
         .space
-        %span= t('offer-enter-credentials')
+        %span= t('.offer-enter-credentials')
         .space
-      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'px-4 py-3 my-box mx-auto', multipart: true}) do |f|
+      =form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'px-4 py-3 my-box mx-auto', multipart: true}) do |f|
         .mb-3
           .field
-            = t('first-name')
+            =t('.first-name')
             %br/
-            = f.text_field :first_name, :class => 'form-control', :placeholder => t('.first-name-placeholder'), autocomplete: 'first_name'
+            =f.text_field :first_name, :class => 'form-control', :placeholder => t('.first-name-placeholder'), autocomplete: 'first_name'
         .mb-3
           .field
-            = t('last-name')
+            =t('.last-name')
             %br/
-            = f.text_field :last_name, :class => 'form-control', :placeholder => t('.last-name-placeholder'), autocomplete: 'last_name'
+            =f.text_field :last_name, :class => 'form-control', :placeholder => t('.last-name-placeholder'), autocomplete: 'last_name'
         .mb-3
           .field
-            = t('email')
+            =t('.email')
             %br/
-            = f.email_field :email, :class => 'form-control', :id => 'exampleDropdownFormEmail1', :placeholder => t('email-placeholder'), autocomplete: 'email'
+            =f.email_field :email, :class => 'form-control', :id => 'exampleDropdownFormEmail1', :placeholder => t('.email-placeholder'), autocomplete: 'email'
         .mb-3
           .field
-            = t('password')
-            - if @minimum_password_length
-              %em
-                (#{@minimum_password_length}
-                =t('password-length')
-                )
+            =t('.password')
+            =render 'devise/minimum_password_length'
             %br/
-            = f.password_field :password, :class => 'form-control', :id => 'exampleDropdownFormPassword1', :placeholder => t('password-placeholder'), autocomplete: 'new-password'
+            =f.password_field :password, :class => 'form-control', :id => 'exampleDropdownFormPassword1', :placeholder => t('.password-placeholder'), autocomplete: 'new-password'
         .mb-3
           .field
-            = t('password-confirmation')
+            =t('.password-confirmation')
             %br/
-            = f.password_field :password_confirmation, :class => 'form-control', :id => 'exampleDropdownFormPassword2', :placeholder => t('password-placeholder'), autocomplete: 'new-password'
+            =f.password_field :password_confirmation, :class => 'form-control', :id => 'exampleDropdownFormPassword2', :placeholder => t('.password-placeholder'), autocomplete: 'new-password'
         .mb-3
           .field
             %div
-              = t('avatar')
+              =t('.avatar')
               .mt-2
-              %label{ for: 'image_upload', class: 'custom-upload-label btn btn-outline-secondary' }= t('upload-image')
-              = f.file_field :avatar, id: 'image_upload', class: 'd-none'
+              %label{ for: 'image_upload', class: 'custom-upload-label btn btn-outline-secondary' }= t('.upload-image')
+              =f.file_field :avatar, id: 'image_upload', class: 'd-none'
               %br/
         .actions.d-flex.justify-content-center
-          = button_tag type:'submit', class: 'btn btn-primary btn-authenticated' do
-            = t('sign-up')
+          =button_tag type:'submit', class: 'btn btn-primary btn-authenticated' do
+            =t('.sign-up')
       %br/
       .d-flex.justify-content-center.gap-1
         %p= t('.already-have-account')
-        = render 'devise/shared/links_for_log_in'
+        =render 'devise/shared/links_for_log_in'

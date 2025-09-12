@@ -1,3 +1,4 @@
-%h1.h1 Add a new photo!
-%p We nice to see you!
-%a{href: "http://localhost:3000/categories/#{@category.slug}"} A new photo has been added to the category "#{@category.category_name}" you are subscribed to.
+%h1.h1= t('.topic-message')
+%p= t('.message')
+%p= t('.info-message', name: @category.category_name)
+%a{href: "http://localhost:3000/categories/#{@category.slug}"}

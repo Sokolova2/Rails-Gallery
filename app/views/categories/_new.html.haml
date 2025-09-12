@@ -1,5 +1,5 @@
-= form_with(model: category, local: true, html: {multipart: true}) do |f|
+=form_with(model: category, local: true, html: {multipart: true}) do |f|
   =f.text_field :category_name, class: 'form-control mt-2', :placeholder => t('.category-name')
   %br/
   =button_tag type:'submit', class: 'btn btn-primary mt-2 d-flex justify-content-center' do
-    = t('.create')
+    =t('.create')

@@ -1,5 +1,5 @@
 .block-image
-  = render 'categories/navbar'
+  =render 'categories/navbar'
   .container
     .mt-3
       .info-images.d-block
@@ -7,10 +7,8 @@
           =button_to category_path(@category), method: :get, class: 'btn btn-transparent ms-2' do
             %i.bi.bi-arrow-left
           .d-flex.align-items-center
-            -if @category.user.avatar.present?
-              =image_tag @category.user.avatar.url, size: 40, class: 'rounded-4'
-            -else
-              = image_tag 'avatar.png', size: 40, class: 'rounded-4'
+            %label{ for: 'drop-down', class: 'custom-avatar-label'}
+              =avatar_for(@category.user)
             %p= "#{@category.user.first_name + ' ' + @category.user.last_name}"
         =image_tag @image.image.url, class: 'image-category'
         =turbo_frame_tag 'frame1' do
@@ -34,10 +32,8 @@
                       -@likes.each do |like|
                         .d-flex.justify-content-between.align-items-center.mb-2
                           .d-flex.align-items-center
-                            -if like.user.avatar.present?
-                              =image_tag like.user.avatar.url, size: 50, class: 'rounded-5'
-                            -else
-                              = image_tag 'avatar.png', size: 50, class: 'rounded-4'
+                            %label{ for: 'drop-down', class: 'custom-avatar-label'}
+                              =avatar_for(like.user)
                             %p= "#{like.user.first_name}  #{like.user.last_name}"
                           -@category.subscribers.each do |subscriber|
                             -if like.user.id == subscriber.user.id
@@ -45,7 +41,7 @@
                     .modal-footer
                       %button.btn.btn-secondary{'data-bs-dismiss' => 'modal', :type => 'button'} Close
 
-        = form_with(url: category_image_comment_path(@category, @image), location: true, method: :post, data: {turbo_frame: 'comment'}) do |form|
+        =form_with(url: category_image_comment_path(@category, @image), location: true, method: :post, data: {turbo_frame: 'comment'}) do |form|
           .d-flex.gap-2.p-2
             =form.text_field :comment, class: 'comment-tag'
             =button_tag class: 'icon-button' do
@@ -54,10 +50,8 @@
           .d-flex.justify-content-between.align-items-center
             .d-block.ms-5
               .d-flex.align-items-center
-                -if comment.user.avatar.present?
-                  =image_tag comment.user.avatar.url, size: 50, class: 'rounded-circle'
-                -else
-                  = image_tag 'avatar.png', size: 50, class: 'rounded-4'
+                %label{ for: 'drop-down', class: 'custom-avatar-label'}
+                  =avatar_for(comment.user)
                 .d-block
                   %p.login-user= "#{comment.user.first_name + ' ' + comment.user.last_name}"
                   %p.comment-view= comment.comment
