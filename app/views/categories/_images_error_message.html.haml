@@ -1,4 +1,4 @@
 -if flash[:alert]
-  %p Check the size of your photo, it should not exceed 50mb
-  -if flash[:notice]
-    .alert.alert-danger= flash[:notice]
+  .alert.alert-danger Check the size of your photo, it should not be less than 10KB or more than 50MB
+-if flash[:notice]
+  .alert.alert-danger= flash[:alert]

@@ -1,4 +1,5 @@
 =render 'categories/navbar'
+=render 'categories/images_error_message'
 .container.mt-5
   .d-flex.justify-content-between.align-items-center
     %h1.h2= @category.category_name
@@ -12,23 +13,24 @@
               %h1#exampleModalLabel.modal-title.fs-5= t('.upload-image')
               %button.btn-close{'aria-label' => 'Close', 'data-bs-dismiss' => 'modal', :type => 'button'}
             .modal-body
-              =form_with(model: [@category, Image.new], local: true, html: { id: 'image-upload-form' }, data: { turbo: false} ) do |f|
-                =render 'categories/images_error_message'
+              =form_with(model: [@category, Image.new], local: true ) do |f|
                 .mb-3
                   %div
                     .mt-2
-                      %label{ for: 'file-upload', class: 'custom-upload-label btn btn-secondary btn-upload w-100' }= t('.upload-image')
-                      =f.file_field :image, id: 'file-upload', class: 'd-none'
-                      %span{:id => 'file-name'} No file chosen
+                      %div{'data-controller' => 'upload'}
+                        %label{ for: 'file-upload', class: 'custom-upload-label btn btn-secondary btn-upload w-100' }= t('.upload-image')
+                        =f.file_field :image, id: 'file-upload', class: 'd-none', 'data-action' => 'change->upload#upload_image'
+                        %span{:id => 'file-name'} No file chosen
                       %br/
                 .d-flex.justify-content-between.mt-1
                   =f.submit class: 'btn btn-primary mt-2 d-flex justify-content-center' do
                     =t('.upload-image')
-  .masonry-container.mt-5.mb-5
-    -@image.each do |img|
-      =link_to category_image_path(@category, img) do
-        .masonry-item
-          =image_tag img.image.url, class: 'rounded-3 image-home'
+  %div{'data-controller' => 'masonry'}
+    .masonry-container.mt-5.mb-5
+      -@image.each do |img|
+        =link_to category_image_path(@category, img) do
+          .masonry-item
+            =image_tag img.image.url, class: 'rounded-3 image-home'
 
 .container.d-flex.justify-content-center.mt-5
   =paginate @image

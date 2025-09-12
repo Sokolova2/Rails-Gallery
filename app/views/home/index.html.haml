@@ -19,12 +19,12 @@
     %button.carousel-control-next{'data-bs-slide' => 'next', 'data-bs-target' => '#carouselExampleInterval', :type => 'button'}
       %span.carousel-control-next-icon{'aria-hidden' => 'true'}
       %span.visually-hidden Next
-
-.masonry-container.mt-5.mb-5
-  -@top_categories.each do |category|
-    -category.images.limit(3).each do |image|
-      .masonry-item
-        =image_tag image.image.url, class: 'rounded-3 image-home'
+%div{'data-controller' => 'masonry'}
+  .masonry-container.mt-5.mb-5
+    -@top_categories.each do |category|
+      -category.images.limit(3).each do |image|
+        .masonry-item
+          =image_tag image.image.url, class: 'rounded-3 image-home'
 
 
 
