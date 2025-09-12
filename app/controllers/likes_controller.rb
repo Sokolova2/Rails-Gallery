@@ -9,7 +9,7 @@ class LikesController < ApplicationController
   def create
     unless @image.liked?(current_user)
       Like.create(category_id: @category.id, user_id: current_user.id, image_id: @image.id)
-      add_user_active(current_user, 'add like')
+      add_user_action(current_user, 'add like')
     end
 
     redirect_to category_image_path(@category, @image)
@@ -19,7 +19,7 @@ class LikesController < ApplicationController
     if @image.liked?(current_user)
       like = Like.find_by(category_id: @category.id, user_id: current_user.id, image_id: @image.id)
       like&.destroy
-      add_user_active(current_user, 'delete like')
+      add_user_action(current_user, 'delete like')
     end
 
     redirect_to category_image_path(@category, @image)

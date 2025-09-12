@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
   def create
     Comment.create(category_id: @category.id, user_id: current_user.id, image_id: @image.id, comment: params[:comment])
-    add_user_active(current_user, 'add comment')
+    add_user_action(current_user, 'add comment')
     redirect_to category_image_path(@category, @image)
   end
 

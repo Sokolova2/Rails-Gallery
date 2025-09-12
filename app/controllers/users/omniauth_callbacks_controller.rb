@@ -16,7 +16,7 @@ module Users
     end
 
     def after_sign_in_path_for(resource_or_scope)
-      add_user_active(resource_or_scope, 'sign_in')
+      add_user_action(resource_or_scope, 'sign_in')
       stored_location_for(resource_or_scope) || categories_path
     end
 
