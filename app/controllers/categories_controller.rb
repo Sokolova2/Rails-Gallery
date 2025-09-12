@@ -15,11 +15,13 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     @category.user = current_user
 
-    if @category.save
-      redirect_to @category
-    else
-      category_save
+    unless @category.save
+      set_flash_message
+      redirect_to categories_path
+      return
     end
+
+    redirect_to @category
   end
 
   def update
@@ -45,14 +47,8 @@ class CategoriesController < ApplicationController
     params.require(:category).permit(:category_name)
   end
 
-  # TODO: change method name to set_categories
   def set_categories
     @categories = Category.page(params[:page]).per(20)
-  end
-
-  def category_save
-    set_flash_message
-    redirect_to categories_path
   end
 
   def set_flash_message

@@ -27,7 +27,6 @@ class LikesController < ApplicationController
 
   private
 
-  # TODO: move to another method
   def set_category
     @category = Category.friendly.find(params[:category_id])
   end

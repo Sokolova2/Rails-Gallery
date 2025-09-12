@@ -25,7 +25,6 @@ module Users
     def check_captcha
       return if verify_recaptcha(model: resource)
 
-      # TODO: move to yml and use t()
       flash.now[:alert] = t('captcha')
       self.resource = resource_class.new(sign_in_params)
       redirect_to new_user_session_path

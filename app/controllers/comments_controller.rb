@@ -14,7 +14,6 @@ class CommentsController < ApplicationController
 
   private
 
-  # TODO: separate to two methods
   def set_category
     @category = Category.friendly.find(params[:category_id])
   end

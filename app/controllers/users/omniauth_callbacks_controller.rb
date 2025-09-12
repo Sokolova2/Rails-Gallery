@@ -6,7 +6,7 @@ module Users
 
     def google_oauth2
       user = User.from_omniauth(auth, locale_from_header || params[:lang])
-      user_present(user)
+      hangle_oauth_user(user)
     end
 
     protected
@@ -16,7 +16,6 @@ module Users
     end
 
     def after_sign_in_path_for(resource_or_scope)
-      # TODO: move user action logging to separate method
       add_user_active(resource_or_scope, 'sign_in')
       stored_location_for(resource_or_scope) || categories_path
     end
@@ -27,7 +26,7 @@ module Users
       @auth ||= request.env['omniauth.auth']
     end
 
-    def user_present(user)
+    def hangle_oauth_user(user)
       if user.present?
         sign_out_all_scopes
         flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
