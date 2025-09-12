@@ -10,7 +10,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def size_range
-    0..(50.megabytes)
+    (10.kilobytes)..(50_000.megabytes)
   end
 
   version :thumb do
