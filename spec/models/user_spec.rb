@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { User.create!(email: 'test@test', password: '123123', password_confirmation: '123123') }
+  subject { User.create!(email: 'test@test', password: '123123', password_confirmation: '123123', avatar: '123') }
 
   describe 'associations' do
     it { is_expected.to have_many(:categories).dependent(:destroy) }
