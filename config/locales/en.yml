@@ -147,6 +147,7 @@ en:
   welcome-gallery: 'Welcome to Rails Gallery'
   subscribe: 'You have subscribed successfully'
   new-photo: "A new photo has been added to the category"
+  success-upload-image: 'Image uploaded successfully'
   activerecord:
     errors:
       full_messages:

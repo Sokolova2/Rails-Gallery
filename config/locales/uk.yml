@@ -147,6 +147,7 @@ uk:
   welcome-gallery: 'Ласкаво просимо до галереї Rails'
   subscribe: 'Ви успішно підписалися'
   new-photo: "До категорії додано нове фото"
+  success-upload-image: 'Фотографія успішно додана'
   activerecord:
     models:
       admin_user: "Адміністратор"
