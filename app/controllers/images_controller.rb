@@ -14,11 +14,7 @@ class ImagesController < ApplicationController
     @category = Category.friendly.find(params[:category_id])
     @images = @category.images.build(image_params)
 
-    if @images.save
-      flash[:notice] = "Image uploaded successfully"
-    else
-      flash[:alert] = @images.errors.full_messages.to_sentence
-    end
+    save_image
 
     redirect_to @category
   end
@@ -39,5 +35,13 @@ class ImagesController < ApplicationController
 
   def image_params
     params.require(:image).permit(:image)
+  end
+
+  def save_image
+    if @images.save
+      flash[:notice] = t('success-upload-image')
+    else
+      flash[:alert] = @images.errors.full_messages.to_sentence
+    end
   end
 end
