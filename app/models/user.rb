@@ -8,21 +8,17 @@ class User < ApplicationRecord
   has_many :user_actions, dependent: :destroy
 
   after_initialize :set_default_language, if: :new_record?
+  after_create :send_welcome_email
+
+  mount_uploader :avatar, AvatarUploader
 
   def set_default_language
     self.language ||= I18n.locale
   end
 
-  mount_uploader :avatar, AvatarUploader
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
-
-  validates_integrity_of :avatar
-  validates_processing_of :avatar
-
-  after_create :send_welcome_email
 
   def send_welcome_email
     UserMailer.welcome_email(self).deliver_later

@@ -7,13 +7,13 @@ class Image < ApplicationRecord
 
   validates :image, presence: true
 
+  after_create :send_image_email
+
   def liked?(user)
     likes.exists?(user_id: user.id)
   end
 
   mount_uploader :image, ImageUploader
-
-  after_create :send_image_email
 
   def send_image_email
     category.subscribers.includes(:user).find_each do |subscriber|
