@@ -13,7 +13,6 @@ Rails.application.configure do
   config.action_dispatch.show_exceptions = :rescuable
 
   config.action_controller.allow_forgery_protection = false
-
   config.active_storage.service = :test
 
   config.action_mailer.delivery_method = :test
