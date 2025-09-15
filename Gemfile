@@ -58,6 +58,7 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
 
+  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 8.0.0'
   gem 'rubocop', require: false
   gem 'rubocop-rails'
@@ -66,8 +67,10 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'rails-controller-testing'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 6.0'
+  gem 'webdrivers'
 end
 
 gem 'activeadmin'
