@@ -12,12 +12,4 @@ RSpec.describe Image, type: :model do
     it { is_expected.to have_many(:likes).dependent(:destroy) }
     it { is_expected.to have_many(:comments).dependent(:destroy) }
   end
-
-  # describe 'methods' do
-  #   context 'liked' do
-  #     it 'check that user put like' do
-  #       expect()
-  #     end
-  #   end
-  # end
 end

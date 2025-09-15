@@ -3,9 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  # describe 'validations' do
-  #
-  # end
+  let(:user) { create(:user) }
+  subject { create(:category, user: user) }
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:category_name) }
+    it { is_expected.to validate_uniqueness_of(:category_name) }
+  end
 
   describe 'associations' do
     it { is_expected.to belong_to(:user) }

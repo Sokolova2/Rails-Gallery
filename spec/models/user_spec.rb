@@ -3,13 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { User.create!(email: 'test@test', password: '123123', password_confirmation: '123123', avatar: '123') }
+  subject { build(:user) }
 
   describe 'associations' do
     it { is_expected.to have_many(:categories).dependent(:destroy) }
     it { is_expected.to have_many(:likes).dependent(:destroy) }
     it { is_expected.to have_many(:comments).dependent(:destroy) }
     it { is_expected.to have_many(:subscribers).dependent(:destroy) }
+    it { is_expected.to have_many(:user_actions).dependent(:destroy) }
   end
 
   describe 'methods' do
