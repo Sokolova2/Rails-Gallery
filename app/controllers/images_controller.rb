@@ -19,10 +19,6 @@ class ImagesController < ApplicationController
     redirect_to @category
   end
 
-  def destroy
-    @image.destroy
-  end
-
   private
 
   def set_category
