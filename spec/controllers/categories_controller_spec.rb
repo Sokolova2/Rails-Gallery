@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe CategoriesController, type: :controller do
@@ -41,19 +43,20 @@ RSpec.describe CategoriesController, type: :controller do
     end
   end
 
-  describe 'PATCH/update' do
-    subject { patch :update, params: { id: category.id, category: {category_name: 'lizards1'} } }
+  describe 'PATCH /update' do
     it 'update category' do
-      expect { subject }.to change { category.reload.category_name }
+      patch :update, params: { id: category.id, category: { category_name: 'lizards1' } }
+      expect { category.reload.category_name }.to change(category, :category_name)
     end
   end
 
-  # describe 'DELETE/destroy' do
-  #   subject { delete :destroy, params: { id: category.id } }
-  #
-  #   it 'destroy category' do
-  #     subject
-  #     expect { subject }.to change(Category, :count).by(-1)
-  #   end
-  # end
+  describe 'DELETE /destroy' do
+    let!(:category) { create(:category, user: user) }
+
+    it 'destroy category' do
+      expect do
+        delete :destroy, params: { id: category.to_param }
+      end.to change(Category, :count).by(-1)
+    end
+  end
 end

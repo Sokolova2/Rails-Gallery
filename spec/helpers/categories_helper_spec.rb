@@ -2,16 +2,27 @@
 
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the CategoriesHelper. For example:
-#
-# describe CategoriesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe CategoriesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { create(:user) }
+  let!(:category) { create(:category, user: user) }
+  let!(:image) { create(:image, category: category) }
+  let!(:image_second) { create(:image, category: category) }
+
+  describe 'categories preview' do
+    context 'when category have images' do
+      it 'returns first image from category' do
+        expect(helper.preview_category(category)).to include(category.images.first&.image&.identifier)
+      end
+    end
+
+    context 'when category does not have images' do
+      before do
+        Image.destroy_all
+      end
+
+      it 'returns preview image' do
+        expect(helper.preview_category(category)).to include(/preview.*\.png/)
+      end
+    end
+  end
 end

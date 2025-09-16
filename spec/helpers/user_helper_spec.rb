@@ -2,16 +2,24 @@
 
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the UserHelper. For example:
-#
-# describe UserHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe UserHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { create(:user) }
+
+  describe 'categories preview' do
+    context 'when category have images' do
+      it 'returns avatar of user' do
+        expect(helper.avatar_for(user)).to include(user.avatar.identifier)
+      end
+    end
+
+    context 'when category does not have images' do
+      before do
+        User.find(user.id).update(avatar: nil)
+      end
+
+      it 'returns preview image' do
+        expect(helper.avatar_for(user)).to include(/avatar.*\.png/)
+      end
+    end
+  end
 end
