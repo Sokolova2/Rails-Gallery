@@ -12,7 +12,7 @@ class Subscriber < ApplicationRecord
   end
 
   def self.ransackable_attributes(_auth_object = nil)
-    %w[id id_value category_id user_id comment created_at updated_at slug]
+    %w[id id_value category_id user_id created_at updated_at slug]
   end
 
   def self.ransackable_associations(_auth_object = nil)

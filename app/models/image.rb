@@ -9,11 +9,11 @@ class Image < ApplicationRecord
 
   after_create :send_image_email
 
+  mount_uploader :image, ImageUploader
+
   def liked?(user)
     likes.exists?(user_id: user.id)
   end
-
-  mount_uploader :image, ImageUploader
 
   def send_image_email
     category.subscribers.includes(:user).find_each do |subscriber|
