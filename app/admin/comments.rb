@@ -2,7 +2,7 @@
 
 ActiveAdmin.register Comment, as: 'UserComment' do
   menu priority: 1, label: proc { I18n.t('comment') }
-  permit_params :comment, :user_id, :image_id, :category_id
+  permit_params :body, :user_id, :image_id, :category_id
 
   config.clear_action_items!
 

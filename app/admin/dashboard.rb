@@ -24,7 +24,7 @@ ActiveAdmin.register_page 'Dashboard' do
             Comment.order(created_at: :desc).limit(5).map do |comment|
               div class: 'comment-block' do
                 li class: 'comment-item' do
-                  link_to(comment.comment, admin_user_comment_path(comment), class: 'comment')
+                  link_to(comment.body, admin_user_comment_path(comment), class: 'comment')
                 end
                 li class: 'comment-item' do
                   link_to(comment.user.email, admin_user_comment_path(comment), class: 'comment-email')
