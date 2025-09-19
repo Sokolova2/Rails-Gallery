@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :comment do
-    comment { 'it so cute' }
+    body { 'it so cute' }
     association :user
     association :category
     association :image
