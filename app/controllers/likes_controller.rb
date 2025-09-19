@@ -3,8 +3,8 @@
 class LikesController < ApplicationController
   include ApplicationHelper
 
-  before_action :set_category, only: %i[create destroy]
-  before_action :set_image, only: %i[create destroy]
+  before_action :set_category
+  before_action :set_image
 
   def create
     unless @image.liked?(current_user)

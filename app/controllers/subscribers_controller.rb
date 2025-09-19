@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SubscribersController < ApplicationController
-  before_action :set_category, only: %i[create destroy]
+  before_action :set_category
 
   def create
     Subscriber.create(user_id: current_user.id, category_id: @category.id) unless @category.subscribed?(current_user)

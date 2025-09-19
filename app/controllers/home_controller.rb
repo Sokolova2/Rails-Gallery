@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  before_action :set_top_categories, only: %i[index]
+  before_action :set_top_categories
 
   def index; end
 

@@ -3,11 +3,11 @@
 class CommentsController < ApplicationController
   include ApplicationHelper
 
-  before_action :set_category, only: %i[create]
-  before_action :set_image, only: %i[create]
+  before_action :set_category
+  before_action :set_image
 
   def create
-    Comment.create(category_id: @category.id, user_id: current_user.id, image_id: @image.id, comment: params[:comment])
+    Comment.create(category_id: @category.id, user_id: current_user.id, image_id: @image.id, body: params[:body])
     add_user_action(current_user, 'add comment')
     redirect_to category_image_path(@category, @image)
   end

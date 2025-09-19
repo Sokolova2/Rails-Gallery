@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ImagesController < ApplicationController
-  before_action :set_category, only: %i[show destroy]
-  before_action :set_image, only: %i[show destroy]
+  before_action :set_category
+  before_action :set_image, only: %i[show]
   before_action :authenticate_user!
 
   def show
@@ -11,7 +11,6 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @category = Category.friendly.find(params[:category_id])
     @images = @category.images.build(image_params)
 
     save_image
