@@ -30,10 +30,11 @@ RSpec.describe LikesController, type: 'controller' do
 
   describe 'DELETE /destroy' do
     let!(:like) { create(:like, user: user, category: category, image: image) }
+    subject(:delete_like) { delete :destroy, params: { category_id: category.id, image_id: image.id, id: like.id } }
 
     it 'return successfully destroyed like' do
       expect do
-        delete :destroy, params: { category_id: category.id, image_id: image.id, id: like.id }
+        subject
       end.to change(Like, :count).by(-1)
     end
   end

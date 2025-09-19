@@ -13,23 +13,28 @@ RSpec.describe CategoriesController, type: :controller do
   end
 
   describe 'GET /index' do
+    subject(:get_index) { get :index }
+
     it 'return all categories' do
-      get :index
+      subject
       expect(response).to have_http_status(:success)
     end
   end
 
   describe 'GET /show' do
-    before { create_list(:image, 11, category: category) }
+    subject(:get_show) { get :show, params: { id: category.id } }
+
+    before do
+      create_list(:image, 11, category: category)
+      get_show
+    end
 
     it 'return show category' do
-      get :show, params: { id: category.id }
       expect(assigns(:category)).to eq category
       expect(response).to have_http_status(:success)
     end
 
     it 'paginates images' do
-      get :show, params: { id: category.id }
       expect(assigns(:image).size).to eq(10)
     end
   end
@@ -44,18 +49,21 @@ RSpec.describe CategoriesController, type: :controller do
   end
 
   describe 'PATCH /update' do
+    subject(:update_category) { patch :update, params: { id: category.id, category: { category_name: 'lizards1' } } }
+
     it 'update category' do
-      patch :update, params: { id: category.id, category: { category_name: 'lizards1' } }
+      subject
       expect { category.reload.category_name }.to change(category, :category_name)
     end
   end
 
   describe 'DELETE /destroy' do
     let!(:category) { create(:category, user: user) }
+    subject(:delete_category) { delete :destroy, params: { id: category.to_param } }
 
     it 'destroy category' do
       expect do
-        delete :destroy, params: { id: category.to_param }
+        subject
       end.to change(Category, :count).by(-1)
     end
   end

@@ -21,7 +21,7 @@ RSpec.describe CategoriesHelper, type: :helper do
       end
 
       it 'returns preview image' do
-        expect(helper.preview_category(category)).to include(/preview.*\.png/)
+        expect(helper.preview_category(category)).to match(/preview.*\.png/)
       end
     end
   end

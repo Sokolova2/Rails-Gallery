@@ -18,11 +18,11 @@ RSpec.describe CommentsController, type: :controller do
       post :create, params: {
         category_id: category.id,
         image_id: image.id,
-        comment: attributes_for(:comment)
+        body: attributes_for(:comment)
       }
     end
 
-    it 'check result creating comments' do
+    it 'creating is successfully' do
       expect { subject }.to change(Comment, :count).by(1)
       expect(response).to redirect_to(category_image_path(category, image))
       expect(Comment.last.user).to eq(user)

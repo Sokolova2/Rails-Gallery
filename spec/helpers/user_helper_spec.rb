@@ -18,7 +18,7 @@ RSpec.describe UserHelper, type: :helper do
       end
 
       it 'returns preview image' do
-        expect(helper.avatar_for(user)).to include(/avatar.*\.png/)
+        expect(helper.avatar_for(user)).to match(/avatar.*\.png/)
       end
     end
   end

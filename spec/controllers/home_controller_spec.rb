@@ -12,9 +12,10 @@ RSpec.describe HomeController, type: :controller do
 
   describe 'GET /index' do
     let(:category) { create(:category, user: user) }
+    subject(:get_index) { get :index }
 
-    it 'returns category order by like and comments' do
-      get :index
+    it 'returns the sorted category' do
+      subject
       expect(Category.order_by_likes_and_comments).to include(category)
     end
   end

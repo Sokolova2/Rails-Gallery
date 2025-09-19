@@ -11,8 +11,10 @@ RSpec.describe UpdateLanguagesController, type: :controller do
   end
 
   describe 'PATCH /update' do
+    subject(:update_language) { patch :update, params: { language: 'ru' } }
+
     it 'return successfully change language of user' do
-      patch :update, params: { language: 'ru' }
+      subject
       expect { user.reload.language }.to change(user, :language)
       expect(response).to redirect_to(categories_path)
     end

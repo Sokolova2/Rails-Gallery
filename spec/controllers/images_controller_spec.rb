@@ -15,8 +15,10 @@ RSpec.describe ImagesController, type: :controller do
   end
 
   describe 'GET /show' do
-    it 'return one image and its likes and comments' do
-      get :show, params: { category_id: category.id, id: image.id }
+    subject(:get_show) { get :show, params: { category_id: category.id, id: image.id } }
+
+    it 'return likes and comments of image' do
+      subject
       expect(assigns(:like)).to eq Like.find_by(image_id: image.id)
       expect(assigns(:comment)).to eq Comment.find_by(image_id: image.id)
     end
