@@ -10,7 +10,7 @@ content_comments = ["it's perfect", 'so pretty', 'so beautiful!!!', 'cuteeee!!!'
 images.each do |image|
   image.likes.create(user: user, category: cat_category)
   content_comments.each do |comment|
-    image.comments.create(user: user, category: cat_category, comment: comment, created_at: '2025-08-26')
+    image.comments.create(user: user, category: cat_category, body: comment, created_at: '2025-08-26')
   end
 end
 
