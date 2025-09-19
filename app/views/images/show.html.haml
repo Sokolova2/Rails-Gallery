@@ -54,7 +54,7 @@
                   =avatar_for(comment.user)
                 .d-block
                   %p.login-user= "#{comment.user.first_name + ' ' + comment.user.last_name}"
-                  %p.comment-view= comment.comment
+                  %p.comment-view= comment.body
               %p.comment-data.pb-3= comment.created_at.strftime('%Y-%m-%d')
             -@category.subscribers.each do |subscriber|
               -if comment.user.id == subscriber.user.id
