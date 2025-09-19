@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   before_action :set_image
 
   def create
-    Comment.create(category_id: @category.id, user_id: current_user.id, image_id: @image.id, body: params[:body])
+    Comment.create(category_id: @category.id, user_id: current_user.id, image_id: @image.id, body: params[:comment])
     add_user_action(current_user, 'add comment')
     redirect_to category_image_path(@category, @image)
   end
