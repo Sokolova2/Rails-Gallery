@@ -13,6 +13,8 @@ Rails.application.configure do
 
   config.public_file_server.headers = { 'cache-control' => "public, max-age=#{1.year.to_i}" }
 
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+
   config.active_storage.service = :local
 
   config.assume_ssl = true
