@@ -3,9 +3,9 @@ $sidebar-width: 242px !default;
 //@import "active_admin/mixins";
 //@import "active_admin/base";
 
-.header {
-  @include primary-gradient;
-}
+//.header {
+//  @include primary-gradient;
+//}
 
 .active_admin .action_items{
   display: flex;
