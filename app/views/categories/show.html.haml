@@ -28,9 +28,14 @@
   %div{'data-controller' => 'masonry'}
     .masonry-container.mt-5.mb-5
       -@image.each do |img|
-        =link_to category_image_path(@category, img) do
-          .masonry-item
-            =image_tag img.image.url, class: 'rounded-3 image-home'
-
+        -if img.respond_to?
+          =link_to category_image_path(@category, img) do
+            .masonry-item
+              =image_tag img.image.url, class: 'rounded-3 image-home'
+        -else
+          =link_to category_image_path(@category, img) do
+            .masonry-item
+              =image_tag class: 'rounded-3 image-home' do
+                =image_category(@category.slug)
 .container.d-flex.justify-content-center.mt-5
   =paginate @image

@@ -22,7 +22,7 @@ RSpec.describe SubscribersController, type: :controller do
 
   describe 'DELETE /destroy' do
     let!(:subscriber) { create(:subscriber, user: user, category: category) }
-    subject(:delete_subscriber) {  delete :destroy, params: { category_id: category.id, id: subscriber.id } }
+    subject(:delete_subscriber) { delete :destroy, params: { category_id: category.id, id: subscriber.id } }
 
     it 'return successfully destroyed' do
       expect do

@@ -9,7 +9,7 @@ namespace :app do
       user.password = '123456'
     end
 
-    root_path = Rails.root.join('app', 'assets', 'images', 'migrate_images')
+    root_path = Rails.public_path.join('migrate_images')
 
     unless Dir.exist?(root_path)
       p "Does not exist: #{root_path}"
