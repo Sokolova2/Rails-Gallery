@@ -20,7 +20,7 @@ class Image < ApplicationRecord
       user = subscriber.user
       next unless user
 
-      UserMailer.add_image_email(category, user).deliver_later
+      UserMailer.add_image_email(category, user).deliver_now
     end
   end
 

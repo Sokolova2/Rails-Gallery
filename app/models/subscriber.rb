@@ -8,7 +8,7 @@ class Subscriber < ApplicationRecord
   after_create :send_subscribed_email
 
   def send_subscribed_email
-    UserMailer.subscribed_email(user).deliver_later
+    UserMailer.subscribed_email(user).deliver_now
   end
 
   def self.ransackable_attributes(_auth_object = nil)
