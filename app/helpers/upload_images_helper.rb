@@ -3,7 +3,7 @@
 module UploadImagesHelper
   def image_category(category)
     case category
-    when cats
+    when 'cats'
       [
         'https://media.4-paws.org/d/2/5/f/d25ff020556e4b5eae747c55576f3b50886c0b90/cut%20cat%20serhio%2002-1813x1811-720x719.jpg',
         'https://t3.ftcdn.net/jpg/02/36/99/22/360_F_236992283_sNOxCVQeFLd5pdqaKGh8DRGMZy7P4XKm.jpg',
@@ -16,8 +16,8 @@ module UploadImagesHelper
         'https://blog.nature.org/wp-content/uploads/2022/05/29473548577_8414ac0a6e_k.jpg',
         'https://cloud9vets.co.uk/wp-content/uploads/2018/10/how-long-do-cats-live.jpg',
         'https://wwfgifts-files.worldwildlife.org/wwfgifts/images/black-footed-cat-large-photo.jpg'
-      ]
-    when dogs
+      ].sample
+    when 'dogs'
       [
         'https://www.tierschutzbund.de/fileadmin/_processed_/7/c/csm_schwarzer_Hund_auf_Wiese_c_xkunclova-Shutterstock_01_5566a80d25.jpg',
         'https://cdn.pixabay.com/photo/2015/11/17/13/13/puppy-1047521_1280.jpg',
@@ -29,8 +29,8 @@ module UploadImagesHelper
         'https://c.files.bbci.co.uk/18d0/live/88ff5600-d979-11ef-a5c8-1da73bd59591.jpg',
         'https://hips.hearstapps.com/hmg-prod/images/teddy-6617f86ca5b27.jpg?crop=1xw:0.5625xh;0,0.127xh',
         'https://www.dogstrust.org.uk/images/800x600/assets/2025-03/toffee%202.jpg'
-      ]
-    when birds
+      ].sample
+    when 'birds'
       [
         'https://cdn.britannica.com/10/250610-050-BC5CCDAF/Zebra-finch-Taeniopygia-guttata-bird.jpg',
         'https://gardenandgun.com/wp-content/uploads/2024/04/AdobeStock_475438898-1600x1067.jpeg',
@@ -43,8 +43,8 @@ module UploadImagesHelper
         'https://images.squarespace-cdn.com/content/v1/5d832608f3dbc267e2e21b59/932f3493-b14b-4ff6-99d4-bf938c662ea2/iStock-1243410279.jpg',
         'https://naturealberta.ca/wp-content/uploads/2025/04/6.-Tree-Swallow-NICK-CARTER.jpg',
         'https://live.staticflickr.com/65535/51980751292_38b3d98b76_b.jpg'
-      ]
-    when hamsters
+      ].sample
+    when 'hamsters'
       [
         'https://www.thesprucepets.com/thmb/PygsykINEzCIYwnH9gBYKswujE4=/3000x0/filters:no_upscale():strip_icc()/hamsters-overview-1238973-hero-aa6ddf6f33c64da1b12103c8ba556bc3.jpg',
         'https://www.petscorner.co.uk/Images/Article/large/pc-ah-article-sa-syrian-hamster.jpg',
@@ -57,8 +57,8 @@ module UploadImagesHelper
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg1M6F4up89Lk5fkKYgdtTr-0n6npXO3_39A&s',
         'https://spca.bc.ca/wp-content/uploads/2024/03/small-animal-hamster-white-grey-eye-contact-scaled.jpg',
         'https://www.zooplus.co.uk/magazine/wp-content/uploads/2018/03/hamster-language.webp'
-      ]
-    when squirrel
+      ].sample
+    when 'squirrel'
       [
         'https://upload.wikimedia.org/wikipedia/commons/1/15/EasternGraySquirrel_GAm.jpg',
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkAz0AkRXuGixlahXchHNGy6yvoeFkB1YEMw&s',
@@ -71,7 +71,7 @@ module UploadImagesHelper
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-RUra5lXJ8Ip1rwoN5SWEby0i_VklfHtGwQ&s',
         'https://iowredsquirreltrust.co.uk/wp-content/uploads/2024/06/448472507_1221399875687694_4383553167558339023_n-scaled.jpg',
         'https://ichef.bbci.co.uk/news/1024/branded_news/a221/live/ca074c20-b0c0-11ef-b2d5-1f470ee03eb2.png'
-      ]
+      ].sample
     end
   end
 end
