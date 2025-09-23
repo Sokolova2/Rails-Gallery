@@ -2,6 +2,6 @@ Cloudinary.config do |config|
   config.cloud_name = ENV['CLOUDINARY_CLOUD_NAME']
   config.api_key = ENV['CLOUDINARY_API_KEY']
   config.api_secret = ENV['CLOUDINARY_API_SECRET']
-  config.preset_name = ENV['CLOUDINARY_PRESET_NAME']
+  config.presets_name = ENV['CLOUDINARY_PRESETS_NAME']
   config.secure = true
 end
