@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AvatarUploader < CarrierWave::Uploader::Base
-  # include Cloudinary::CarrierWave
+  include Cloudinary::CarrierWave
   include CarrierWave::MiniMagick
 
   def default_url(*_args)
