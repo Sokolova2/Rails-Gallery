@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ImageUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
+  include Cloudinary::CarrierWave
 
   storage :file
 

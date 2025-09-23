@@ -46,6 +46,7 @@ gem 'thruster', require: false
 gem 'mail_form'
 
 gem 'carrierwave', '~> 3.0'
+gem 'cloudinary'
 gem 'mini_magick'
 
 gem 'bootstrap'

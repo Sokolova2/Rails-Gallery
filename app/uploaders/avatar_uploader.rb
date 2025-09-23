@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AvatarUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
+  include Cloudinary::CarrierWave
 
   def default_url(*_args)
     ActionController::Base.helpers.asset_path('avatar.png')
